@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+  <title>xin chao</title>
+</head>
+
+<body>
+
+  <section layout:fragment="content">
+
+    <!-- Banner Start -->
+    <div class="banner banner-1 banner-3 dark-overlay bg-cover bg-center"
+         th:style="'background-image: url(/client/img/banner/15.jpg)'">
+      <div class="container">
+        <div class="row banner-row align-items-center">
+          <div class="col-lg-8">
+            <div class="banner-item">
+              <div class="banner-inner">
+                <div class="banner-text">
+                  <h1 class="title text-white">We Make Special  Memories, Special.</h1>
+                  <p class="subtitle text-white">Thousands of people want to sell or buy. Don't miss your chance to grab your Jewelry.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="deals-slider">
+              <!-- Product Start -->
+              <div class="product">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/1.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                    <span class="product-badge stock"> Out of Stock</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">5$ <span>7$</span> </span>
+                  <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <div class="product-gallery-wrapper">
+                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                    <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product End -->
+              <!-- Product Start -->
+              <div class="product">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/2.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                    <span class="product-badge sale"> On Sale</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">2$ <span>3$</span> </span>
+                  <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <div class="product-gallery-wrapper">
+                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                    <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product End -->
+              <!-- Product Start -->
+              <div class="product">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/3.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge stock"> Out of Stock</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Pearl and Diamond Necklace</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">5$ <span>7$</span> </span>
+                  <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <div class="product-gallery-wrapper">
+                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                    <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product End -->
+              <!-- Product Start -->
+              <div class="product">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/4.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge sale">On Sale</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Square Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">5$ <span>7$</span> </span>
+                  <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <div class="product-gallery-wrapper">
+                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                    <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner End -->
+
+    <!-- About Section Start -->
+    <div class="section pt-0">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6 mb-lg-30 acr-dots-wrapper acr-single-img-wrapper">
+            <img th:src="@{/client/img/products-list/3.jpg}" alt="img">
+          </div>
+          <div class="col-lg-6">
+            <div class="section-title-wrap mr-lg-30">
+              <h5 class="custom-primary">About Us</h5>
+              <h2 class="title">We have more than 100 years of experince in Jewelry.  </h2>
+              <p class="subtitle">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              </p>
+              <p class="subtitle">
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+              </p>
+              <a href="shop-map.html" class="btn-custom">Browse Jewelry   </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- About Section End -->
+
+    <!-- CTA Start -->
+    <div class="section section-padding pt-0">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="cta cta-2 item1">
+              <i class="flaticon-sales-agent"></i>
+              <div class="cta-body">
+                <h4>Looking to Sell Your Jewelry ?</h4>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                </p>
+                <a href="shop-map.html" class="btn-link">Find Out More <i class="fas fa-arrow-right"></i> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cta cta-2 item2">
+              <i class="flaticon-buy"></i>
+              <div class="cta-body">
+                <h4>Searching to Buy Jewelry ? </h4>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                </p>
+                <a href="pricing.html" class="btn-link">Find Out More <i class="fas fa-arrow-right"></i> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer spacer-lg spacer-bottom dark-bg"></div>
+
+    </div>
+    <!-- CTA End -->
+
+    <!-- Icons Start -->
+    <div class="section section-padding dark-bg infographics-3 pt-0">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="acr-infographic-item">
+              <i class="text-white flaticon-ribbon"></i>
+              <div class="acr-infographic-item-body">
+                <h5 class="text-white">We Are Featured</h5>
+                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="acr-infographic-item">
+              <i class="text-white flaticon-necklace"></i>
+              <div class="acr-infographic-item-body">
+                <h5 class="text-white">Unlimited Jewelry   </h5>
+                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="acr-infographic-item">
+              <i class="text-white flaticon-sales-agent"></i>
+              <div class="acr-infographic-item-body">
+                <h5 class="text-white">Support After Retail</h5>
+                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- Icons End -->
+
+    <!-- Bestseller product Start -->
+    <div style="margin-top: 80px;" class="section pt-0">
+      <div class="container">
+        <div class="section-title-wrap section-header">
+          <h5 class="custom-primary">Bestseller</h5>
+          <h2 class="title">Our Bestseller</h2>
+        </div>
+        <div class="bestseller-wrapper">
+          <div class="best-featured-product">
+            <!-- Product Start -->
+            <div class="product">
+              <div class="product-thumbnail">
+                <a href="product-details-v1.html"><img src="assets/img/products/1.jpg" alt="product"></a>
+                <div class="product-badges">
+                  <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                </div>
+                <div class="product-controls">
+                  <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                  <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                  <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                </div>
+              </div>
+              <div class="product-body">
+                <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Pearl and Diamond Necklace</a> </h5>
+                <div class="acr-rating">
+                  <i class="fas fa-star active"></i>
+                  <i class="fas fa-star active"></i>
+                  <i class="fas fa-star active"></i>
+                  <i class="fas fa-star active"></i>
+                  <i class="fas fa-star active"></i>
+                </div>
+                <span class="product-price">3$ </span>
+                <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <div class="product-gallery-wrapper">
+                  <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                  <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                </div>
+              </div>
+            </div>
+            <!-- Product End -->
+          </div>
+          <div class="featured-products-right">
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/2.jpg" alt="product"></a>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Pearl and Diamond Necklace</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">5$ <span>7$</span> </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/3.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Diamond Criss Cross Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">500$ </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/4.jpg" alt="product"></a>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Pearl and Diamond Necklace</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">15$ <span>23$</span> </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/5.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                    <span class="product-badge sale"> On Sale</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Square Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">2,400$ <span>3,500$</span> </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/6.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">5$ <span>7$</span> </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+            <div class="featured-products-items">
+              <!-- Product Start -->
+              <div class="product product-sm">
+                <div class="product-thumbnail">
+                  <a href="product-details-v1.html"><img src="assets/img/products/7.jpg" alt="product"></a>
+                  <div class="product-badges">
+                    <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                    <span class="product-badge stock"> Out of Stock</span>
+                  </div>
+                  <div class="product-controls">
+                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Square Scacco Diamond Ring</a> </h5>
+                  <div class="acr-rating">
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                  </div>
+                  <span class="product-price">3$ </span>
+                </div>
+              </div>
+              <!-- Product End -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bestseller product End -->
+
+    <div class="section dark-bg pb-0">
+      <div class="container">
+        <div class="section-title-wrap section-header text-center">
+          <h5 class="custom-primary">Many Varieties</h5>
+          <h2 class="title text-white">We Have 50 % Sale On All Jewelry. </h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product-tab-box Start -->
+    <div class="section section-padding pt-0">
+      <div class="spacer dark-bg"></div>
+      <div class="container">
+        <div class="product-tab-wrapper">
+          <ul class="nav nav-tabs border-0 row">
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro1" data-toggle="tab" class="nav-link active">
+                <i class="flaticon-gems"></i>
+                <span class="fw-500">Jewelry</span>
+              </a>
+            </li>
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro2" data-toggle="tab" class="nav-link">
+                <i class="flaticon-necklace"></i>
+                <span class="fw-500">Necklaces</span>
+              </a>
+            </li>
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro3" data-toggle="tab" class="nav-link">
+                <i class="flaticon-earrings"></i>
+                <span class="fw-500">Earrings </span>
+              </a>
+            </li>
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro4" data-toggle="tab" class="nav-link">
+                <i class="flaticon-bracelet"></i>
+                <span class="fw-500">Bracelets </span>
+              </a>
+            </li>
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro5" data-toggle="tab" class="nav-link">
+                <i class="flaticon-jewelry"></i>
+                <span class="fw-500">Charms </span>
+              </a>
+            </li>
+            <li class="nav-item col-lg-2 col-sm-4 col-6">
+              <a href="#pro6" data-toggle="tab" class="nav-link">
+                <i class="flaticon-diamond-ring"></i>
+                <span class="fw-500"> Ring</span>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content mt-0">
+            <div id="pro1" class="tab-pane fade show active">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/1.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/2.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/3.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+            <div id="pro2" class="tab-pane fade">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/4.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/5.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/6.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+            <div id="pro3" class="tab-pane fade">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/7.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/8.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/9.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+            <div id="pro4" class="tab-pane fade">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/1.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/2.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/3.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+            <div id="pro5" class="tab-pane fade">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/4.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/5.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/6.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+            <div id="pro6" class="tab-pane fade">
+              <div class="row">
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/7.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star-half-alt active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/8.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="product-badge sale"> On Sale</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Scacco Diamond Ring"> Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">2$ <span>3$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+                <!-- Product Start -->
+                <div class="col-lg-4">
+                  <div class="product">
+                    <div class="product-thumbnail">
+                      <a href="product-details-v1.html"><img src="assets/img/products/9.jpg" alt="product"></a>
+                      <div class="product-badges">
+                        <span class="product-badge stock"> Out of Stock</span>
+                      </div>
+                      <div class="product-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-body">
+                      <h5 class="product-title"> <a href="product-details-v1.html" title="Blue Blast">Scacco Diamond Ring</a> </h5>
+                      <div class="acr-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                      </div>
+                      <span class="product-price">3$ <span>4$</span> </span>
+                      <p class="product-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="product-gallery-wrapper">
+                        <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Add to Cart</a>
+                        <a href="#" data-toggle="tooltip" title="Gallery" class="product-gallery"> <i class="fas fa-camera"></i> </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product End -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product-tab-box End -->
+
+    <!-- Blog Posts Start -->
+    <div style="background-color: #F6F4F0" class="section section-padding light-bg pt-0">
+      <div class="container">
+        <div class="section-title-wrap section-header">
+          <h5 class="custom-primary">Latest News</h5>
+          <h2 class="title">From Our Blog</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <article class="post">
+              <div class="post-thumbnail">
+                <a href="blog-single.html"><img src="assets/img/blog/1.jpg" alt="blog post"></a>
+              </div>
+              <div class="post-body">
+                <h5 class="post-title"> <a href="blog-single.html">Different Diamond Cuts In NY</a> </h5>
+                <p class="post-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                </p>
+                <div class="post-controls">
+                  <a href="#" class="btn-custom secondary btn-sm">Read More</a>
+                  <div class="post-comment-authors">
+                    <span>Comments by: </span>
+                    <div class="post-comment-authors-img">
+                      <a href="#"> <img src="assets/img/people/3.jpg" alt="comment author"> </a>
+                      <a href="#"> <img src="assets/img/people/4.jpg" alt="comment author"> </a>
+                      <a href="#"> +3 </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="post post-list">
+              <div class="post-thumbnail">
+                <a href="blog-single.html"><img src="assets/img/blog/2.jpg" alt="blog post"></a>
+              </div>
+              <div class="post-body">
+                <h5 class="post-title"> <a href="blog-single.html">Different Styles of Engagement Rings </a> </h5>
+                <p class="post-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                </p>
+              </div>
+            </article>
+            <article class="post post-list">
+              <div class="post-thumbnail">
+                <a href="blog-single.html"><img src="assets/img/blog/3.jpg" alt="blog post"></a>
+              </div>
+              <div class="post-body">
+                <h5 class="post-title"> <a href="blog-single.html">13 Fun Facts About Stone Street </a> </h5>
+                <p class="post-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Blog Posts End -->
+
+  </section>
+
+</body>
+
+</html>

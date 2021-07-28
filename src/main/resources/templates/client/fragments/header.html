@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+</head>
+
+<body>
+
+  <!-- Middle sec -->
+  <div th:fragment="middle-header" class="middle-header">
+      <div class="container-fluid" style="height: 100px;">
+          <div class="row align-items-center" style="height: 100%;">
+              <div class="col-lg-2 col-6">
+                  <div class="searchbar">
+                      <form action="#" method="POST">
+                          <div class="input-group" style="width: 300px;">
+                              <input type="text" name="#" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                              <div class="input-group-append">
+                                  <button type="submit">
+                                      <i class="far fa-search"></i>
+                                  </button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="mobile-logo">
+                      <a href="#">
+                          <img th:src="@{/client/img/logo.png}" class="img-fluid" alt="logo">
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-8 hide-on-mobile">
+                  <div class="middle-navigation">
+                      <nav>
+                          <ul class="main-navigation">
+                              <li class="logo">
+                                  <a href="index.html">
+                                      <img th:src="@{/client/img/logo.png}" class="img-fluid" alt="logo">
+                                  </a>
+                              </li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-6">
+                  <div class="header-controls">
+                      <ul>
+                          <li class="dropdown-btn">
+                              <a href="#">
+                                  <i class="far fa-user"></i>
+                              </a>
+                              <div class="dropdown-menu cart-dropdown-menu" style="width: 200px;">
+                                  <ul class="cart-items-box">
+                                      <li class="cart-item">
+                                          <div class="content" style="width: auto">
+                                              <a href="#" style="color: #222">Đăng nhập</a>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </li>
+                          <li>
+                              <a href="wishlist.html">
+                                  <i class="far fa-heart"></i>
+                              </a>
+                          </li>
+                          <li class="dropdown-btn">
+                              <a href="#">
+                                  <i class="far fa-shopping-cart"></i>
+                              </a>
+                              <div class="dropdown-menu cart-dropdown-menu">
+                                  <ul class="cart-items-box">
+                                      <li class="cart-item">
+                                          <div class="img">
+                                              <img th:src="@{client/img/cart/cart5.jpg}" alt="img">
+                                          </div>
+                                          <div class="content">
+                                              <h5><a href="#">Diamond Criss Cross Ring</a></h5>
+                                              <p>2x 150$</p>
+                                          </div>
+                                      </li>
+                                      <li class="cart-item">
+                                          <div class="img">
+                                              <img th:src="@{/client/img/cart/cart6.jpg}" alt="img">
+                                          </div>
+                                          <div class="content">
+                                              <h5><a href="#"> Scacco Diamond Ring</a></h5>
+                                              <p>2x 150$</p>
+                                          </div>
+                                      </li>
+                                      <li class="cart-item">
+                                          <div class="img">
+                                              <img th:src="@{/client/img/cart/cart7.jpg}" alt="img">
+                                          </div>
+                                          <div class="content">
+                                              <h5><a href="#">Square Scacco Diamond Ring</a></h5>
+                                              <p>2x 150$</p>
+                                          </div>
+                                      </li>
+                                  </ul>
+                                  <div class="cart-items-box">
+                                      <div class="cart-item">
+                                          <span>Subtotal</span>
+                                          <span>3,200$</span>
+                                      </div>
+                                      <div class="cart-item actions">
+                                          <button type="button" class="btn-custom btn-sm secondary">Checkout</button>
+                                          <button type="button" class="btn-custom btn-sm primary">View Cart</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="aside-toggler aside-trigger">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Bottom sec -->
+  <div th:fragment="bottom-header" class="bottom-header">
+      <div class="container">
+          <div class="bottom-navigation">
+              <nav>
+                  <ul class="main-navigation">
+                      <li class="menu-item">
+                          <a href="shop-list-v1.html">Rings</a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="shop-list-v1.html">Necklaces </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="shop-list-v1.html">Earrings</a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="shop-list-v2.html">Bracelets</a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="shop-list-v2.html">Charms</a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="shop-list-v2.html">Wedding Bands</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </div>
+
+</body>
+
+</html>

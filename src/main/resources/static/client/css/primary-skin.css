@@ -1,0 +1,157 @@
+/* Simply Replace the colors in this stylesheet to your brand. */
+
+/*===============================================
+PRIMARY COLOR Default: #bead8e
+==============================================*/
+.lds-grid div,
+.primary-bg, blockquote,
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before,
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
+.btn-custom,
+.btn-custom-2,
+.btn-custom.primary,
+.badge.badge-primary,
+.nav-tabs .nav-link::before,
+.nav-tabs.tab-cards .nav-item.show .nav-link,
+.nav-tabs.tab-cards .nav-link.active,
+.aside-toggler:hover span, .acr-category.category-2:hover,
+.slick-dots li.slick-active button, .acr-arrows .slick-arrow::after,
+.header-controls-inner li.cart-dropdown-wrapper i::after,
+.acr-arrows .slick-arrow:hover, .acr-arrows.primary-arrows .slick-arrow,
+.acr-slider-arrows i, .product .product-thumbnail a:hover,
+.product .product-gallery-wrapper .product-gallery:hover,
+.mapboxgl-popup-close-button:hover, .acr-toggle-views a.active,
+.user-nav li a.active{
+  background-color: #bead8e;
+}
+
+a,
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option[aria-selected=true],
+.btn-custom-2.grey:hover, .btn-custom-2.grey:hover i, .custom-primary,
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active,
+.nav-tabs.tab-cards .nav-item.show .nav-link span,
+.nav-tabs.tab-cards .nav-link.active span,
+.navbar .menu-item a.active,
+.navbar .menu-item a:hover,
+.navbar .menu-item .submenu .menu-item a:hover,
+.main-header.header-2 .navbar .menu-item .submenu .menu-item a:hover,
+.acr-language-selector .dropdown-menu li:hover,
+.footer-btn a i,
+.acr-product-details .acr-product-section h4 a:hover,
+.breadcrumb li a:hover,
+.cta.cta-2.item1 > i,
+.cta.cta-2.item1 a, .acr-agent-body h6 a:hover,
+.acr-arrows.acr-arrows-relative .slick-arrow,
+.pagination .page-item.active .page-link,
+.pagination .page-item .page-link:hover,
+.pagination .page-item .page-link:focus,
+.media-body h6 a:hover, .accordion .card-header[aria-expanded="true"] i,
+.social-media a:hover, .search-wrapper button,
+.sidebar-author-personal a:hover, .product .product-price,
+.acr-product-popup-body .product-price{
+  color: #bead8e;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before,
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
+.btn-custom-2.grey:hover, .acr-arrows .slick-arrow:hover,
+.acr-arrows.primary-arrows .slick-arrow,
+.acr-arrows.acr-arrows-relative .slick-arrow:hover{
+  border-color: #bead8e;
+}
+
+/*===============================================
+PRIMARY COLOR (HOVER & FOCUS)  Default: #a99d5e
+==============================================*/
+a:hover,
+a:focus,
+.btn-link:hover,
+.btn-link:focus,
+.acr-footer a:hover,
+.post .post-author .post-author-body p a:hover,
+.post .post-title a:hover,
+.acr-category-body h5 a:hover,
+.post-single .post-meta a:hover,
+.post-single-pagination:hover h6,
+.post-single-pagination:hover i,
+.sidebar-widget .media h6 a:hover,
+.sidebar-widget.sidebar-list ul li a:hover,
+.product .product-author .product-author-body p a:hover,
+.product .product-title a:hover,
+.options-dropdown ul li a:hover,
+.acr-product-popup-body h5 a:hover{
+  color: #a99d5e;
+}
+
+.btn-custom::before,
+.acr-arrows.primary-arrows .slick-arrow:hover,
+.acr-arrows.primary-arrows .slick-arrow::after{
+  background-color: #a99d5e;
+}
+.acr-arrows.primary-arrows .slick-arrow:hover{
+  border-color: #a99d5e;
+}
+
+/*===============================================
+SECONDARY COLOR Default: #171717
+==============================================*/
+
+.acr-featured-product .featured-product-thumb .featured-product-controls span,
+.cta.cta-2.item2 > i,
+.cta.cta-2.item2 a,
+.infographics-2 .acr-infographic-item > i,
+.infographics-3 .acr-infographic-item > i,
+.infographics-4 .acr-infographic-item > i,
+.infographics-5 .acr-infographic-item > i,
+.infographics-2 .acr-infographic-item a,
+.product-feature i,
+.acr-compare-feature i,
+.acr-auth-content .auth-nav a.active{
+  color: #171717;
+}
+
+.btn-custom.secondary,
+.main-aside ul .menu-item a:hover, .main-aside ul .menu-item a.active,
+.acr-product-control:hover, .cta.cta-1,
+.infographics-2 .acr-infographic-item:hover a,
+.acr-single-product-thumb, .semi-circle:hover,
+.acr-area-price > span,
+.progress-bar,
+.product-banner-inner .slick-arrow:hover,
+.acr-pricing.hot-plan{
+  background-color: #171717;
+}
+.infographics-2 .acr-infographic-item a{
+  border-color: #171717;
+}
+
+.acr-area-price > span::before{
+  border-top-color: #171717;
+}
+.acr-auth-content .auth-nav a.active{
+  border-bottom-color: #171717;
+}
+
+/*==================================================
+SECONDARY COLOR (Hover & Focus) Default: #383838
+==================================================*/
+.btn-custom.secondary::before,
+.infographics-2 .acr-infographic-item:hover a:hover{
+  background-color: #383838;
+}
+.infographics-2 .acr-infographic-item:hover a:hover{
+  border-color: #383838;
+}
+
+/*==================================================
+SECONDARY COLOR (RGB FORMAT) Default: rgb(1,187,188)
+==================================================*/
+.acr-pricing.hot-plan::before{
+  background-color: rgba(1,187,188,.6);
+}
+.acr-pricing.hot-plan::after{
+  background-color: rgba(1,187,188,.4);
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+</head>
+<body>
+    <!-- Footer Start -->
+    <footer style="border-top: 1px solid rgba(0, 0, 0, 0.1);" class="acr-footer footer-2" th:fragment="footer">
+
+        <!-- Footer Middle Start -->
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-12 footer-widget">
+                        <div class="footer-logo"> <img th:src="@{/client/img/logo.png}" alt="Mini"> </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+                        <div class="dropdown acr-language-selector">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img th:src="@{/client/img/flags/united-states.png}" alt="flag">
+                                <span>English</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li> <a href="#"><img th:src="@{/client/img/flags/germany.png}" alt="flag"> German</a> </li>
+                                    <li> <a href="#"><img th:src="@{/client/img/flags/russia.png}" alt="flag"> Russian</a> </li>
+                                    <li> <a href="#"><img th:src="@{/client/img/flags/united-states.png}" alt="flag">English</a> </li>
+                                    <li> <a href="#"><img th:src="@{/client/img/flags/spain.png}" alt="flag"> Spanish</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-sm-4 footer-widget">
+                        <h5 class="widget-title">Jewelry</h5>
+                        <ul>
+                            <li> <a href="shop-map.html">Find Product</a> </li>
+                            <li> <a href="submit-product.html">Add Product</a> </li>
+                            <li> <a href="shop-map.html">Products</a> </li>
+                            <li> <a href="blog-grid.html">Blog</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-sm-4 footer-widget">
+                        <h5 class="widget-title">Information</h5>
+                        <ul>
+                            <li> <a href="about-us.html">About Us</a> </li>
+                            <li> <a href="contact-us.html">Contact Us</a> </li>
+                            <li> <a href="services-h1.html">Services</a> </li>
+                            <li> <a href="faq.html">FAQ</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-sm-4 footer-widget">
+                        <h5 class="widget-title">Legal</h5>
+                        <ul>
+                            <li> <a href="legal.html">Privacy Policy</a> </li>
+                            <li> <a href="legal.html">Refund Policy</a> </li>
+                            <li> <a href="legal.html">Cookie Policy</a> </li>
+                            <li> <a href="legal.html">Legal Terms</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Middle End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <p class="m-0">&copy; Copyright 2020 - <a href="#">YourWebsite</a> All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <ul>
+                            <li> <a href="shop-map.html">Find a Product</a> </li>
+                            <li> <a href="submit-product.html">Add Product</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Quick View Modal Start -->
+    <div class="modal fade quick-view-modal" id="quickViewModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="close-btn close-dark close" data-dismiss="modal">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="product-zoom-image">
+                                    <img src="assets/img/quick-view.png" alt="image">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="shop-detail-wrapper">
+                                    <div class="shop-social-icons">
+                                        <a href="#" class="add-to-favorite" data-toggle="tooltip" title="Add to Wishlist">
+                                            <i class="far fa-heart"></i>
+                                        </a>
+                                        <ul class="icon-box">
+                                            <li class="mt-0">
+                                                <a href="#" data-toggle="tooltip" title="Share on facebook">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            <li class="mt-0">
+                                                <a href="#" data-toggle="tooltip" title="Share on twitter">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="mt-0">
+                                                <a href="#" data-toggle="tooltip" title="Share on Linkedin">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="rating d-flex">
+                                        <div class="acr-rating">
+                                            <i class="fas fa-star active"></i>
+                                            <i class="fas fa-star active"></i>
+                                            <i class="fas fa-star active"></i>
+                                            <i class="fas fa-star active"></i>
+                                            <i class="fas fa-star active"></i>
+                                        </div>
+                                        <span>2 reviews</span>
+                                    </div>
+                                    <div class="shop-detail-title">
+                                        <h3>Square Scacco Diamond Ring</h3>
+                                    </div>
+                                    <div class="product-price-box">
+                    <span class="product-price">3,500$
+                      <span>4,500$</span>
+                    </span>
+                                    </div>
+                                    <div class="product-descr">
+                                        <p class="mb-0">Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                    </div>
+                                    <form class="product-variation-form">
+                                        <div class="product-variation-wrapper">
+                                            <div class="form-group">
+                                                <select class="form-control" name="amount">
+                                                    <option value="">Select Amount</option>
+                                                    <option value="1">1 Pcs</option>
+                                                    <option value="2">2 Pcs</option>
+                                                    <option value="3">3 Pcs</option>
+                                                    <option value="4">4 Pcs</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" name="breed">
+                                                    <option value="">Select a Breed</option>
+                                                    <option value="italian">Italian</option>
+                                                    <option value="egyptian">Egyptian</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="shop-button-box">
+                                            <div class="qty-box">
+                        <span class="qty-subtract">
+                          <i class="fa fa-minus"></i>
+                        </span>
+                                                <input type="text" name="qty" value="1">
+                                                <span class="qty-add">
+                          <i class="fa fa-plus"></i>
+                        </span>
+                                            </div>
+                                            <a href="#" class="btn-custom primary">Buy Now</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

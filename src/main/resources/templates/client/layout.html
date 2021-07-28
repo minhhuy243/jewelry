@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-layout-title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Melux - Jewelry  Shop HTML5 Template</title>
+  <!-- Vendor Stylesheets -->
+  <link rel="stylesheet" th:href="@{/client/css/plugins/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/client/css/plugins/animate.min.css}">
+  <link rel="stylesheet" th:href="@{/client/css/plugins/magnific-popup.css}">
+  <link rel="stylesheet" th:href="@{/client/css/plugins/slick.css}">
+  <link rel="stylesheet" th:href="@{/client/css/plugins/slick-theme.css}">
+  <link rel="stylesheet" th:href="@{/client/css/plugins/select2.min.css}">
+  <!-- Icon Fonts -->
+  <link rel="stylesheet" th:href="@{/client/fonts/flaticon/flaticon.css}">
+  <link rel="stylesheet" th:href="@{/client/fonts/font-awesome/font-awesome.min.css}">
+  <!-- Mini Style sheet -->
+  <link rel="stylesheet" th:href="@{/client/css/style.css}">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" th:href="@{/client/favicon.png}">
+</head>
+
+<body>
+
+  <!-- Preloader Start -->
+  <div class="acr-preloader">
+    <div class="acr-preloader-inner">
+      <div class="lds-grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Preloader End -->
+
+  <!-- Aside (Mobile Navigation) -->
+  <aside class="main-aside">
+    <div class="aside-title">
+      <div class="aside-controls aside-trigger">
+        <h4>Jewelry</h4>
+        <div class="close-btn close-dark">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="aside-scroll">
+      <ul>
+        <!-- Pages Start -->
+        <li class="menu-section-title">Pages</li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#"> Home Pages</a>
+          <ul class="submenu">
+            <li class="menu-item"> <a href="index.html">Home v1</a> </li>
+            <li class="menu-item"> <a href="home-v2.html">Home v2</a> </li>
+            <li class="menu-item"> <a href="home-v3.html">Home v3</a> </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Shop</a>
+          <ul class="submenu">
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Shop</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="shop-list-v1.html">Grid View</a>
+                </li>
+                <li class="menu-item">
+                  <a href="shop-list-v1.html">List v1</a>
+                </li>
+                <li class="menu-item">
+                  <a href="shop-list-v2.html">List v2</a>
+                </li>
+                <li class="menu-item">
+                  <a href="shop-map.html">Shop Map</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Product Details</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="product-details-v1.html">Product Details v1</a>
+                </li>
+                <li class="menu-item">
+                  <a href="product-details-v2.html">Product Details v2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="cart.html">Cart</a>
+            </li>
+            <li class="menu-item">
+              <a href="checkout.html">Checkout</a>
+            </li>
+            <li class="menu-item">
+              <a href="wishlist.html">Wishlist</a>
+            </li>
+            <li class="menu-item">
+              <a href="compare-products.html">Compare Products</a>
+            </li>
+            <li class="menu-item">
+              <a href="submit-product.html">Submit Product</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Pages</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a href="about-us.html">About Us</a>
+            </li>
+            <li class="menu-item">
+              <a href="contact-us.html">Contact Us</a>
+            </li>
+            <li class="menu-item">
+              <a href="legal.html">Legal</a>
+            </li>
+            <li class="menu-item">
+              <a href="faq.html">FAQ</a>
+            </li>
+            <li class="menu-item">
+              <a href="coming-soon.html">Coming Soon</a>
+            </li>
+            <li class="menu-item">
+              <a href="404.html">404</a>
+            </li>
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Login</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="login-v1.html">Login v1</a>
+                </li>
+                <li class="menu-item">
+                  <a href="login-v2.html">Login v2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Register</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="register-v1.html">Register v1</a>
+                </li>
+                <li class="menu-item">
+                  <a href="register-v2.html">Register v2</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Blog</a>
+          <ul class="submenu">
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Blog Archive</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="blog-left-sidebar.html">Left Sidebar</a>
+                </li>
+                <li class="menu-item">
+                  <a href="blog-right-sidebar.html">Right Sidebar</a>
+                </li>
+                <li class="menu-item">
+                  <a href="blog-grid.html">Grid View</a>
+                </li>
+                <li class="menu-item">
+                  <a href="blog-list.html">List View</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="blog-single.html">Blog Single</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Portfolio</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a href="project-v1.html">Portfolio v1</a>
+            </li>
+            <li class="menu-item">
+              <a href="project-v2.html">Portfolio v2</a>
+            </li>
+            <li class="menu-item">
+              <a href="project-v3.html">Portfolio v3</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Team</a>
+          <ul class="submenu">
+            <li class="menu-item menu-item-has-children">
+              <a href="#">Team Archive</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="team-archive-v1.html">Archive v1</a>
+                </li>
+                <li class="menu-item">
+                  <a href="team-archive-v2.html">Archive v2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="team-details.html">Team Detail</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">Services</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a href="services-v1.html">Service v1</a>
+            </li>
+            <li class="menu-item">
+              <a href="services-v2.html">Service v2</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+          <a href="#">User</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a href="profile.html">My Account</a>
+            </li>
+            <li class="menu-item">
+              <a href="profile-orders.html">My Orders</a>
+            </li>
+            <li class="menu-item">
+              <a href="profile-products.html">My Products</a>
+            </li>
+            <li class="menu-item">
+              <a href="profile-saved-products.html">Saved Products</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Pages End -->
+        <!-- Social Media Start -->
+        <li class="menu-section-title">Get Social</li>
+        <li class="menu-item"> <a href="#"> <i class="flaticon-facebook"></i>Facebook</a> </li>
+        <li class="menu-item"> <a href="#"> <i class="flaticon-linkedin"></i> Linkedin </a> </li>
+        <li class="menu-item"> <a href="#"> <i class="flaticon-twitter"></i> Twitter </a> </li>
+        <li class="menu-item"> <a href="#"> <i class="flaticon-instagram"></i> Instagram </a> </li>
+        <!-- Social Media End -->
+      </ul>
+    </div>
+  </aside>
+  <div class="aside-overlay aside-trigger"></div>
+
+  <!-- Header Start -->
+  <header class="acr-header">
+
+    <!-- Middle sec -->
+    <div th:replace="client/fragments/header::middle-header">
+    </div>
+
+    <!-- Bottom sec -->
+    <div th:replace="client/fragments/header::bottom-header">
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <section layout:fragment="content">
+  </section>
+
+  <footer th:replace="client/fragments/footer::footer">
+  </footer>
+
+  <!-- Vendor Scripts -->
+  <script th:src="@{/client/js/plugins/jquery-3.4.1.min.js}"></script>
+  <script th:src="@{/client/js/plugins/popper.min.js}"></script>
+  <script th:src="@{/client/js/plugins/bootstrap.min.js}"></script>
+  <script th:src="@{/client/js/plugins/jquery.magnific-popup.min.js}"></script>
+  <script th:src="@{/client/js/plugins/jquery.slimScroll.min.js}"></script>
+  <script th:src="@{/client/js/plugins/imagesloaded.min.js}"></script>
+  <script th:src="@{/client/js/plugins/jquery.countdown.min.js}"></script>
+  <script th:src="@{/client/js/plugins/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/client/js/plugins/slick.min.js}"></script>
+  <script th:src="@{/client/js/plugins/select2.min.js}"></script>
+  <script th:src="@{/client/js/plugins/jquery.zoom.min.js}"></script>
+  <!-- Mini Scripts -->
+  <script th:src="@{client/js/main.js}"></script>
+
+</body>
