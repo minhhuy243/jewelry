@@ -13,4 +13,5 @@ public class HomeController {
     public String homePage(Model model) {
         return "client/home/home";
     }
+
 }
