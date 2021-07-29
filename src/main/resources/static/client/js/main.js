@@ -457,16 +457,17 @@
   $('.detail-page-slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
     asNavFor: '.detail-page-slider-nav'
   });
   $('.detail-page-slider-nav').slick({
     slidesToShow: 3,
     slidesToScroll: 1,
     asNavFor: '.detail-page-slider-for',
-    arrows: false,
-    dots: false,
+    arrows: true,
+    dots: true,
     focusOnSelect: true,
+    variableWidth: true,
     responsive: [{
       breakpoint: 567,
       settings: {
