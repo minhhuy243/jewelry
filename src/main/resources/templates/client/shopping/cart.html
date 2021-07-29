@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+    <title>Giỏ hàng</title>
+<body>
+
+    <section layout:fragment="content">
+        <!-- Subheader Start -->
+        <div class="subheader bg-cover bg-center dark-overlay" style="padding: 290px 0 30px;"
+             th:style="'background-image: url(/client/img/subheader.jpg);'"
+             th:styleappend="'padding: 290px 0 30px'">
+            <div class="container">
+                <div class="subheader-inner">
+                    <h1 class="text-white">Giỏ hàng</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> <i class="fas fa-home"></i> </a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Subheader End -->
+
+        <!-- Checkout Start -->
+        <div class="section checkout-sec cart-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="checkout-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="remove">
+                                            <div class="product-remove">
+                                                <a href="#" class="close-btn close-dark">
+                                                    <span></span>
+                                                    <span></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td data-title="product">
+                                            <div class="product-box">
+                                                <img src="assets/img/cart/cart1.jpg" alt="product">
+                                                <div class="product-name">
+                                                    <h6>
+                                                        <a href="#">Square Scacco Diamond Ring </a>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td data-title="Price">
+                                            <strong>50.87$</strong>
+                                        </td>
+                                        <td data-title="Quantity">
+                                            <div class="qty-box d-flex">
+                                                <span class="qty-subtract"><i class="fa fa-minus"></i></span>
+                                                <input type="text" name="qty" value="1">
+                                                <span class="qty-add"><i class="fa fa-plus"></i></span>
+                                            </div>
+                                        </td>
+                                        <td data-title="Total">
+                                            <strong>132.00$</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-5">
+                                <div class="coupen-code-wrapper">
+                                    <h4>Mã giảm giá</h4>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Nhập mã giảm giá" name="coupen" value="">
+                                    </div>
+                                    <button type="submit" class="btn-custom primary">Áp dụng</button>
+                                </div>
+                            </div>
+
+                            <div class="col-7">
+                                <div class="coupen-code-wrapper">
+                                    <h4>Tổng tiền</h4>
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <th>Tạm tính</th>
+                                            <td>89.00$</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Giảm giá</th>
+                                            <td>20.00$</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phí giao hàng</th>
+                                            <td>5.00$</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tổng</th>
+                                            <td>
+                                                <strong>999.00$</strong>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="checkout.html" class="btn-custom primary btn-block">Thanh toán</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Checkout End -->
+
+    </section>
+
+</body>
+</html>
