@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+    <title>Đăng nhập</title>
+</head>
+<body>
+
+    <section layout:fragment="content">
+
+        <div class="acr-auth-container">
+            <div class="acr-auth-content">
+
+                <form method="POST" style="width: 100%;">
+
+                    <div class="auth-text">
+                        <h3>Đăng Nhập</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control form-control-light" placeholder="Email" name="username" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu</label>
+                        <input type="password" class="form-control form-control-light" placeholder="Mật khẩu" name="password" value="">
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    </div>
+                    <button type="submit" class="btn-custom secondary btn-block">Đăng Nhập</button>
+                    <div class="auth-seperator">
+                        <span>HOẶC</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="acr-social-login facebook"><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook </button>
+                        <button type="button" class="acr-social-login google"><i class="fab fa-google"></i> Đăng nhập với Google</button>
+                    </div>
+                    <p class="text-center mb-0">Bạn chưa có tài khoản? <a href="register-v1.html">Tạo tài khoản</a> </p>
+
+                </form>
+            </div>
+            <div class="acr-auth-bg">
+                <div class="acr-auth-bg-slider acr-cs-bg-slider">
+                    <div class="acr-auth-bg-item bg-cover bg-center" th:style="'background-image: url(/client/img/coming-soon/2.jpg)'">
+                        <div class="acr-auth-quote">
+                            <h6>Quote of the day</h6>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div class="acr-auth-bg-item bg-cover bg-center" th:style="'background-image: url(/client/img/coming-soon/3.jpg)'">
+                        <div class="acr-auth-quote">
+                            <h6>Quote of the day</h6>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div class="acr-auth-bg-item bg-cover bg-center" th:style="'background-image: url(/client/img/coming-soon/1.jpg)'">
+                        <div class="acr-auth-quote">
+                            <h6>Quote of the day</h6>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -68,7 +68,9 @@
       })
       .mouseleave(function (){
         let submenu = $(this).next(".cart-dropdown-menu");
-        submenu.removeClass('show');
+        $(submenu).mouseleave(function (){
+          submenu.removeClass('show');
+        })
       });
 
   /*-------------------------------------------------------------------------------
