@@ -1,16 +1,16 @@
 package springboot.jewelry.controller.client;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
+@RequestMapping("/product")
+public class ProductController {
 
     @GetMapping("")
-    public String homePage(Model model) {
-        return "client/home/home";
+    public String productPage(Model model) {
+        return "client/product/product";
     }
 }
