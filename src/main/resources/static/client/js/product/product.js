@@ -2,7 +2,7 @@ function renderProduct(product) {
     return `<div class="col-md-4">
         <div class="product">
             <div class="product-thumbnail">
-                <a href="product-details-v1.html"><img src="/client/img/products/1.jpg" alt="product"></a>
+                <a href="product-details-v1.html"><img src="https://drive.google.com/uc?export=view&id=1ECd5OzAGD15Xj2a4-lHSsXjH0hi_9y9_" alt="product"></a>
                 <div class="product-badges">
                     <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
                     <span class="product-badge stock"> Out of Stock</span>

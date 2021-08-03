@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="http://localhost:8089/api/gdrive/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">select image:</label>
+        <input id="file" name="fileUpload[]" type="file" accept="image/*" multiple>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
