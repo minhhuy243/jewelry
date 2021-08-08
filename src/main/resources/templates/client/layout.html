@@ -297,7 +297,9 @@
 
   <script>
 
-    var url = "http://localhost:8089/api";
+    const baseUrl = "http://localhost:8089/api";
+    const pathArray = window.location.pathname.split('/');
+    const urlParams = new URLSearchParams(window.location.search);
 
   </script>
 

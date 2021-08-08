@@ -5989,6 +5989,9 @@ table img{
   box-shadow: 0 2px 9px 0px rgba(34,12,43, 0.1);
   margin-bottom: 30px;
 }
+.product .product-body{
+  text-align: center;
+}
 .product .product-thumbnail{
   position: relative;
   border-radius: 8px;
@@ -6190,8 +6193,9 @@ table img{
 }
 
 .product .product-price{
+  font-family: Roboto;
   color: #bead8e;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   display: block;
   margin-bottom: 15px;
