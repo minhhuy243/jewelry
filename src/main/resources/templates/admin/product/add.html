@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/admin/layout.html}">
+<head>
+    <title>Thêm Sản Phẩm</title>
+</head>
+<body>
+
+    <div layout:fragment="content" class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col-sm mb-2 mb-sm-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-no-gutter">
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="ecommerce-products.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thêm Sản Phẩm</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="page-header-title">Thêm Sản Phẩm</h1>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <div class="card mb-3 mb-lg-5">
+                    <!-- Header -->
+                    <div class="card-header">
+                        <h4 class="card-header-title">Thông tin sản phẩm</h4>
+                    </div>
+                    <!-- End Header -->
+
+                    <!-- Body -->
+                    <div class="card-body">
+
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name" class="input-label">Tên</label>
+
+                            <input type="text" class="form-control" id="name" placeholder="Nhẫn nam đính đá màu" aria-label="Nhẫn nam đính đá màu">
+                        </div>
+                        <!-- End Name -->
+
+                        <!-- SKU, Weight, Quantity -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label for="sku" class="input-label">SKU</label>
+
+                                    <input type="text" class="form-control" id="sku" placeholder="N001" aria-label="N001">
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-sm-3">
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label for="weight" class="input-label">Trọng lượng</label>
+
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" class="form-control" id="weight" placeholder="0.0" aria-label="0.0">
+                                        <div class="input-group-append">
+                                            <!-- Select -->
+                                            <div id="weightSelect" class="select2-custom select2-custom-right">
+                                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" data-hs-select2-options='{
+                                          "dropdownParent": "#weightSelect",
+                                          "dropdownAutoWidth": true,
+                                          "width": true
+                                        }'>
+                                                    <option value="lb">lb</option>
+                                                    <option value="oz">oz</option>
+                                                    <option value="kg" selected="">kg</option>
+                                                    <option value="g">g</option>
+                                                </select>
+                                            </div>
+                                            <!-- End Select -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-sm-3">
+                                <label for="quantity" class="input-label">Số lượng</label>
+
+                                <div style="width: 100%;" class="js-quantity-counter input-group-quantity-counter">
+                                    <input type="number" id="quantity" class="js-result form-control input-group-quantity-counter-control" value="10">
+
+                                    <div class="input-group-quantity-counter-toggle">
+                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
+                                            <i class="tio-remove"></i>
+                                        </a>
+                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
+                                            <i class="tio-add"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End SKU, Weight, Quantity -->
+
+                        <!-- Cost Price, Price -->
+                        <div class="row">
+
+                            <!-- Cost Price -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="costPrice" class="input-label">Giá vốn</label>
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="priceName" id="costPrice" placeholder="0.00" aria-label="0.00">
+
+                                        <div class="input-group-append">
+                                            <!-- Select -->
+                                            <div id="priceSelect" class="select2-custom select2-custom-right">
+                                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" data-hs-select2-options='{
+                                                    "dropdownParent": "#priceSelect",
+                                                    "dropdownAutoWidth": true,
+                                                    "width": true
+                                                }'>
+                                                    <option value="USD" selected="">VNĐ</option>
+                                                </select>
+                                            </div>
+                                            <!-- End Select -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Cost Price -->
+
+                            <!-- Price -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="price" class="input-label">Giá bán</label>
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="priceName" id="price" placeholder="0.00" aria-label="0.00">
+
+                                        <div class="input-group-append">
+                                            <!-- Select -->
+                                            <div id="priceSelect1" class="select2-custom select2-custom-right">
+                                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" data-hs-select2-options='{
+                                                    "dropdownParent": "#priceSelect1",
+                                                    "dropdownAutoWidth": true,
+                                                    "width": true
+                                                }'>
+                                                    <option value="USD" selected="">VNĐ</option>
+                                                </select>
+                                            </div>
+                                            <!-- End Select -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Price -->
+
+                        </div>
+                        <!-- End Cost Price, Price -->
+
+                        <label class="input-label">Mô tả <span class="input-label-secondary">(Tùy chọn)</span></label>
+                        <!-- Description -->
+                        <div class="quill-custom">
+                            <div class="js-quill" style="min-height: 15rem;" data-hs-quill-options='{
+                              "placeholder": "Nhập mô tả sản phẩm..."
+                            }'>
+                            </div>
+                        </div>
+                        <!-- End Description -->
+
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h4 class="card-header-title">Hình ảnh</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Dropzone -->
+                        <div id="attachFilesNewProjectLabel" class="js-dropzone dropzone-custom custom-file-boxed">
+                            <div class="dz-message custom-file-boxed-label">
+                                <img class="avatar avatar-xl avatar-4by3 mb-3" th:src="@{/admin/svg/illustrations/browse.svg}" alt="Image Description">
+                                <h5 class="mb-1">Kéo và thả ảnh của sản phẩm vào đây</h5>
+                                <p class="mb-2">hoặc</p>
+                                <span class="btn btn-sm btn-primary">Chọn ảnh</span>
+                            </div>
+                        </div>
+                        <!-- End Dropzone -->
+                    </div>
+                </div>
+                <!-- End Image -->
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <!-- Avatar -->
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h4 class="card-header-title">Ảnh đại diện</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Dropzone -->
+                        <div id="attachFilesNewProjectLabel1" class="js-dropzone dropzone-custom custom-file-boxed">
+                            <div class="dz-message custom-file-boxed-label">
+                                <img class="avatar avatar-xl avatar-4by3 mb-3" th:src="@{/admin/svg/illustrations/browse.svg}" alt="Image Description">
+                                <h5 class="mb-1">Kéo và thả ảnh đại diện của sản phẩm vào đây</h5>
+                                <p class="mb-2">hoặc</p>
+                                <span class="btn btn-sm btn-primary">Chọn ảnh đại diện</span>
+                            </div>
+                        </div>
+                        <!-- End Dropzone -->
+                    </div>
+                </div>
+                <!-- End Avatar -->
+
+                <!-- Category -->
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h4 class="card-header-title">Loại sản phẩm</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="category" data-hs-select2-options='{
+                                        "placeholder": "Chọn loại sản phẩm",
+                                        "searchInputPlaceholder": "Chọn loại sản phẩm"
+                                    }'>
+                                <option label="empty"></option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Category -->
+
+                <!-- Gold Type -->
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h4 class="card-header-title">Loại vàng</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="goldType" data-hs-select2-options='{
+                                        "placeholder": "Chọn loại vàng",
+                                        "searchInputPlaceholder": "Chọn loại vàng"
+                                    }'>
+                                <option label="empty"></option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Gold Type -->
+
+                <!-- Supplier -->
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h4 class="card-header-title">Nhà cung cấp</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="supplier" data-hs-select2-options='{
+                                "placeholder": "Chọn nhà cung cấp",
+                                "searchInputPlaceholder": "Chọn nhà cung cấp"
+                            }'>
+                                <option label="empty"></option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Supplier -->
+
+            </div>
+
+
+        </div>
+
+        <div class="position-fixed bottom-0 content-centered-x w-100 z-index-99 mb-3" style="max-width: 40rem;">
+            <!-- Card -->
+            <div class="card card-sm bg-dark border-dark mx-2">
+                <div class="card-body">
+                    <div class="row justify-content-center justify-content-sm-around">
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-secondary">Lưu nháp</button>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+                    <!-- End Row -->
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+    </div>
+
+    <th:block layout:fragment="script">
+
+        <script th:src="@{/admin/js/product/add.js}"></script>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', async () => {
+
+                const getCategorys = axios.get(baseUrl + "/product/category");
+                const getGoldTypes = axios.get(baseUrl + "/product/gold-type");
+
+                await axios.all([getCategorys, getGoldTypes])
+                    .then(axios.spread((...res) => {
+                        let category = res[0].data.content.map((category) => {
+                            return renderCategory(category);
+                        }).join(' ');
+                        $('#category').append(category);
+
+                        let goldType = res[1].data.content.map((category) => {
+                            return renderGoldType(category);
+                        }).join(' ');
+                        $('#goldType').append(goldType);
+                    }));
+
+                // await axios.get(baseUrl + "/product/category")
+                //     .then((res) => {
+                //         let category = res.data.content.map((category) => {
+                //             return renderCategory(category);
+                //         }).join(' ');
+                //         $('#category').append(category);
+                //     });
+            });
+
+        </script>
+
+        <script>
+
+            $('.btn.btn-primary').on('click', async (e) => {
+                e.preventDefault();
+
+                const params = {
+                    sku: $('#sku').val(),
+                    name: $('#name').val(),
+                    description: $('.ql-editor').html(),
+                    goldWeight: $('#weight').val(),
+                    costPrice: $('#costPrice').val(),
+                    price: $('#price').val(),
+                    quantity: $('#quantity').val(),
+                    supplierCode: 'string',
+                    productTypeCode: 'string',
+                    goldType: 81
+                }
+
+                await axios.post(baseUrl + '/product', params);
+
+            });
+
+        </script>
+    </th:block>
+
+</body>
+</html>
