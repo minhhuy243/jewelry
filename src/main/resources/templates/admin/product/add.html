@@ -43,19 +43,19 @@
                         <!-- Name -->
                         <div class="form-group">
                             <label for="name" class="input-label">Tên</label>
-
                             <input type="text" class="form-control" id="name" placeholder="Nhẫn nam đính đá màu" aria-label="Nhẫn nam đính đá màu">
+                            <span id="error-name" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                         </div>
                         <!-- End Name -->
 
-                        <!-- SKU, Weight, Quantity -->
+                        <!-- SKU, GoldWeight, Quantity -->
                         <div class="row">
                             <div class="col-sm-6">
                                 <!-- Form Group -->
                                 <div class="form-group">
                                     <label for="sku" class="input-label">SKU</label>
-
                                     <input type="text" class="form-control" id="sku" placeholder="N001" aria-label="N001">
+                                    <span id="error-sku" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                                 </div>
                                 <!-- End Form Group -->
                             </div>
@@ -63,10 +63,9 @@
                             <div class="col-sm-3">
                                 <!-- Form Group -->
                                 <div class="form-group">
-                                    <label for="weight" class="input-label">Trọng lượng</label>
-
+                                    <label for="goldWeight" class="input-label">Trọng lượng</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" class="form-control" id="weight" placeholder="0.0" aria-label="0.0">
+                                        <input type="text" class="form-control" id="goldWeight" placeholder="0.0" aria-label="0.0">
                                         <div class="input-group-append">
                                             <!-- Select -->
                                             <div id="weightSelect" class="select2-custom select2-custom-right">
@@ -84,16 +83,15 @@
                                             <!-- End Select -->
                                         </div>
                                     </div>
-
+                                    <span id="error-goldWeight" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                                 </div>
                                 <!-- End Form Group -->
                             </div>
 
                             <div class="col-sm-3">
                                 <label for="quantity" class="input-label">Số lượng</label>
-
                                 <div style="width: 100%;" class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" id="quantity" class="js-result form-control input-group-quantity-counter-control" value="10">
+                                    <input type="number" id="quantity" class="js-result form-control input-group-quantity-counter-control" value="0">
 
                                     <div class="input-group-quantity-counter-toggle">
                                         <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
@@ -103,11 +101,11 @@
                                             <i class="tio-add"></i>
                                         </a>
                                     </div>
-
                                 </div>
+                                <span id="error-quantity" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                             </div>
                         </div>
-                        <!-- End SKU, Weight, Quantity -->
+                        <!-- End SKU, GoldWeight, Quantity -->
 
                         <!-- Cost Price, Price -->
                         <div class="row">
@@ -118,7 +116,7 @@
                                     <label for="costPrice" class="input-label">Giá vốn</label>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="priceName" id="costPrice" placeholder="0.00" aria-label="0.00">
+                                        <input type="text" class="form-control" id="costPrice" placeholder="0.00" aria-label="0.00">
 
                                         <div class="input-group-append">
                                             <!-- Select -->
@@ -134,6 +132,7 @@
                                             <!-- End Select -->
                                         </div>
                                     </div>
+                                    <span id="error-costPrice" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                                 </div>
                             </div>
                             <!-- End Cost Price -->
@@ -144,7 +143,7 @@
                                     <label for="price" class="input-label">Giá bán</label>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="priceName" id="price" placeholder="0.00" aria-label="0.00">
+                                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="0.00">
 
                                         <div class="input-group-append">
                                             <!-- Select -->
@@ -160,6 +159,7 @@
                                             <!-- End Select -->
                                         </div>
                                     </div>
+                                    <span id="error-price" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                                 </div>
                             </div>
                             <!-- End Price -->
@@ -188,7 +188,7 @@
 
                     <div class="card-body">
                         <!-- Dropzone -->
-                        <div id="attachFilesNewProjectLabel" class="js-dropzone dropzone-custom custom-file-boxed">
+                        <div id="images" class="js-dropzone dropzone-custom custom-file-boxed">
                             <div class="dz-message custom-file-boxed-label">
                                 <img class="avatar avatar-xl avatar-4by3 mb-3" th:src="@{/admin/svg/illustrations/browse.svg}" alt="Image Description">
                                 <h5 class="mb-1">Kéo và thả ảnh của sản phẩm vào đây</h5>
@@ -213,7 +213,10 @@
 
                     <div class="card-body">
                         <!-- Dropzone -->
-                        <div id="attachFilesNewProjectLabel1" class="js-dropzone dropzone-custom custom-file-boxed">
+                        <div id="avatar" class="js-dropzone dropzone-custom custom-file-boxed"
+                             data-hs-dropzone-options='{
+                                "maxFiles": 1
+                             }'>
                             <div class="dz-message custom-file-boxed-label">
                                 <img class="avatar avatar-xl avatar-4by3 mb-3" th:src="@{/admin/svg/illustrations/browse.svg}" alt="Image Description">
                                 <h5 class="mb-1">Kéo và thả ảnh đại diện của sản phẩm vào đây</h5>
@@ -222,6 +225,7 @@
                             </div>
                         </div>
                         <!-- End Dropzone -->
+                        <span id="error-avatar" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                     </div>
                 </div>
                 <!-- End Avatar -->
@@ -234,17 +238,16 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="category" data-hs-select2-options='{
+                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="categoryCode" data-hs-select2-options='{
                                         "placeholder": "Chọn loại sản phẩm",
                                         "searchInputPlaceholder": "Chọn loại sản phẩm"
                                     }'>
                                 <option label="empty"></option>
-
                             </select>
-
+                            <span id="error-categoryCode" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
                 <!-- End Category -->
 
@@ -262,10 +265,9 @@
                                     }'>
                                 <option label="empty"></option>
                             </select>
-
+                            <span id="error-goldType" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                         </div>
                     </div>
-
                 </div>
                 <!-- End Gold Type -->
 
@@ -277,23 +279,21 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="supplier" data-hs-select2-options='{
+                            <select class="js-select2-custom custom-select" size="1" style="opacity: 0;" id="supplierCode" data-hs-select2-options='{
                                 "placeholder": "Chọn nhà cung cấp",
                                 "searchInputPlaceholder": "Chọn nhà cung cấp"
                             }'>
                                 <option label="empty"></option>
                             </select>
-
+                            <span id="error-supplierCode" style="color: #ff0000; display: none; margin-top: 5px;"></span>
                         </div>
                     </div>
-
                 </div>
                 <!-- End Supplier -->
 
             </div>
-
-
         </div>
+
 
         <div class="position-fixed bottom-0 content-centered-x w-100 z-index-99 mb-3" style="max-width: 40rem;">
             <!-- Card -->
@@ -304,7 +304,7 @@
                             <button type="button" class="btn btn-secondary">Lưu nháp</button>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary">Lưu</button>
+                            <button id="submit" type="button" class="btn btn-primary">Lưu</button>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -320,54 +320,143 @@
 
         <script>
 
-            document.addEventListener('DOMContentLoaded', async () => {
+            $(async function () {
 
-                const getCategorys = axios.get(baseUrl + "/product/category");
+                const getCategories = axios.get(baseUrl + "/product/category");
                 const getGoldTypes = axios.get(baseUrl + "/product/gold-type");
+                const getSuppliers = axios.get(baseUrl + "/supplier");
 
-                await axios.all([getCategorys, getGoldTypes])
-                    .then(axios.spread((...res) => {
-                        let category = res[0].data.content.map((category) => {
+                await axios.all([getCategories, getGoldTypes, getSuppliers])
+                    .then(axios.spread((categories, goldTypes, suppliers) => {
+                        let category = categories.data.content.map((category) => {
                             return renderCategory(category);
                         }).join(' ');
-                        $('#category').append(category);
+                        $('#categoryCode').append(category);
 
-                        let goldType = res[1].data.content.map((category) => {
-                            return renderGoldType(category);
+                        let goldType = goldTypes.data.content.map((goldType) => {
+                            return renderGoldType(goldType);
                         }).join(' ');
                         $('#goldType').append(goldType);
-                    }));
 
-                // await axios.get(baseUrl + "/product/category")
-                //     .then((res) => {
-                //         let category = res.data.content.map((category) => {
-                //             return renderCategory(category);
-                //         }).join(' ');
-                //         $('#category').append(category);
-                //     });
+                        let supplier = suppliers.data.content.map((supplier) => {
+                            return renderSupplier(supplier);
+                        }).join(' ');
+                        $('#supplierCode').append(supplier);
+
+                    }));
             });
 
-        </script>
+            $(window).load(() => {
+                const toastMessages = sessionStorage.getItem('toastMessages');
+                if(toastMessages) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-right',
+                        iconColor: 'white',
+                        customClass: {
+                            popup: 'colored-toast'
+                        },
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true
+                    });
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Thêm sản phẩm thành công'
+                    })
+                }
+                sessionStorage.removeItem('toastMessages');
+            })
 
-        <script>
-
-            $('.btn.btn-primary').on('click', async (e) => {
+            $('#submit').on('click', async (e) => {
                 e.preventDefault();
+                e.stopPropagation();
 
-                const params = {
+                Swal.fire({
+                    title: 'Vui lòng đợi!',
+                    icon: 'info',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                const imagesDropzone = Dropzone.forElement('#images');
+                const images = imagesDropzone.getQueuedFiles();
+
+                const avatarDropzone = Dropzone.forElement('#avatar');
+                const avatar = avatarDropzone.getQueuedFiles()[0];
+
+                const dto = {
                     sku: $('#sku').val(),
                     name: $('#name').val(),
                     description: $('.ql-editor').html(),
-                    goldWeight: $('#weight').val(),
+                    goldWeight: $('#goldWeight').val(),
                     costPrice: $('#costPrice').val(),
                     price: $('#price').val(),
                     quantity: $('#quantity').val(),
-                    supplierCode: 'string',
-                    productTypeCode: 'string',
-                    goldType: 81
+                    supplierCode: $('#supplierCode').val(),
+                    categoryCode: $('#categoryCode').val(),
+                    goldType: $('#goldType').val(),
+                    images: null,
+                    avatar: null
                 }
 
-                await axios.post(baseUrl + '/product', params);
+                const errors = validation(dto, avatar);
+                if(errors === null) {
+                    const formData = new FormData();
+
+                    formData.append('dto', new Blob([JSON.stringify(dto)], {type: "application/json"}));
+
+                    if(avatar != null) {
+                        formData.append('avatar', avatar);
+                    }
+
+                    if(images != null) {
+                        images.map((image) => {
+                            formData.append('images[]', image);
+                        });
+                    }
+
+                    await axios.post(baseUrl + '/product', formData)
+                        .then((res) => {
+                            if(res.status === 200) {
+                                sessionStorage.setItem('toastMessages', true);
+                                window.location.reload();
+                            }
+                        })
+                        .catch((error) => {
+                            const status = error.response.status;
+
+                            if(status === 500 || status === 400){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Đã có lỗi xảy ra',
+                                    text: 'Vui lòng kiểm tra lại thông tin!',
+                                    confirmButtonColor: '#377dff',
+                                    confirmButtonText: 'Đồng ý!'
+                                });
+                                removeError();
+                                addErrorToMap(error.response.data.errors);
+                                renderError();
+                            }
+                        });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã có lỗi xảy ra',
+                        text: 'Vui lòng kiểm tra lại thông tin!',
+                        showConfirmButton: true,
+                        confirmButtonColor: '#377dff',
+                        confirmButtonText: 'Đồng ý!',
+                        didOpen: () => {
+                            Swal.hideLoading();
+                        }
+                    });
+                    removeError();
+                    addErrorToMap(errors);
+                    renderError();
+                }
 
             });
 

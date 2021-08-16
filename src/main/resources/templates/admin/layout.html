@@ -30,7 +30,6 @@
 
 <body class="footer-offset">
 
-
     <div th:replace="admin/fragments/header::header"></div>
 
     <div th:replace="admin/fragments/header::aside"></div>
@@ -41,8 +40,27 @@
         </div>
     </main>
 
+    <style>
+        .colored-toast.swal2-icon-success {
+            background-color: #a5dc86 !important;
+        }
+
+        .colored-toast .swal2-title {
+            color: white;
+        }
+
+        .colored-toast .swal2-close {
+            color: white;
+        }
+
+        .colored-toast .swal2-content {
+            color: white;
+        }
+    </style>
+
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JS Implementing Plugins -->
     <script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
     <script th:src="@{/admin/js/demo.js}"></script>
@@ -79,27 +97,6 @@
                 }
             });
 
-            // ONLY DEV
-            // =======================================================
-
-            if (window.localStorage.getItem('hs-builder-popover') === null) {
-                $('#builderPopover').popover('show')
-                    .on('shown.bs.popover', function () {
-                        $('.popover').last().addClass('popover-dark')
-                    });
-
-                $(document).on('click', '#closeBuilderPopover' , function() {
-                    window.localStorage.setItem('hs-builder-popover', true);
-                    $('#builderPopover').popover('dispose');
-                });
-            } else {
-                $('#builderPopover').on('show.bs.popover', function () {
-                    return false
-                });
-            }
-
-            // END ONLY DEV
-            // =======================================================
 
             var quill = $.HSCore.components.HSQuill.init('.js-quill');
 
@@ -160,59 +157,6 @@
             $('.js-select2-custom').each(function () {
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
-
-
-            // INITIALIZATION OF CHARTJS
-            // =======================================================
-            Chart.plugins.unregister(ChartDataLabels);
-
-            $('.js-chart').each(function () {
-                $.HSCore.components.HSChartJS.init($(this));
-            });
-
-            var updatingChart = $.HSCore.components.HSChartJS.init($('#updatingData'));
-
-            $('.js-daterangepicker').daterangepicker();
-
-            $('.js-daterangepicker-times').daterangepicker({
-                timePicker: true,
-                startDate: moment().startOf('hour'),
-                endDate: moment().startOf('hour').add(32, 'hour'),
-                locale: {
-                    format: 'M/DD hh:mm A'
-                }
-            });
-
-            var start = moment();
-            var end = moment();
-
-            function cbTheaterCluster(start, end) {
-                $('#js-daterangepicker-predefined-theater-cluster .js-daterangepicker-predefined-preview-theater-cluster').html(start.format('MMM D') + ' - ' + end.format('MMM D, YYYY'));
-            }
-
-            $('#js-daterangepicker-predefined-theater-cluster').daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                    'Today': [moment(), moment()]
-                }
-            }, cbTheaterCluster);
-
-            cbTheaterCluster(start, end);
-
-            function cbMovies(start, end) {
-                $('#js-daterangepicker-predefined-movies .js-daterangepicker-predefined-preview-movies').html(start.format('MMM D') + ' - ' + end.format('MMM D, YYYY'));
-            }
-
-            $('#js-daterangepicker-predefined-movies').daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                    'Today': [moment(), moment()]
-                }
-            }, cbMovies);
-
-            cbMovies(start, end);
 
             // INITIALIZATION OF DROPZONE FILE ATTACH MODULE
             // =======================================================
