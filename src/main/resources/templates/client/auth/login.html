@@ -79,30 +79,7 @@
 <!--        </script>-->
 
         <script th:src="@{/client/js/auth/login.js}"></script>
-        <!--
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-               await axios.get("http://localhost:8088")
-                .then((res) => {
-                    var changeContent = document.getElementById("userIcon");
-                    changeContent.innerHTML = `<div id="userIcon" class="dropdown-menu cart-dropdown-menu" style="width: 200px;">
-                                  <ul class="cart-items-box">
-                                      <li class="cart-item">
-                                          <div class="content" style="width: auto">
-                                              <a th:href="@{/login}" style="color: #222">Đăng nhập</a>
-                                          </div>
-                                      </li>
-                                      <li class="cart-item">
-                                          <div class="content" style="width: auto">
-                                              <a th:href="@{/register}" style="color: #222">Đăng ký</a>
-                                          </div>
-                                      </li>
-                                  </ul>
-                              </div>`;
-                });
-            });
-        </script>
-    -->
+
     </section>
 </body>
 </html>

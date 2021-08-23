@@ -1,9 +1,7 @@
 package springboot.jewelry.controller.client;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AuthController {
@@ -18,8 +16,4 @@ public class AuthController {
         return "client/auth/register";
     }
 
-    @GetMapping("/me")
-    public String userMe() {
-        return "client/auth/me";
-    }
 }

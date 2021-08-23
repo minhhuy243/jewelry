@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <section layout:fragment="content">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="sidebar sticky-sidebar user-nav sidebar-left">
+                        <ul>
+                            <li> <a class="active" href="profile.html"> Tài khoản </a> </li>
+                            <li> <a href="profile-orders.html"> Đơn hàng </a> </li>
+                            <li> <a href="profile-products.html"> Giỏ hàng </a> </li>
+                            <li> <a class="logout" href="#"><i class="flaticon-shut-down-button"></i> Đăng xuất </a> </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+
+                    <div class="acr-welcome-message">
+                        <h3>Thông tin tài khoản</h3>
+                    </div>
+
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label>Họ và tên</label>
+                                <input id="fullNameId" type="text" class="form-control">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Email</label>
+                                <input id="emailId" type="email" class="form-control">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Số điện thoại</label>
+                                <input id="phoneNumberId" type="text" class="form-control">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Địa chỉ</label>
+                                <input id="addressId" type="text" class="form-control">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Sinh nhật</label>
+                                <input id="birthdayId" type="text" class="form-control">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label for="genderId">Giới tính : </label>
+                                <select class="form-control" name="cycle" id="genderId">
+                                    <option value="">Nam</option>
+                                    <option value="">Nữ</option>
+                                    <option value="">Không xác định</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <button type="submit" name="submit" class="btn-custom">Lưu</button>
+                    </form>
+                    <hr>
+
+                    <div class="acr-welcome-message">
+                        <h3>Đổi mật khẩu</h3>
+                    </div>
+
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label>Mật khẩu mới</label>
+                                <input type="password" class="form-control" value="">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Nhập lại mật khẩu mới</label>
+                                <input type="password" class="form-control" value="">
+                            </div>
+                        </div>
+                        <button type="submit" name="submit" class="btn-custom">Cập nhật</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <script th:src="@{/client/js/auth/profile.js}"></script>
+
+    </section>
+</body>
+</html>
