@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
 
     @GetMapping("")
-    public String productPage(Model model) {
-        return "client/product/product";
+    public String productPage() {
+        return "client/product/products";
     }
 
     @GetMapping("/{product-id}")
