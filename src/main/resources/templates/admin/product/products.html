@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/admin/layout.html}">
+<head>
+    <title>Danh Sách Sản Phẩm</title>
+</head>
+<body>
+
+    <div layout:fragment="content" class="content container-fluid">
+
+        <div class="page-header">
+
+            <div class="row align-items-center">
+                <div class="col-sm mb-2 mb-sm-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-no-gutter">
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="ecommerce-products.html">Sản Phẩm</a></li>
+                        </ol>
+                    </nav>
+                    <h1 class="page-header-title">Danh sách sản phẩm <span class="badge badge-soft-dark ml-2">789</span></h1>
+                </div>
+                <div class="col-sm-auto">
+                    <a class="btn btn-primary" href="ecommerce-add-product.html">Thêm sản phẩm</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header">
+                <div class="row justify-content-between align-items-center flex-grow-1">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <form>
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="tio-search"></i>
+                                    </div>
+                                </div>
+                                <input id="search" type="search" class="form-control"
+                                       placeholder="Tìm sản phẩm theo SKU hoặc tên"
+                                       aria-label="Tìm sản phẩm theo SKU hoặc tên">
+                            </div>
+                            <!-- End Search -->
+                        </form>
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Header -->
+
+            <!-- Table -->
+            <div class="table-responsive datatable-custom">
+                <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table"
+                       data-hs-datatables-options='{
+                     "columnDefs": [{
+                        "targets": [0, 1, 8],
+                        "orderable": false
+                      }],
+                     "order": [],
+                     "info": {
+                       "totalQty": "#totalQty"
+                     },
+                     "search": "#search",
+                     "entries": "#entries",
+                     "isResponsive": false,
+                     "isShowPaging": false,
+                     "pagination": "pagination"
+                   }'>
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>SKU</th>
+                        <th>Loại</th>
+                        <th>Nhà cung cấp</th>
+                        <th>Loại vàng</th>
+                        <th>Khối lượng</th>
+                        <th>Giá bán</th>
+                        <th>Số lượng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Table -->
+
+            <!-- Footer -->
+            <div class="card-footer">
+                <!-- Pagination -->
+                <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+                    <div class="col-sm mb-2 mb-sm-0">
+                        <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                            <span class="mr-2">Hiển thị:</span>
+
+                            <!-- Select -->
+                            <select id="entries" class="js-select2-custom" data-hs-select2-options='{
+                            "minimumResultsForSearch": "Infinity",
+                            "customClass": "custom-select custom-select-sm custom-select-borderless",
+                            "dropdownAutoWidth": true,
+                            "width": true
+                          }'>
+                                <option value="10" selected="">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                            </select>
+                            <!-- End Select -->
+
+                            <span class="text-secondary mr-2">trên</span>
+
+                            <!-- Pagination Quantity -->
+                            <span id="totalQty"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-auto">
+                        <div class="d-flex justify-content-center justify-content-sm-end">
+                            <!-- Pagination -->
+                            <nav id="pagination" aria-label="Activity pagination"></nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Pagination -->
+            </div>
+            <!-- End Footer -->
+        </div>
+
+    </div>
+
+    <th:block layout:fragment="script">
+
+        <script>
+
+            $(async function() {
+
+                var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                    language: {
+                        zeroRecords: '<div class="text-center p-4">' +
+                            '<img class="mb-3" src="./svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                            '<p class="mb-0">Không có dữ liệu</p>' +
+                            `</div>`
+                    },
+                    pageLength: 8,
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                        type: 'GET',
+                        url: baseUrl + '/products',
+                        contentType: 'application/json',
+                        async: false,
+                        cache: false,
+                        data: function(data) {
+                            const params = {};
+                            params.page = data.start;
+                            if(data.search.value !== '') {
+                                params.searchCriteria = {
+                                    keys: ['name', 'sku'],
+                                    value: data.search.value
+                                }
+                            }
+
+                            return params;
+                        },
+                        dataFilter: function(data) {
+                            const object = JSON.parse(data);
+                            return JSON.stringify({
+                                recordsTotal: object.content.totalElements,
+                                recordsFiltered: object.content.totalElements,
+                                data: object.content.elements
+                            });
+                        }
+                    },
+                    columns: [
+                        {
+                            data: 'name',
+                            render: (data, type, row, meta) => {
+                                return `<a class="media align-items-center" href="ecommerce-product-details.html">
+                                  <img class="avatar avatar-lg mr-3"
+                                      src="https://drive.google.com/uc?export=view&id=${row.avatar}"
+                                      alt="${data}">
+                                  <div class="media-body">
+                                      <h5 class="text-hover-primary mb-0">${data}</h5>
+                                  </div>
+                                </a>`;
+                            }
+                        },
+                        { data: 'sku'},
+                        { data: 'categoryName'},
+                        { data: 'supplierName'},
+                        {
+                            data: 'goldTypePercentage',
+                            render: (data) => {
+                                return `${data}%`;
+                            }
+                        },
+                        {
+                            data: 'goldWeight',
+                            render: (data) => {
+                                return `${data}g`;
+                            }
+                        },
+                        {
+                            data: 'price',
+                            render: (data) => {
+                                return `${(data * 1000).toLocaleString("it-IT")}`;
+                            }
+                        },
+                        { data: 'quantity'},
+                        {
+                            data: 'sku',
+                            render: (data) => {
+                                return `<div class="btn-group" role="group">
+                                            <a class="btn btn-sm btn-primary" href="ecommerce-product-details.html">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-danger" href="ecommerce-product-details.html">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>`;
+                            }
+                        }
+                    ]
+                });
+
+                $('.page-header-title > span').text($('#totalQty').text());
+
+                $('#datatableSearch').on('keyup', function (e) {
+                    const input = $(this).val();
+                    if(input.length <= 1) {
+                        datatable.ajax.url(baseUrl + '/products');
+                        if(input.length === 0)
+                            datatable.load();
+                    }
+                    if(input.length >= 2) {
+                        datatable.ajax.url(baseUrl + '/products/search').load();
+                    }
+
+                });
+
+            });
+
+
+
+        </script>
+
+    </th:block>
+
+</body>
+</html>

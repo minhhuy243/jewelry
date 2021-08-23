@@ -9,7 +9,6 @@
 <body>
 
     <div layout:fragment="content" class="content container-fluid">
-        <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
@@ -24,7 +23,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Page Header -->
 
         <div class="row">
 
@@ -294,7 +292,6 @@
             </div>
         </div>
 
-
         <div class="position-fixed bottom-0 content-centered-x w-100 z-index-99 mb-3" style="max-width: 40rem;">
             <!-- Card -->
             <div class="card card-sm bg-dark border-dark mx-2">
@@ -322,9 +319,9 @@
 
             $(async function () {
 
-                const getCategories = axios.get(baseUrl + "/product/category");
-                const getGoldTypes = axios.get(baseUrl + "/product/gold-type");
-                const getSuppliers = axios.get(baseUrl + "/supplier");
+                const getCategories = axios.get(baseUrl + "/products/categories");
+                const getGoldTypes = axios.get(baseUrl + "/products/gold-types");
+                const getSuppliers = axios.get(baseUrl + "/suppliers");
 
                 await axios.all([getCategories, getGoldTypes, getSuppliers])
                     .then(axios.spread((categories, goldTypes, suppliers) => {
@@ -418,7 +415,7 @@
                         });
                     }
 
-                    await axios.post(baseUrl + '/product', formData)
+                    await axios.post(baseUrl + '/products', formData)
                         .then((res) => {
                             if(res.status === 200) {
                                 sessionStorage.setItem('toastMessages', true);

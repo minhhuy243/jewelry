@@ -87,7 +87,7 @@ function validation(dto, avatar) {
     if(isBlank(dto.goldType))
         errors.push({field: 'goldType', defaultMessage: 'Loại vàng không được bỏ trống'});
 
-    if(avatar === null)
+    if(avatar == null)
         errors.push({field: 'avatar', defaultMessage: 'Ảnh đại diện không được bỏ trống'});
 
     return errors.length === 0 ? null : errors;
