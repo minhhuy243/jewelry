@@ -17,4 +17,9 @@ public class AuthController {
     public String registerPage() {
         return "client/auth/register";
     }
+
+    @GetMapping("/me")
+    public String userMe() {
+        return "client/auth/me";
+    }
 }

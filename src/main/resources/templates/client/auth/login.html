@@ -13,7 +13,7 @@
         <div class="acr-auth-container">
             <div class="acr-auth-content">
 
-                <form method="POST" style="width: 100%;">
+                <form id="loginForm" style="width: 100%;">
 
                     <div class="auth-text">
                         <h3 id="test">Đăng Nhập</h3>
@@ -21,12 +21,13 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control form-control-light" placeholder="Email" name="username" value="">
+                        <input type="text" class="form-control form-control-light" placeholder="Email" name="email" id="inputEmail" value="">
                     </div>
                     <div class="form-group">
                         <label>Mật khẩu</label>
-                        <input type="password" class="form-control form-control-light" placeholder="Mật khẩu" name="password" value="">
+                        <input type="password" class="form-control form-control-light" placeholder="Mật khẩu" name="password" id="inputPassword" value="">
                     </div>
+                    <h4 id="loginMessage" style="color: red"></h4>
                     <div class="form-group">
                         <a href="#" class="forgot-password">Quên mật khẩu?</a>
                     </div>
@@ -68,14 +69,40 @@
 
 
 
+<!--        <script>-->
+
+<!--            // Thêm file js vào cuối body-->
+<!--            var script = document.createElement('script');-->
+<!--            document.body.appendChild(script);-->
+<!--            script.src = '/client/js/test.js';-->
+
+<!--        </script>-->
+
+        <script th:src="@{/client/js/auth/login.js}"></script>
+        <!--
         <script>
-
-            // Thêm file js vào cuối body
-            var script = document.createElement('script');
-            document.body.appendChild(script);
-            script.src = '/client/js/test.js';
-
+            document.addEventListener('DOMContentLoaded', async () => {
+               await axios.get("http://localhost:8088")
+                .then((res) => {
+                    var changeContent = document.getElementById("userIcon");
+                    changeContent.innerHTML = `<div id="userIcon" class="dropdown-menu cart-dropdown-menu" style="width: 200px;">
+                                  <ul class="cart-items-box">
+                                      <li class="cart-item">
+                                          <div class="content" style="width: auto">
+                                              <a th:href="@{/login}" style="color: #222">Đăng nhập</a>
+                                          </div>
+                                      </li>
+                                      <li class="cart-item">
+                                          <div class="content" style="width: auto">
+                                              <a th:href="@{/register}" style="color: #222">Đăng ký</a>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>`;
+                });
+            });
         </script>
+    -->
     </section>
 </body>
 </html>
