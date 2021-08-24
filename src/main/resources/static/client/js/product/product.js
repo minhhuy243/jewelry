@@ -53,13 +53,24 @@ function renderPagination(totalPages, currentPage) {
             html += isCurrentPage(i, currentPage);
         }
     } else {
-        if(currentPage > 3 && currentPage < totalPages - 2) {
+        if(currentPage <= 3){
+            for(let i = 1; i <= 5; i++) {
+                html += isCurrentPage(i, currentPage);
+            }
+        }
+        else if(currentPage > 3 && currentPage < totalPages - 2) {
             for(let i = currentPage - 2; i <= currentPage + 2; i++) {
                 html += isCurrentPage(i, currentPage);
             }
         } else {
-            for(let i = currentPage - 2; i <= totalPages; i++) {
-                html += isCurrentPage(i, currentPage);
+            if(currentPage >= totalPages - 2) {
+                for(let i = totalPages - 4; i <= totalPages; i++) {
+                    html += isCurrentPage(i, currentPage);
+                }
+            } else {
+                for(let i = currentPage - 2; i <= totalPages; i++) {
+                    html += isCurrentPage(i, currentPage);
+                }
             }
         }
     }
