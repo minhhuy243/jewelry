@@ -39,7 +39,8 @@
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Email</label>
-                                <input id="emailId" type="email" class="form-control">
+                                <h6 id="emailId" class="form-control"></h6>
+<!--                                <input id="emailId" type="email" class="form-control">-->
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Số điện thoại</label>
@@ -56,9 +57,9 @@
                             <div class="col-lg-6 form-group">
                                 <label for="genderId">Giới tính : </label>
                                 <select class="form-control" name="cycle" id="genderId">
-                                    <option value="">Nam</option>
-                                    <option value="">Nữ</option>
-                                    <option value="">Không xác định</option>
+                                    <option value="MALE">Nam</option>
+                                    <option value="FEMALE">Nữ</option>
+                                    <option value="UNKNOWN">Không xác định</option>
                                 </select>
                             </div>
 
@@ -92,7 +93,7 @@
         </div>
     </div>
 
-        <script th:src="@{/client/js/auth/profile.js}"></script>
+        <script th:src="@{/client/js/customer/profile.js}"></script>
 
     </section>
 </body>

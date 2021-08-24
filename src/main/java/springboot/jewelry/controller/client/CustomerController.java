@@ -10,4 +10,9 @@ public class CustomerController {
     public String userMe() {
         return "client/customer/profile";
     }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "client/customer/register";
+    }
 }

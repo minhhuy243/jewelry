@@ -13,21 +13,49 @@
   <div class="acr-auth-container">
     <div class="acr-auth-content">
 
-      <form method="POST" style="width: 100%;">
+      <form id="registerForm" style="width: 100%;">
 
         <div class="auth-text">
           <h3>Đăng Ký</h3>
         </div>
-
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input id="registerFullNameId" type="text" class="form-control form-control-light">
+        </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="text" class="form-control form-control-light" placeholder="Email" name="username" value="">
+          <input id="registerEmailId" type="email" class="form-control form-control-light">
         </div>
         <div class="form-group">
           <label>Mật khẩu</label>
-          <input type="password" class="form-control form-control-light" placeholder="Mật khẩu" name="password" value="">
+          <input id="registerPasswordId" type="password" class="form-control form-control-light">
         </div>
-        <button type="submit" class="btn-custom secondary btn-block">Đăng Ký</button>
+        <div class="form-group">
+          <label>Nhập lại mật khẩu</label>
+          <input id="registerRePasswordId" type="password" class="form-control form-control-light">
+        </div>
+        <div class="form-group">
+          <label for="registerGenderId">Giới tính : </label>
+          <select class="form-control" id="registerGenderId">
+            <option value="MALE">Nam</option>
+            <option value="FEMALE">Nữ</option>
+            <option value="UNKNOWN">Không xác định</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Sinh nhật</label>
+          <input id="registerBirthdayId" type="date" class="form-control form-control-light" value="">
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input id="registerPhoneNumberId" type="number" class="form-control form-control-light">
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ</label>
+          <input id="registerAddressId" type="text" class="form-control form-control-light" value="">
+        </div>
+
+        <button id="btnRegister" type="submit" class="btn-custom secondary btn-block">Đăng Ký</button>
         <div class="auth-seperator">
           <span>HOẶC</span>
         </div>
@@ -62,6 +90,8 @@
       </div>
     </div>
   </div>
+
+  <script th:src="@{/client/js/auth/register.js}"></script>
 
 </section>
 

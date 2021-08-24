@@ -2,19 +2,19 @@ document.getElementById("loginForm").addEventListener('submit', login);
 
 function login(e) {
 
-    axios.post("http://localhost:8089/auth/login", {
+    axios.post(baseUrl + "/auth/login", {
         deviceInfoDto: {
             deviceId: "string",
             deviceType: "string"
         },
-        email: $('#inputEmail').val(),
-        password: $('#inputPassword').val(),
+        email: $('#loginEmailId').val(),
+        password: $('#loginPasswordId').val(),
     })
         .then(function (response) {
             window.localStorage.setItem('access_token', response.data.content.accessToken);
             window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
             console.log(response);
-            window.location = "http://localhost:8088/customer/me";
+            window.location = "/customer/me";
         })
         .catch(function (error) {
             // console.log(error.response.data.message);
