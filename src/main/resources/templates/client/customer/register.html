@@ -13,30 +13,34 @@
   <div class="acr-auth-container">
     <div class="acr-auth-content">
 
-      <form id="registerForm" style="width: 100%;">
+      <form name="registerFormName" id="registerForm" style="width: 100%;">
 
         <div class="auth-text">
           <h3>Đăng Ký</h3>
         </div>
         <div class="form-group">
           <label>Họ và tên</label>
-          <input id="registerFullNameId" type="text" class="form-control form-control-light">
+          <input id="registerFullName" type="text" class="form-control form-control-light">
+          <span id="errorRegisterFullName" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input id="registerEmailId" type="email" class="form-control form-control-light">
+          <input id="registerEmail" type="text" class="form-control form-control-light">
+          <span id="errorRegisterEmail" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
           <label>Mật khẩu</label>
-          <input id="registerPasswordId" type="password" class="form-control form-control-light">
+          <input id="registerPassword" type="password" class="form-control form-control-light">
+          <span id="errorRegisterPassword" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
           <label>Nhập lại mật khẩu</label>
-          <input id="registerRePasswordId" type="password" class="form-control form-control-light">
+          <input id="registerRePassword" type="password" class="form-control form-control-light">
+          <span id="errorRegisterRePassword" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
-          <label for="registerGenderId">Giới tính : </label>
-          <select class="form-control" id="registerGenderId">
+          <label for="registerGender">Giới tính : </label>
+          <select class="form-control" id="registerGender">
             <option value="MALE">Nam</option>
             <option value="FEMALE">Nữ</option>
             <option value="UNKNOWN">Không xác định</option>
@@ -44,15 +48,18 @@
         </div>
         <div class="form-group">
           <label>Sinh nhật</label>
-          <input id="registerBirthdayId" type="date" class="form-control form-control-light" value="">
+          <input id="registerBirthday" type="date" class="form-control form-control-light" value="" min="1960-01-01" max="2050-01-01">
+          <span id="errorRegisterBirthday" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
           <label>Số điện thoại</label>
-          <input id="registerPhoneNumberId" type="number" class="form-control form-control-light">
+          <input id="registerPhoneNumber" type="number" class="form-control form-control-light">
+          <span id="errorRegisterPhoneNumber" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
         <div class="form-group">
           <label>Địa chỉ</label>
-          <input id="registerAddressId" type="text" class="form-control form-control-light" value="">
+          <input id="registerAddress" type="text" class="form-control form-control-light" value="">
+          <span id="errorRegisterAddress" style="color: #ff0000; margin-top: 5px;"></span>
         </div>
 
         <button id="btnRegister" type="submit" class="btn-custom secondary btn-block">Đăng Ký</button>
@@ -90,8 +97,8 @@
       </div>
     </div>
   </div>
-
-  <script th:src="@{/client/js/auth/register.js}"></script>
+  <script th:src="@{/client/js/customer/validation.js}"></script>
+<!--  <script th:src="@{/client/js/customer/register.js}"></script>-->
 
 </section>
 

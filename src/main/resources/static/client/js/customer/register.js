@@ -1,23 +1,26 @@
 document.getElementById("registerForm").addEventListener('submit', register);
 
 function register(e) {
-    var birthday = document.getElementById("registerBirthdayId").value;
+
+    // Reverse date YYYY-MM-DD ==> DD-MM-YYYY
+    var birthday = document.getElementById("registerBirthday").value;
     var splitString = birthday.split("-");
     var reverseArray = splitString.reverse();
     var birthdayJoinArray = reverseArray.join("-");
-    var gender = document.getElementById("registerGenderId").value;
+
+    var gender = document.getElementById("registerGender").value;
 
 
     axios.post(baseUrl + "/customer/register", {
 
-        fullName: $('#registerFullNameId').val(),
-        email: $('#registerEmailId').val(),
-        password: $('#registerPasswordId').val(),
-        confirmPassword: $('#registerRePasswordId').val(),
+        fullName: $('#registerFullName').val(),
+        email: $('#registerEmail').val(),
+        password: $('#registerPassword').val(),
+        confirmPassword: $('#registerRePassword').val(),
         gender: gender,
         birthday: birthdayJoinArray,
-        phoneNumber: $('#registerPhoneNumberId').val(),
-        address: $('#registerAddressId').val()
+        phoneNumber: $('#registerPhoneNumber').val(),
+        address: $('#registerAddress').val()
 
     }).then(function (response) {
         console.log(response);
@@ -33,4 +36,16 @@ function register(e) {
             }
         });
     e.preventDefault();
+
+
 }
+
+
+
+
+
+
+
+
+
+
