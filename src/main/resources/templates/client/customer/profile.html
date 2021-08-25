@@ -20,7 +20,7 @@
                             <li> <a class="active" href="profile.html"> Tài khoản </a> </li>
                             <li> <a href="profile-orders.html"> Đơn hàng </a> </li>
                             <li> <a href="profile-products.html"> Giỏ hàng </a> </li>
-                            <li> <a class="logout" href="#"><i class="flaticon-shut-down-button"></i> Đăng xuất </a> </li>
+                            <li> <a id="aLogout" class="logout" ><i class="flaticon-shut-down-button"></i> Đăng xuất </a> </li>
                         </ul>
                     </div>
                 </div>
@@ -31,32 +31,33 @@
                         <h3>Thông tin tài khoản</h3>
                     </div>
 
-                    <form method="post">
+                    <form id="formUpdateInfoCustomer">
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <label>Họ và tên</label>
                                 <input id="profileFullName" type="text" class="form-control">
+                                <span id="errorProfileFullName" style="color: #ff0000; margin-top: 5px;"></span>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Email</label>
                                 <h6 id="profileEmail" class="form-control"></h6>
-<!--                                <input id="emailId" type="email" class="form-control">-->
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Số điện thoại</label>
-                                <input id="profilePhoneNumber" type="text" class="form-control">
+                                <h6 id="profilePhoneNumber" class="form-control"></h6>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Địa chỉ</label>
                                 <input id="profileAddress" type="text" class="form-control">
+                                <span id="errorProfileAddress" style="color: #ff0000; margin-top: 5px;"></span>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label>Sinh nhật</label>
-                                <input id="profileBirthday" type="text" class="form-control">
+                                <input id="profileBirthday" type="date" class="form-control" min="1960-01-01" max="2050-01-01">
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label for="profileGender">Giới tính : </label>
-                                <select class="form-control" name="cycle" id="profileGender">
+                                <select class="form-control" id="profileGender">
                                     <option value="MALE">Nam</option>
                                     <option value="FEMALE">Nữ</option>
                                     <option value="UNKNOWN">Không xác định</option>
@@ -94,6 +95,12 @@
     </div>
 
         <script th:src="@{/client/js/customer/profile.js}"></script>
+        <script th:src="@{/client/js/auth/logout.js}"></script>
+        <script th:src="@{/client/js/customer/update.js}"></script>
+
+        <script>
+
+        </script>
 
     </section>
 </body>

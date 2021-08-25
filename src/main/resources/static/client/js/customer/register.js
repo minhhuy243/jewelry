@@ -1,6 +1,6 @@
-document.getElementById("registerForm").addEventListener('submit', validation);
+document.getElementById("registerForm").addEventListener('submit', register);
 
-function validation(event) {
+function register(event) {
 
     // --- Full name ---
     var registerFullName = document.getElementById("registerFullName");
@@ -13,7 +13,7 @@ function validation(event) {
         registerFullName.style.border = "solid 1px red";
         errorRegisterFullName.innerHTML = "Nhập họ và tên từ 3 - 50 ký tự !";
     } else {
-        registerFullName.style.border = "solid 1px green";
+        registerFullName.style.border = "solid 1px #E6E6E6";
         errorRegisterFullName.innerHTML = "";
     }
 
@@ -21,7 +21,7 @@ function validation(event) {
     // --- Email ---
     var registerEmail = document.getElementById("registerEmail");
     var errorRegisterEmail = document.getElementById("errorRegisterEmail");
-    var email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (registerEmail.value.trim() === "") {
         registerEmail.style.border = "solid 1px red";
@@ -30,7 +30,7 @@ function validation(event) {
         registerEmail.style.border = "solid 1px red";
         errorRegisterEmail.innerHTML = "Email không đúng định dạng !";
     } else {
-        registerEmail.style.border = "solid 1px green";
+        registerEmail.style.border = "solid 1px #E6E6E6";
         errorRegisterEmail.innerHTML = "";
     }
 
@@ -48,7 +48,7 @@ function validation(event) {
         registerPassword.style.border = "solid 1px red";
         errorRegisterPassword.innerHTML = "Mật khẩu từ 8 - 30 ký tự !";
     } else {
-        registerPassword.style.border = "solid 1px green";
+        registerPassword.style.border = "solid 1px #E6E6E6";
         errorRegisterPassword.innerHTML = "";
     }
     // -- Re Password --
@@ -56,22 +56,8 @@ function validation(event) {
         registerRePassword.style.border = "solid 1px red";
         errorRegisterRePassword.innerHTML = "Mật khẩu nhập lại không chính xác !";
     } else {
-        registerRePassword.style.border = "solid 1px green";
+        registerRePassword.style.border = "solid 1px #E6E6E6";
         errorRegisterRePassword.innerHTML = "";
-    }
-
-
-    // --- Birthday ---
-    var birthday = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;   // FORMAT : YYYY-MM-DD
-    var registerBirthday = document.getElementById("registerBirthday");
-    var errorRegisterBirthday = document.getElementById("errorRegisterBirthday");
-
-    if (!registerBirthday.value.match(birthday)) {
-        registerBirthday.style.border = "solid 1px red";
-        errorRegisterBirthday.innerHTML = "Sinh nhật không đúng định dạng !";
-    } else {
-        registerBirthday.style.border = "solid 1px green";
-        errorRegisterBirthday.innerHTML = "";
     }
 
     // --- Phone number ---
@@ -83,7 +69,7 @@ function validation(event) {
         registerPhoneNumber.style.border = "solid 1px red";
         errorRegisterPhoneNumber.innerHTML = "Số điện thoại không đúng định dạng !";
     } else {
-        registerPhoneNumber.style.border = "solid 1px green";
+        registerPhoneNumber.style.border = "solid 1px #E6E6E6";
         errorRegisterPhoneNumber.innerHTML = "";
     }
 
@@ -93,17 +79,17 @@ function validation(event) {
 
     if (registerAddress.value.trim().length < 20 || registerAddress.value.trim().length > 100) {
         registerAddress.style.border = "solid 1px red";
-        errorRegisterAddress.innerHTML = "Địa chỉ từ 20 - 100 ký tự!";
+        errorRegisterAddress.innerHTML = "Địa chỉ từ 20 - 100 ký tự !";
     } else {
-        registerAddress.style.border = "solid 1px green";
+        registerAddress.style.border = "solid 1px #E6E6E6";
         errorRegisterAddress.innerHTML = "";
     }
 
     /**
      Call API after validation form success
      */
-    if (errorRegisterFullName.innerHTML === "" && errorRegisterEmail.innerHTML === "" && errorRegisterPassword.innerHTML === ""
-        && errorRegisterRePassword.innerHTML === "" && errorRegisterBirthday.innerHTML === ""
+    if (errorRegisterFullName.innerHTML === "" && errorRegisterEmail.innerHTML === ""
+        && errorRegisterPassword.innerHTML === "" && errorRegisterRePassword.innerHTML === ""
         && errorRegisterPhoneNumber.innerHTML === "" && errorRegisterAddress.innerHTML === "") {
 
         // Reverse date YYYY-MM-DD ==> DD-MM-YYYY
@@ -143,11 +129,11 @@ function validation(event) {
         });
     } else {
         if (errorRegisterEmail.innerHTML === "") {
-            registerEmail.style.border = "solid 1px green";
+            registerEmail.style.border = "solid 1px #E6E6E6";
             errorRegisterEmail.innerHTML = "";
         }
         if (registerPhoneNumber.style.border === "") {
-            registerPhoneNumber.style.border = "solid 1px green";
+            registerPhoneNumber.style.border = "solid 1px #E6E6E6";
             errorRegisterPhoneNumber.innerHTML = "";
         }
     }
