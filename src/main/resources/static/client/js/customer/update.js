@@ -1,4 +1,3 @@
-
 document.getElementById("formUpdateInfoCustomer").addEventListener('submit', update);
 
 function update(e) {
@@ -58,11 +57,8 @@ function update(e) {
         xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
                 if(xhr.status === 200) {
-                    Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
-                        'success'
-                    );
+                    alert("Cập nhật thành công");
+                    window.location = "/customer/me";
                 }
                 console.log(this.responseText);
             }
