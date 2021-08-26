@@ -13,7 +13,7 @@
         <div class="acr-auth-container">
             <div class="acr-auth-content">
 
-                <form method="POST" style="width: 100%;">
+                <form id="loginForm" style="width: 100%;">
 
                     <div class="auth-text">
                         <h3 id="test">Đăng Nhập</h3>
@@ -21,11 +21,13 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control form-control-light" placeholder="Email" name="username" value="">
+                        <input id="loginEmail" type="text" class="form-control form-control-light">
+                        <span id="errorLoginEmail" style="color: #ff0000; margin-top: 5px;"></span>
                     </div>
                     <div class="form-group">
                         <label>Mật khẩu</label>
-                        <input type="password" class="form-control form-control-light" placeholder="Mật khẩu" name="password" value="">
+                        <input id="loginPassword" type="password" class="form-control form-control-light" value="">
+                        <span id="errorLoginPassword" style="color: #ff0000; margin-top: 5px;"></span>
                     </div>
                     <div class="form-group">
                         <a href="#" class="forgot-password">Quên mật khẩu?</a>
@@ -66,16 +68,8 @@
             </div>
         </div>
 
+        <script th:src="@{/client/js/auth/login.js}"></script>
 
-
-        <script>
-
-            // Thêm file js vào cuối body
-            var script = document.createElement('script');
-            document.body.appendChild(script);
-            script.src = '/client/js/test.js';
-
-        </script>
     </section>
 </body>
 </html>
