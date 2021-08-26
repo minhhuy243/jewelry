@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <section layout:fragment="content">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="sidebar sticky-sidebar user-nav sidebar-left">
+                        <ul>
+                            <li> <a class="active" href="profile.html"> Tài khoản </a> </li>
+                            <li> <a href="profile-orders.html"> Đơn hàng </a> </li>
+                            <li> <a href="profile-products.html"> Giỏ hàng </a> </li>
+                            <li> <a id="aLogout" class="logout" ><i class="flaticon-shut-down-button"></i> Đăng xuất </a> </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+
+                    <div class="acr-welcome-message">
+                        <h3>Thông tin tài khoản</h3>
+                    </div>
+
+                    <form id="formUpdateInfoCustomer">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label>Họ và tên</label>
+                                <input id="profileFullName" type="text" class="form-control">
+                                <span id="errorProfileFullName" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Email</label>
+                                <h6 id="profileEmail" class="form-control"></h6>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Số điện thoại</label>
+                                <h6 id="profilePhoneNumber" class="form-control"></h6>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Địa chỉ</label>
+                                <input id="profileAddress" type="text" class="form-control">
+                                <span id="errorProfileAddress" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Sinh nhật</label>
+                                <input id="profileBirthday" type="date" class="form-control" min="1960-01-01" max="2050-01-01">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label for="profileGender">Giới tính : </label>
+                                <select class="form-control" id="profileGender">
+                                    <option value="MALE">Nam</option>
+                                    <option value="FEMALE">Nữ</option>
+                                    <option value="UNKNOWN">Không xác định</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <button type="submit" name="submit" class="btn-custom">Lưu</button>
+                    </form>
+                    <hr>
+
+                    <div class="acr-welcome-message">
+                        <h3>Đổi mật khẩu</h3>
+                    </div>
+
+                    <form id="formChangePassword">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label>Mật khẩu mới</label>
+                                <input id="profilePassword" type="password" class="form-control" value="">
+                                <span id="errorProfilePassword" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label>Nhập lại mật khẩu mới</label>
+                                <input id="profileRePassword" type="password" class="form-control" value="">
+                                <span id="errorProfileRePassword" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                        </div>
+                        <button type="submit" name="submit" class="btn-custom">Cập nhật</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <script th:src="@{/client/js/customer/profile.js}"></script>
+        <script th:src="@{/client/js/auth/logout.js}"></script>
+        <script th:src="@{/client/js/customer/update.js}"></script>
+        <script th:src="@{/client/js/customer/change-password.js}"></script>
+
+
+    </section>
+</body>
+</html>
