@@ -8,83 +8,48 @@
 <body>
 
     <section layout:fragment="content">
-        <!-- Shop Detail Start -->
+
         <div class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="detail-page-slider-for">
-                            <div class="slide-item">
-                                <div class="product-zoom-image">
-                                    <img th:src="@{/client/img/product-single/gallery/1.png}" alt="image">
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="product-zoom-image">
-                                    <img th:src="@{/client/img/product-single/gallery/1.png}" alt="image">
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="product-zoom-image">
-                                    <img th:src="@{/client/img/product-single/gallery/1.png}" alt="image">
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="product-zoom-image">
-                                    <img th:src="@{/client/img/product-single/gallery/1.png}" alt="image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail-page-slider-nav mt-3">
-                            <div style="width: 100px" class="slide-item">
-                                <a href="javascript:void(0)">
-                                    <img th:src="@{/client/img/product-single/gallery/1.jpg}" class="full-width" alt="image">
-                                </a>
-                            </div>
-                            <div style="width: 100px" class="slide-item">
-                                <a href="javascript:void(0)">
-                                    <img th:src="@{/client/img/product-single/gallery/1.jpg}" class="full-width" alt="image">
-                                </a>
-                            </div>
-                            <div style="width: 100px" class="slide-item">
-                                <a href="javascript:void(0)">
-                                    <img th:src="@{/client/img/product-single/gallery/1.jpg}" class="full-width" alt="image">
-                                </a>
-                            </div>
-                            <div style="width: 100px" class="slide-item">
-                                <a href="javascript:void(0)">
-                                    <img th:src="@{/client/img/product-single/gallery/1.jpg}" class="full-width" alt="image">
-                                </a>
-                            </div>
-                        </div>
+                    <!-- Images -->
+                    <div class="col-lg-5 col-md-4 mr-5">
+
+                        <div class="detail-page-slider-for"></div>
+
+                        <div class="detail-page-slider-nav mt-3"></div>
+
                     </div>
+                    <!-- End Images -->
+
                     <div class="col-lg-6 col-md-7">
                         <div class="shop-detail-wrapper">
+
                             <div class="shop-social-icons">
-                                <a href="#" class="add-to-favorite" data-toggle="tooltip" title="Add to Wishlist">
+                                <a href="#" class="add-to-favorite" data-toggle="tooltip" title="Yêu thích">
                                     <i class="far fa-heart"></i>
                                 </a>
                                 <ul class="icon-box">
                                     <li class="mt-0">
-                                        <a href="#" data-toggle="tooltip" title="Share on facebook">
+                                        <a href="#" data-toggle="tooltip" title="Chia sẻ trên FaceBook">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                     </li>
                                     <li class="mt-0">
-                                        <a href="#" data-toggle="tooltip" title="Share on twitter">
+                                        <a href="#" data-toggle="tooltip" title="Chia sẻ trên Twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
                                     <li class="mt-0">
-                                        <a href="#" data-toggle="tooltip" title="Share on Linkedin">
+                                        <a href="#" data-toggle="tooltip" title="Chia sẻ trên Linkedin">
                                             <i class="fab fa-linkedin-in"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="shop-detail-title">
-                                <h3 class="mb-0">Square Scacco Diamond Ring</h3>
-                            </div>
+
+                            <div class="shop-detail-title"><h3 class="mb-0"></h3></div>
+
                             <div class="rating d-flex">
                                 <div class="acr-rating">
                                     <i class="fas fa-star active"></i>
@@ -93,104 +58,48 @@
                                     <i class="fas fa-star active"></i>
                                     <i class="fas fa-star active"></i>
                                 </div>
-                                <span>2 reviews</span>
+                                <span>2 đánh giá</span>
                             </div>
-                            <div class="product-price-box">
-              <span class="product-price">3,500$
-                <span>4,500$</span>
-              </span>
-                            </div>
-                            <div class="product-descr">
-                                <p class="mb-0">Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                            </div>
-                            <form class="product-variation-form">
-                                <div class="product-variation-wrapper">
 
-                                    <div class="variation-item">
+                            <div class="product-price-box"><span class="product-price"></span></div>
 
-                                        <label>Color</label>
-                                        <div class="acr-swatch-wrapper">
-                                            <label>
-                                                <input type="radio" name="color" value="">
-                                                <span class="acr-swatch swatch-red"></span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="color" value="">
-                                                <span class="acr-swatch swatch-yellow"></span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="color" value="">
-                                                <span class="acr-swatch swatch-blue"></span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="color" value="">
-                                                <span class="acr-swatch swatch-green"></span>
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="variation-item">
-
-                                        <label>Refurbished Pave Diamond Star Charm </label>
-                                        <div class="acr-attribute-wrapper">
-                                            <label>
-                                                <input type="radio" name="material" value="">
-                                                <span class="acr-attribute attribue-text">Square Scacco Diamond Ring </span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="material" value="">
-                                                <span class="acr-attribute attribue-text">Covers</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="material" value="">
-                                                <span class="acr-attribute attribue-text">Jewelry </span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="material" value="">
-                                                <span class="acr-attribute attribue-text">PC Square Scacco Diamond Ring</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                </div>
+                            <div class="product-variation-form">
                                 <div class="shop-button-box">
                                     <div class="qty-box">
-                  <span class="qty-subtract">
-                    <i class="fa fa-minus"></i>
-                  </span>
+                                        <span class="qty-subtract"><i class="fa fa-minus"></i></span>
+
                                         <input type="text" name="qty" value="1">
-                                        <span class="qty-add">
-                    <i class="fa fa-plus"></i>
-                  </span>
+
+                                        <span class="qty-add"><i class="fa fa-plus"></i></span>
                                     </div>
-                                    <a href="#" class="btn-custom primary">Buy Now</a>
+
+                                    <a href="#" class="btn-custom primary">Thêm Vào Giỏ Hàng</a>
                                 </div>
-                            </form>
+                            </div>
+
                             <ul class="product-extra-info">
                                 <li>
-                                    <span>Categories: </span>
-                                    <div class="product-info-item">
+                                    <span>SKU: </span>
+                                    <div id="sku" class="product-info-item"
+                                         style="text-transform: uppercase; font-family: Roboto; font-weight: 500;"></div>
+                                </li>
+                                <li>
+                                    <span>Loại: </span>
+                                    <div id="category" class="product-info-item">
                                         <a href="#">Square Scacco Diamond Ring </a>
                                     </div>
                                 </li>
                                 <li>
-                                    <span>Tags: </span>
+                                    <span>Tag: </span>
                                     <div class="product-info-item">
                                         <a href="#">Scacco Diamond Ring</a>,
-                                        <a href="#">Pearl and Diamond Necklace </a>,
-                                        <a href="#">Regular Men Blue Jewelry</a>
                                     </div>
                                 </li>
-                                <li class="mb-0">
-                                    <span>SKU: </span>
-                                    <div class="product-info-item">
-                                        <a href="#">N/A</a>
-                                    </div>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -200,52 +109,44 @@
                 <div class="product-additional-info">
                     <div class="row">
                         <div class="col-lg-4">
-                            <ul class="nav product-sticky-sec" id="bordered-tab" role="tablist">
+                            <ul class="nav product-sticky-sec" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="tab-product-desc-tab" data-toggle="pill" href="#tab-product-desc" role="tab" aria-controls="tab-product-desc" aria-selected="true">Description</a>
+                                    <a class="nav-link active"data-toggle="pill" href="#tab-desc" role="tab" aria-controls="tab-product-desc" aria-selected="true">Mô Tả</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="tab-product-info-tab" data-toggle="pill" href="#tab-product-info" role="tab" aria-controls="tab-product-info" aria-selected="false">Additional Information</a>
+                                    <a class="nav-link" data-toggle="pill" href="#tab-info" role="tab" aria-controls="tab-product-info" aria-selected="false">Chi Tiết Sản Phẩm</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="tab-product-reviews-tab" data-toggle="pill" href="#tab-product-reviews" role="tab" aria-controls="tab-product-reviews" aria-selected="false">Reviews (25)</a>
+                                    <a class="nav-link" data-toggle="pill" href="#tab-reviews" role="tab" aria-controls="tab-product-reviews" aria-selected="false">Đánh Giá (25)</a>
                                 </li>
                             </ul>
                         </div>
+
                         <div class="col-lg-8">
                             <div class="tab-content" id="bordered-tabContent">
-                                <div class="tab-pane fade show active" id="tab-product-desc" role="tabpanel" aria-labelledby="tab-product-desc-tab">
-                                    <h4>Description</h4>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Square Scacco Diamond Ring  truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a
-                                    bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica
-                                </div>
-                                <div class="tab-pane fade" id="tab-product-info" role="tabpanel" aria-labelledby="tab-product-info-tab">
-                                    <h4>Additional Information</h4>
+                                <div class="tab-pane fade show active" id="tab-desc" role="tabpanel" aria-labelledby="tab-product-desc-tab"></div>
+
+                                <div class="tab-pane fade" id="tab-info" role="tabpanel" aria-labelledby="tab-product-info-tab">
                                     <table>
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Attributes</th>
-                                            <th scope="col">Values</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col" style="width: 50%;">Thuộc Tính</th>
+                                                <th scope="col">Giá Trị</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <strong>Color</strong>
-                                            </td>
-                                            <td>blue, red, yellow, green</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Refurbished Pave Diamond Star Charm </strong>
-                                            </td>
-                                            <td>wood, plastic, stainless steel</td>
-                                        </tr>
+                                            <tr id="goldWeight">
+                                                <td><strong>Khối Lượng</strong></td>
+
+                                            </tr>
+                                            <tr id="goldType">
+                                                <td><strong>Loại Vàng (%)</strong></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane fade" id="tab-product-reviews" role="tabpanel" aria-labelledby="tab-product-reviews-tab">
+
+                                <div class="tab-pane fade" id="tab-reviews" role="tabpanel" aria-labelledby="tab-product-reviews-tab">
                                     <div class="comment-form">
                                         <h4>Leave a Review</h4>
                                         <form method="post">
@@ -320,8 +221,7 @@
 
                 <div class="section-title-wrap section-header flex-header">
                     <div class="section-title-text">
-                        <h5 class="custom-primary">Find Your Match</h5>
-                        <h2 class="title">Related Products</h2>
+                        <h2 class="title">Trang Sức Cùng Loại</h2>
                     </div>
                     <div class="acr-arrows primary-arrows">
                         <i class="slider-prev fas fa-arrow-left slick-arrow"></i>
@@ -468,6 +368,26 @@
         </div>
         <!-- Related Products End -->
     </section>
+
+    <th:block layout:fragment="script">
+
+        <script th:src="@{/client/js/product/details.js}"></script>
+
+        <script>
+
+            $(async function () {
+                await axios.get(baseUrl + "/products/" + pathArray.slice(-1))
+                    .then((res) => {
+                        renderProductDetails(res.data.content);
+                    })
+                    .catch((error) => {
+
+                    });
+            });
+
+        </script>
+
+    </th:block>
 
 </body>
 </html>

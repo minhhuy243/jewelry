@@ -280,6 +280,7 @@
   <footer th:replace="client/fragments/footer::footer">
   </footer>
 
+
   <!-- Vendor Scripts -->
   <script th:src="@{/client/js/plugins/jquery-3.4.1.min.js}"></script>
   <script th:src="@{/client/js/plugins/popper.min.js}"></script>
@@ -294,6 +295,8 @@
   <script th:src="@{/client/js/plugins/jquery.zoom.min.js}"></script>
   <!-- Mini Scripts -->
   <script th:src="@{/client/js/main.js}"></script>
+
+  <th:block layout:fragment="script"></th:block>
 
   <script>
 

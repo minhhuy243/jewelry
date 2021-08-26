@@ -2,7 +2,7 @@ function renderProduct(product) {
     return `<div class="col-md-4">
         <div class="product">
             <div class="product-thumbnail">
-                <a href="product-details-v1.html">
+                <a href="${product.categorySlug + '/' + product.slug}">
                     <img title="${product.name + ' ' + product.sku}" 
                         src="https://drive.google.com/uc?export=view&id=${product.avatar}" 
                         alt="${product.name + ' ' + product.sku}">
@@ -20,7 +20,7 @@ function renderProduct(product) {
             </div>
             <div class="product-body">
                 <h5 class="product-title"> 
-                    <a href="product-details-v1.html" title="${product.name + ' ' + product.sku}">
+                    <a href="${product.categorySlug + '/' + product.slug}" title="${product.name + ' ' + product.sku}">
                         ${product.name}
                         <br>
                         ${product.sku}

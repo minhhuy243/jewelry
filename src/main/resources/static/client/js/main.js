@@ -464,7 +464,8 @@
   $('.detail-page-slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
+    fade: true,
     asNavFor: '.detail-page-slider-nav'
   });
   $('.detail-page-slider-nav').slick({
@@ -472,13 +473,13 @@
     slidesToScroll: 1,
     asNavFor: '.detail-page-slider-for',
     arrows: true,
-    dots: true,
-    focusOnSelect: true,
-    variableWidth: true,
+    prevArrow: '<i class="fas fa-arrow-left product-detail-arrow prev-arrow slick-arrow slick-prev"></i>',
+    nextArrow: '<i class="fas fa-arrow-right product-detail-arrow next-arrow slick-arrow slick-next"></i>',
+    dots: false,
     responsive: [{
       breakpoint: 567,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 3,
       }
     }]
   });
