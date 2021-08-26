@@ -34,7 +34,7 @@ function update(e) {
      Call API after validation form success
      */
     if(errorProfileFullName.innerHTML === "" && errorProfileAddress.innerHTML === "") {
-        const accessToken = localStorage.getItem("access_token");
+        const accessToken = sessionStorage.getItem("access_token");
         var birthday = document.getElementById("profileBirthday");
         var gender = document.getElementById("profileGender").value;
 

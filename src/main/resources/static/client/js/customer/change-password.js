@@ -29,7 +29,7 @@ function update(e) {
      Call API after validation form success
      */
     if(errorProfilePassword.innerHTML === "" && errorProfileRePassword.innerHTML === "") {
-        const accessToken = localStorage.getItem("access_token");
+        const accessToken = sessionStorage.getItem("access_token");
         var data = JSON.stringify({
             "password": profilePassword.value,
             "confirmPassword": profileRePassword.value

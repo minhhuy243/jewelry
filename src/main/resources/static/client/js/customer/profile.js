@@ -1,6 +1,6 @@
 
 const api = "http://localhost:8089/api/customer/me";
-const token = localStorage.getItem("access_token");
+const token = sessionStorage.getItem("access_token");
 
 axios.get(api, {headers: {"Authorization": `Bearer ${token}`}})
     .then((res) => {

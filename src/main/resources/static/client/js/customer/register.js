@@ -111,6 +111,7 @@ function register(event) {
             address: $('#registerAddress').val()
 
         }).then(function () {
+            alert("Đăng ký thành công");
             window.location = "/login";
         }).catch(function (error) {
             if (error.response.status === 400) {

@@ -2,7 +2,7 @@ document.getElementById("aLogout").addEventListener('click', logout);
 
 function logout() {
     if (confirm('Bạn có muốn đăng xuất ?')) {
-        var accessToken = window.localStorage.getItem('access_token');
+        var accessToken = window.sessionStorage.getItem('access_token');
         var data = JSON.stringify({
             "deviceInfo": {
                 "deviceId": "string",
@@ -26,7 +26,7 @@ function logout() {
 
         xhr.send(data);
 
-        localStorage.clear();
+        sessionStorage.clear();
         window.location = "/login";
     }
 }

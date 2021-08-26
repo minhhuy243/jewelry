@@ -41,8 +41,8 @@ function login(e) {
             password: $('#loginPassword').val(),
         })
             .then(function (response) {
-                window.localStorage.setItem('access_token', response.data.content.accessToken);
-                window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
+                window.sessionStorage.setItem('access_token', response.data.content.accessToken);
+                window.sessionStorage.setItem('refresh_token', response.data.content.refreshToken);
                 console.log(response);
                 window.location = "/customer/me";
             })
