@@ -19,6 +19,8 @@ axios.get(api, {headers: {"Authorization": `Bearer ${token}`}})
         document.getElementById("profileGender").value = res.data.content.gender;
     })
     .catch((error) => {
+        sessionStorage.clear();
+        window.location = "/login";
         console.log(error)
     });
 

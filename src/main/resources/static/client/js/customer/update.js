@@ -60,6 +60,11 @@ function update(e) {
                     alert("Cập nhật thành công");
                     window.location = "/customer/me";
                 }
+                if (xhr.status === 401) {
+                    sessionStorage.clear();
+                    alert("Tài khoản đã hết hạn. Vui lòng đăng nhập lại !")
+                    window.location = "/login";
+                }
                 console.log(this.responseText);
             }
         });
