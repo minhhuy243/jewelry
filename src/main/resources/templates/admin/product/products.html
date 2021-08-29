@@ -9,7 +9,8 @@
 <body>
 
     <div layout:fragment="content" class="content container-fluid">
-
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script th:src="@{/admin/js/auth/check-role.js}"></script>
         <div class="page-header">
 
             <div class="row align-items-center">
@@ -245,8 +246,6 @@
                 });
 
             });
-
-
 
         </script>
 

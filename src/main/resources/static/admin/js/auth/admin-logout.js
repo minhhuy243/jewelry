@@ -1,6 +1,6 @@
-document.getElementById("aLogout").addEventListener('click', logout);
+// document.getElementById("adminLogout").addEventListener('click', adminLogout);
 
-function logout() {
+function adminLogout() {
     if (confirm('Bạn có muốn đăng xuất ?')) {
         var accessToken = window.localStorage.getItem('access_token');
         var data = JSON.stringify({
@@ -27,7 +27,6 @@ function logout() {
         xhr.send(data);
 
         localStorage.clear();
-        window.location = "/login";
+        window.location = "/admin/login";
     }
 }
-

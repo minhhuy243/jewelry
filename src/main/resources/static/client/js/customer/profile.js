@@ -1,11 +1,9 @@
 
 const api = "http://localhost:8089/api/customer/me";
-const token = sessionStorage.getItem("access_token");
+const token = localStorage.getItem("access_token");
 
 axios.get(api, {headers: {"Authorization": `Bearer ${token}`}})
     .then((res) => {
-        console.log(res.data);
-
         // Reverse date DD-MM-YYYY ---> YYYY-MM-DD
         var splitBirthday = res.data.content.birthday.split("-");
         var reverseArray = splitBirthday.reverse();
@@ -19,9 +17,9 @@ axios.get(api, {headers: {"Authorization": `Bearer ${token}`}})
         document.getElementById("profileGender").value = res.data.content.gender;
     })
     .catch((error) => {
-        sessionStorage.clear();
+        console.log(error);
+        localStorage.clear();
         window.location = "/login";
-        console.log(error)
     });
 
 
