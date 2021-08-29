@@ -23,6 +23,9 @@ function login(e) {
     if (loginPassword.value.trim() === "") {
         loginPassword.style.border = "solid 1px red";
         errorLoginPassword.innerHTML = "Nhập mật khẩu !";
+    } else if (loginPassword.value.trim().length < 8 || loginPassword.value.trim().length > 30) {
+        loginPassword.style.border = "solid 1px red";
+        errorLoginPassword.innerHTML = "Mật khẩu từ 8 - 30 ký tự !";
     } else {
         loginPassword.style.border = "solid 1px #E6E6E6";
         errorLoginPassword.innerHTML = "";
@@ -41,8 +44,9 @@ function login(e) {
             password: $('#loginPassword').val(),
         })
             .then(function (response) {
-                window.sessionStorage.setItem('access_token', response.data.content.accessToken);
-                window.sessionStorage.setItem('refresh_token', response.data.content.refreshToken);
+                window.localStorage.setItem('access_token', response.data.content.accessToken);
+                window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
+
                 console.log(response);
                 window.location = "/customer/me";
             })

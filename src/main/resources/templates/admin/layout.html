@@ -11,7 +11,7 @@
     <title data-layout-title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">BLUX Dashboards</title>
 
     <!-- Favicon -->
-<!--    <link rel="shortcut icon" th:href="/admin/favicon.png">-->
+    <!--    <link rel="shortcut icon" th:href="/admin/favicon.png">-->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -30,161 +30,161 @@
 
 <body class="footer-offset">
 
-    <div th:replace="admin/fragments/header::header"></div>
+<div th:replace="admin/fragments/header::header"></div>
 
-    <div th:replace="admin/fragments/header::aside"></div>
+<div th:replace="admin/fragments/header::aside"></div>
 
-    <main id="content" role="main" class="main">
-        <div layout:fragment="content">
+<main id="content" role="main" class="main">
+    <div layout:fragment="content">
 
-        </div>
-    </main>
+    </div>
+</main>
 
-    <style>
-        .colored-toast.swal2-icon-success {
-            background-color: #a5dc86 !important;
-        }
+<style>
+    .colored-toast.swal2-icon-success {
+        background-color: #a5dc86 !important;
+    }
 
-        .colored-toast .swal2-title {
-            color: white;
-        }
+    .colored-toast .swal2-title {
+        color: white;
+    }
 
-        .colored-toast .swal2-close {
-            color: white;
-        }
+    .colored-toast .swal2-close {
+        color: white;
+    }
 
-        .colored-toast .swal2-content {
-            color: white;
-        }
-    </style>
+    .colored-toast .swal2-content {
+        color: white;
+    }
+</style>
 
-    <!-- Axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- JS Implementing Plugins -->
-    <script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
-    <script th:src="@{/admin/js/demo.js}"></script>
-    <script th:src="@{/admin/js/vendor.min.js}"></script>
-    <script th:src="@{/admin/vendor/chart.js/dist/Chart.min.js}"></script>
-    <script th:src="@{/admin/vendor/chart.js.extensions/chartjs-extensions.js}"></script>
-    <script th:src="@{/admin/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js}"></script>
-    <script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
-    <script th:src="@{/admin/js/theme.min.js}"></script>
+<!-- Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- JS Implementing Plugins -->
+<script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
+<script th:src="@{/admin/js/demo.js}"></script>
+<script th:src="@{/admin/js/vendor.min.js}"></script>
+<script th:src="@{/admin/vendor/chart.js/dist/Chart.min.js}"></script>
+<script th:src="@{/admin/vendor/chart.js.extensions/chartjs-extensions.js}"></script>
+<script th:src="@{/admin/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js}"></script>
+<script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
+<script th:src="@{/admin/js/theme.min.js}"></script>
 
-    <th:block layout:fragment="script"></th:block>
+<th:block layout:fragment="script"></th:block>
 
-    <!-- JS Plugins Init. -->
-    <script>
+<!-- JS Plugins Init. -->
+<script>
 
-        const baseUrl = "http://localhost:8089/api/admin";
-        const pathArray = window.location.pathname.split('/');
-        const urlParams = new URLSearchParams(window.location.search);
+    const baseUrl = "http://localhost:8089/api/admin";
+    const pathArray = window.location.pathname.split('/');
+    const urlParams = new URLSearchParams(window.location.search);
 
-        const body = document.getElementsByTagName('body')[0],
-            isMini =  window.localStorage.getItem('hs-navbar-vertical-aside-mini') === null ? false : window.localStorage.getItem('hs-navbar-vertical-aside-mini');
+    const body = document.getElementsByTagName('body')[0],
+        isMini =  window.localStorage.getItem('hs-navbar-vertical-aside-mini') === null ? false : window.localStorage.getItem('hs-navbar-vertical-aside-mini');
 
-        if (isMini) {
-            body.classList.add('navbar-vertical-aside-mini-mode')
-        }
+    if (isMini) {
+        body.classList.add('navbar-vertical-aside-mini-mode')
+    }
 
-        $(document).on('ready', function () {
+    $(document).on('ready', function () {
 
-            $('a.nav-link').each(function (index) {
-                const attr = $(this).attr('href');
-                if(attr === window.location.pathname) {
-                    $(this).addClass('active');
-                    $(this).parents('li.navbar-vertical-aside-has-menu').addClass('show');
-                }
-            });
-
-
-            var quill = $.HSCore.components.HSQuill.init('.js-quill');
-
-            $('.js-quantity-counter').each(function () {
-                var quantityCounter = new HSQuantityCounter($(this)).init();
-            });
-
-            // BUILDER TOGGLE INVOKER
-            // =======================================================
-            $('.js-navbar-vertical-aside-toggle-invoker').click(function () {
-                $('.js-navbar-vertical-aside-toggle-invoker i').tooltip('hide');
-            });
-
-
-
-            // INITIALIZATION OF MEGA MENU
-            // =======================================================
-            var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
-                desktop: {
-                    position: 'left'
-                }
-            }).init();
-
-
-
-            // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
-            // =======================================================
-            var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
-
-
-            // INITIALIZATION OF TOOLTIP IN NAVBAR VERTICAL MENU
-            // =======================================================
-            $('.js-nav-tooltip-link').tooltip({ boundary: 'window' })
-
-            $(".js-nav-tooltip-link").on("show.bs.tooltip", function(e) {
-                if (!$("body").hasClass("navbar-vertical-aside-mini-mode")) {
-                    return false;
-                }
-            });
-
-
-            // INITIALIZATION OF UNFOLD
-            // =======================================================
-            $('.js-hs-unfold-invoker').each(function () {
-                var unfold = new HSUnfold($(this)).init();
-            });
-
-
-            // INITIALIZATION OF FORM SEARCH
-            // =======================================================
-            $('.js-form-search').each(function () {
-                new HSFormSearch($(this)).init()
-            });
-
-
-            // INITIALIZATION OF SELECT2
-            // =======================================================
-            $('.js-select2-custom').each(function () {
-                var select2 = $.HSCore.components.HSSelect2.init($(this));
-            });
-
-            // INITIALIZATION OF DROPZONE FILE ATTACH MODULE
-            // =======================================================
-            $('.js-dropzone').each(function () {
-                var dropzone = $.HSCore.components.HSDropzone.init('#' + $(this).attr('id'));
-            });
-
-            // INITIALIZATION OF FLATPICKR
-            // =======================================================
-            $('.js-flatpickr').each(function () {
-                $.HSCore.components.HSFlatpickr.init($(this));
-            });
-
-
-            // INITIALIZATION OF CLIPBOARD
-            // =======================================================
-            $('.js-clipboard').each(function() {
-                var clipboard = $.HSCore.components.HSClipboard.init(this);
-            });
-
-            $('a.btn.btn-sm.btn-danger').click(function() {
-                var href = $(this).attr('href');
-                $('#btnConfirm').attr('href', href);
-            });
-
+        $('a.nav-link').each(function (index) {
+            const attr = $(this).attr('href');
+            if(attr === window.location.pathname) {
+                $(this).addClass('active');
+                $(this).parents('li.navbar-vertical-aside-has-menu').addClass('show');
+            }
         });
 
-    </script>
+
+        var quill = $.HSCore.components.HSQuill.init('.js-quill');
+
+        $('.js-quantity-counter').each(function () {
+            var quantityCounter = new HSQuantityCounter($(this)).init();
+        });
+
+        // BUILDER TOGGLE INVOKER
+        // =======================================================
+        $('.js-navbar-vertical-aside-toggle-invoker').click(function () {
+            $('.js-navbar-vertical-aside-toggle-invoker i').tooltip('hide');
+        });
+
+
+
+        // INITIALIZATION OF MEGA MENU
+        // =======================================================
+        var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
+            desktop: {
+                position: 'left'
+            }
+        }).init();
+
+
+
+        // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
+        // =======================================================
+        var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
+
+
+        // INITIALIZATION OF TOOLTIP IN NAVBAR VERTICAL MENU
+        // =======================================================
+        $('.js-nav-tooltip-link').tooltip({ boundary: 'window' })
+
+        $(".js-nav-tooltip-link").on("show.bs.tooltip", function(e) {
+            if (!$("body").hasClass("navbar-vertical-aside-mini-mode")) {
+                return false;
+            }
+        });
+
+
+        // INITIALIZATION OF UNFOLD
+        // =======================================================
+        $('.js-hs-unfold-invoker').each(function () {
+            var unfold = new HSUnfold($(this)).init();
+        });
+
+
+        // INITIALIZATION OF FORM SEARCH
+        // =======================================================
+        $('.js-form-search').each(function () {
+            new HSFormSearch($(this)).init()
+        });
+
+
+        // INITIALIZATION OF SELECT2
+        // =======================================================
+        $('.js-select2-custom').each(function () {
+            var select2 = $.HSCore.components.HSSelect2.init($(this));
+        });
+
+        // INITIALIZATION OF DROPZONE FILE ATTACH MODULE
+        // =======================================================
+        $('.js-dropzone').each(function () {
+            var dropzone = $.HSCore.components.HSDropzone.init('#' + $(this).attr('id'));
+        });
+
+        // INITIALIZATION OF FLATPICKR
+        // =======================================================
+        $('.js-flatpickr').each(function () {
+            $.HSCore.components.HSFlatpickr.init($(this));
+        });
+
+
+        // INITIALIZATION OF CLIPBOARD
+        // =======================================================
+        $('.js-clipboard').each(function() {
+            var clipboard = $.HSCore.components.HSClipboard.init(this);
+        });
+
+        $('a.btn.btn-sm.btn-danger').click(function() {
+            var href = $(this).attr('href');
+            $('#btnConfirm').attr('href', href);
+        });
+
+    });
+
+</script>
 
 </body>
 

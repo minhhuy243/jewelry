@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Login</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" th:href="@{/admin/css/vendor.min.css}">
+    <link rel="stylesheet" th:href="@{/admin/vendor/icon-set/style.css}">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" th:href="@{/admin/css/theme.min.css?v=1.0}">
+</head>
+
+<body>
+    <div class="container py-5 py-sm-7">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <!-- Card -->
+                <div class="card card-lg mb-5">
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form id="formLoginAdmin">
+                            <div class="text-center">
+                                <div class="mb-5">
+                                    <h1 class="display-4">Đăng nhập</h1>
+                                </div>
+                            </div>
+                            <!-- Form Group -->
+                            <div class="js-form-message form-group">
+                                <label class="input-label">Email</label>
+                                <input id="loginAdminEmail" type="text" class="form-control form-control-lg">
+                                <span id="errorLoginAdminEmail" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                            <div class="js-form-message form-group">
+                                <label class="input-label">Mật khẩu</label>
+                                <input id="loginAdminPassword" type="password" class="form-control form-control-lg">
+                                <span id="errorLoginAdminPassword" style="color: #ff0000; margin-top: 5px;"></span>
+                            </div>
+                            <div class="form-group">
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary">Đăng nhập</button>
+                        </form>
+                        <!-- End Form -->
+                    </div>
+                </div>
+                <!-- End Card -->
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script th:src="@{/admin/js/auth/admin-login.js}"></script>
+
+</body>
+</html>

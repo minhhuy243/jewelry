@@ -34,7 +34,7 @@ function update(e) {
      Call API after validation form success
      */
     if(errorProfileFullName.innerHTML === "" && errorProfileAddress.innerHTML === "") {
-        const accessToken = sessionStorage.getItem("access_token");
+        const accessToken = localStorage.getItem("access_token");
         var birthday = document.getElementById("profileBirthday");
         var gender = document.getElementById("profileGender").value;
 
@@ -61,11 +61,10 @@ function update(e) {
                     window.location = "/customer/me";
                 }
                 if (xhr.status === 401) {
-                    sessionStorage.clear();
+                    localStorage.clear();
                     alert("Tài khoản đã hết hạn. Vui lòng đăng nhập lại !")
                     window.location = "/login";
                 }
-                console.log(this.responseText);
             }
         });
 
