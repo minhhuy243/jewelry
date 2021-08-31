@@ -320,10 +320,12 @@
         <script>
 
             $(async function () {
+                const token = localStorage.getItem("access_token");
+                const headers = {headers: {"Authorization": `Bearer ${token}`}};
 
-                const getCategories = axios.get(baseUrl + "/products/categories");
-                const getGoldTypes = axios.get(baseUrl + "/products/gold-types");
-                const getSuppliers = axios.get(baseUrl + "/suppliers");
+                const getCategories = axios.get(baseUrl + "/products/categories", headers);
+                const getGoldTypes = axios.get(baseUrl + "/products/gold-types", headers);
+                const getSuppliers = axios.get(baseUrl + "/suppliers", headers);
 
                 await axios.all([getCategories, getGoldTypes, getSuppliers])
                     .then(axios.spread((categories, goldTypes, suppliers) => {

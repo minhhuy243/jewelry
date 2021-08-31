@@ -26,6 +26,7 @@
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" th:href="@{/admin/css/theme.min.css?v=1.0}">
+    <link rel="stylesheet" th:href="@{/admin/css/toggle-switch.css}">
 </head>
 
 <body class="footer-offset">
@@ -71,11 +72,11 @@
 <script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
 <script th:src="@{/admin/js/theme.min.js}"></script>
 
+
 <th:block layout:fragment="script"></th:block>
 
 <!-- JS Plugins Init. -->
 <script>
-
     const baseUrl = "http://localhost:8089/api/admin";
     const pathArray = window.location.pathname.split('/');
     const urlParams = new URLSearchParams(window.location.search);
