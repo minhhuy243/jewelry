@@ -134,13 +134,6 @@
                             gender = "Không xác định";
                         }
 
-                        var active;
-                        if (obj[i]["active"] === true) {
-                            active = "Kích hoạt";
-                        } else {
-                            active = "Khóa";
-                        }
-
                         var activeBtn;
                         if (obj[i]["active"] === true) {
                             activeBtn = "<label class='switch'>" +
@@ -169,6 +162,23 @@
 
                     }
 
+                   <!-- Sorting all column -->
+                    $('th').click(function(){
+                        var table = $(this).parents('table').eq(0)
+                        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+                        this.asc = !this.asc
+                        if (!this.asc){rows = rows.reverse()}
+                        for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+                    })
+                    function comparer(index) {
+                        return function(a, b) {
+                            var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                            return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+                        }
+                    }
+                    function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+
+                    <!-- Active / Deactive account -->
                     $(".switch").change(function() {
                         var $row = $(this).closest("tr");
                         var $text = $row.find(".customer-id").text();
