@@ -190,13 +190,26 @@
 
             </div>
         </div>
-        <!-- Jewelry    End -->
+        <!-- Jewelry End -->
+
+    </section>
+
+    <th:block layout:fragment="script">
 
         <script th:src="@{/client/js/product/product.js}"></script>
-        <script>
 
-            document.addEventListener('DOMContentLoaded', async () => {
-                await axios.get(baseUrl + "/products", {
+        <script>
+            $(document).ready(async () => {
+                const categorySlug = pathArray.slice(-1);
+                let url;
+                if(categorySlug.toString() === 'trang-suc') {
+                    url = '/products';
+                } else {
+                    url = `/products/categories/${categorySlug}`;
+                }
+
+                // Get products
+                await axios.get(baseUrl + url, {
                     params: {
                         page: urlParams.get('page')
                     }
@@ -209,12 +222,11 @@
                     let pagination = renderPagination(res.data.content.totalPages, res.data.content.currentPage);
                     $('#pagination').html(pagination);
                 });
-            });
 
+            });
         </script>
 
-
-    </section>
+    </th:block>
 
 </body>
 </html>

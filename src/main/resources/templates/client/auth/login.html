@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/client/layout.html}">
 <head>
-    <title>Đăng nhập</title>
+    <title>Đăng Nhập</title>
 </head>
 <body>
 
@@ -71,5 +71,19 @@
         <script th:src="@{/client/js/auth/login.js}"></script>
 
     </section>
+
+    <th:block layout:fragment="script">
+
+        <script>
+            $(document).ready(() => {
+                const accessToken = localStorage.getItem('access_token');
+                if(accessToken) {
+                    window.location = '/';
+                }
+            });
+        </script>
+
+    </th:block>
+
 </body>
 </html>

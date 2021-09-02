@@ -476,10 +476,13 @@
     prevArrow: '<i class="fas fa-arrow-left product-detail-arrow prev-arrow slick-arrow slick-prev"></i>',
     nextArrow: '<i class="fas fa-arrow-right product-detail-arrow next-arrow slick-arrow slick-next"></i>',
     dots: false,
+    focusOnSelect: true,
+    centerMode: true,
+    centerPadding: '40px',
     responsive: [{
-      breakpoint: 567,
+      breakpoint: 789,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 2
       }
     }]
   });
@@ -640,7 +643,7 @@
    Add / Subtract Quantity Js
    -------------------------------------------------------------------------------*/
 
-  $(".qty-box span").on('click', function() {
+  $("body").on("click", ".qty-box span", function() {
     var qty = $(this).closest('.qty-box').find('input');
     var qtyVal = parseInt(qty.val());
     if ($(this).hasClass('qty-add')) {
@@ -649,6 +652,16 @@
       return qtyVal > 1 ? qty.val(qtyVal - 1) : 0;
     }
   })
+
+  // $(".qty-box span").on('click', function() {
+  //   var qty = $(this).closest('.qty-box').find('input');
+  //   var qtyVal = parseInt(qty.val());
+  //   if ($(this).hasClass('qty-add')) {
+  //     qty.val(qtyVal + 1);
+  //   } else {
+  //     return qtyVal > 1 ? qty.val(qtyVal - 1) : 0;
+  //   }
+  // })
 
   /*-------------------------------------------------------------------------------
     Counter

@@ -9,14 +9,15 @@ function renderProduct(product) {
                 </a>
                 <div class="product-badges">
                     <span class="product-badge featured"> <i class="fas fa-star"></i> </span>
+                    ${product.inStock === true ? "" : "<span class=\"product-badge stock\">Hết Hàng</span>"}
                 </div>
                 <div class="product-controls">
                     <a href="#" data-toggle="modal" data-target="#quickViewModal" class="quick-view"><i class="fas fa-eye"></i></a>
                     <a href="#" class="favorite"><i class="far fa-heart"></i></a>               
                 </div>
-                <div class="product-cart">
-                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Thêm vào giỏ hàng</a>
-                </div>
+<!--                <div class="product-cart">-->
+<!--                    <a href="product-details-v1.html" class="btn-custom btn-sm secondary">Thêm vào giỏ hàng</a>-->
+<!--                </div>-->
             </div>
             <div class="product-body">
                 <h5 class="product-title"> 
@@ -30,6 +31,7 @@ function renderProduct(product) {
             </div>
         </div>
     </div>`;
+
 }
 
 function isCurrentPage(page, currentPage) {

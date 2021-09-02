@@ -32,50 +32,18 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="checkout-table">
-                            <table>
+                            <table id="cart">
                                 <thead>
                                     <tr>
                                         <th></th>
                                         <th>Sản phẩm</th>
                                         <th>Giá</th>
                                         <th>Số lượng</th>
-                                        <th>Tổng</th>
+                                        <th>Tạm tính</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="remove">
-                                            <div class="product-remove">
-                                                <a href="#" class="close-btn close-dark">
-                                                    <span></span>
-                                                    <span></span>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td data-title="product">
-                                            <div class="product-box">
-                                                <img src="assets/img/cart/cart1.jpg" alt="product">
-                                                <div class="product-name">
-                                                    <h6>
-                                                        <a href="#">Square Scacco Diamond Ring </a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td data-title="Price">
-                                            <strong>50.87$</strong>
-                                        </td>
-                                        <td data-title="Quantity">
-                                            <div class="qty-box d-flex">
-                                                <span class="qty-subtract"><i class="fa fa-minus"></i></span>
-                                                <input type="text" name="qty" value="1">
-                                                <span class="qty-add"><i class="fa fa-plus"></i></span>
-                                            </div>
-                                        </td>
-                                        <td data-title="Total">
-                                            <strong>132.00$</strong>
-                                        </td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -94,26 +62,26 @@
                             <div class="col-7">
                                 <div class="coupen-code-wrapper">
                                     <h4>Tổng tiền</h4>
-                                    <table>
+                                    <table id="total">
                                         <tbody>
-                                        <tr>
-                                            <th>Tạm tính</th>
-                                            <td>89.00$</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Giảm giá</th>
-                                            <td>20.00$</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Phí giao hàng</th>
-                                            <td>5.00$</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tổng</th>
-                                            <td>
-                                                <strong>999.00$</strong>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <th>Tạm tính</th>
+                                                <td style="font-family: Roboto"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Giảm giá</th>
+                                                <td style="font-family: Roboto">0.0đ</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phí giao hàng</th>
+                                                <td>Miễn phí</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tổng</th>
+                                                <td>
+                                                    <strong style="font-family: Roboto"></strong>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                         <a th:href="@{/checkout}" class="btn-custom primary btn-block">Thanh Toán</a>
@@ -128,6 +96,124 @@
         <!-- Checkout End -->
 
     </section>
+
+    <th:block layout:fragment="script">
+
+        <script th:src="@{/client/js/shopping/cart.js}"></script>
+
+        <script>
+            function renderCartTable(cart) {
+                const cartTable = $('#total tbody tr');
+                let itemsHtml = cart.items.map((item) => {
+                    return renderCartItems(item);
+                }).join(' ');
+                $('#cart tbody').html(itemsHtml);
+
+                cartTable.first().find('td').text((cart.total * 1000).toLocaleString("it-IT")+'đ');
+                cartTable.last().find('td strong').text((cart.total * 1000).toLocaleString("it-IT")+'đ');
+            }
+
+            $(document).ready(async () => {
+                const accessToken = localStorage.getItem('access_token');
+                if(accessToken) {
+                    const cart = JSON.parse(localStorage.getItem('cart'));
+                    if(cart) {
+                        await renderCartTable(cart);
+                    }
+                } else {
+                    window.location = '/login';
+                }
+            });
+
+        </script>
+
+        <script>
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast'
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            });
+
+
+            async function getApiUpdateItemInCart(sku, quantity, inputQuantity) {
+                const formData = new FormData();
+                formData.append('quantity', quantity)
+                await axios.put(baseUrl + `/carts/mine/items/${sku}`, formData, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                }).then((res) => {
+                    if(res.status === 202) {
+                        inputQuantity.val(oldQuantity);
+                        Toast.fire({title: res.data.message[0], icon: 'error'});
+                    } else {
+                        renderCartTable(res.data.content);
+                        renderCartDropdown(res.data.content);
+                    }
+                }).catch((error) => {
+                    if(error.status === 500) {
+                        Toast.fire({title: error.response.data.message[0], icon: 'error'});
+                        inputQuantity.val(oldQuantity);
+                    } else if(error.status === 401) {
+                        window.location = '/login';
+                    }
+                });
+            }
+
+            async function getApiDeleteItemInCart(sku) {
+                await axios.delete(baseUrl + `/carts/mine/items/${sku}`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                }).then((res) => {
+                    Toast.fire({title: 'Xóa sản phẩm thành công!', icon: 'success'});
+                    renderCartTable(res.data.content);
+                    renderCartDropdown(res.data.content);
+                }).catch((error) => {
+                    if(error.status === 500) {
+                        Toast.fire({title: error.response.data.message[0], icon: 'error'});
+                        inputQuantity.val(oldQuantity);
+                    } else if(error.status === 401) {
+                        window.location = '/login';
+                    }
+                });
+            }
+
+            var inputQuantity;
+            var oldQuantity;
+            $("body")
+                .on("mousedown", ".qty-box span", function() {
+                    inputQuantity = $(this).closest('.qty-box').find('input');
+                    oldQuantity = inputQuantity.val();
+                })
+                .on("click", ".qty-box span", async function() {
+                    const sku = inputQuantity.data('sku');
+                    const quantity = parseInt(inputQuantity.val());
+                    await getApiUpdateItemInCart(sku, quantity, inputQuantity);
+                })
+                .on("focusin", ".qty-box input", function() {
+                    oldQuantity = $(this).val();
+                })
+                .on("blur", ".qty-box input", async function() {
+                    const sku = $(this).data('sku');
+                    const quantity = parseInt($(this).val());
+                    await getApiUpdateItemInCart(sku, quantity, $(this));
+                })
+                .on("click", ".product-remove a", async function() {
+                    const sku = $(this).data('sku');
+                    await getApiDeleteItemInCart(sku);
+                })
+
+        </script>
+
+    </th:block>
 
 </body>
 </html>

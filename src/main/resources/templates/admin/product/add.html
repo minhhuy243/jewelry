@@ -76,8 +76,8 @@
                                         }'>
                                                     <option value="lb">lb</option>
                                                     <option value="oz">oz</option>
-                                                    <option value="kg" selected="">kg</option>
-                                                    <option value="g">g</option>
+                                                    <option value="kg">kg</option>
+                                                    <option value="g" selected>g</option>
                                                 </select>
                                             </div>
                                             <!-- End Select -->
@@ -91,7 +91,7 @@
                             <div class="col-sm-3">
                                 <label for="quantity" class="input-label">Số lượng</label>
                                 <div style="width: 100%;" class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" id="quantity" class="js-result form-control input-group-quantity-counter-control" value="0">
+                                    <input type="number" id="quantity" class="js-result form-control input-group-quantity-counter-control" value="1">
 
                                     <div class="input-group-quantity-counter-toggle">
                                         <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
@@ -321,8 +321,8 @@
 
             $(async function () {
 
-                const getCategories = axios.get(baseUrl + "/products/categories");
-                const getGoldTypes = axios.get(baseUrl + "/products/gold-types");
+                const getCategories = axios.get(baseUrl + "/categories");
+                const getGoldTypes = axios.get(baseUrl + "/gold-types");
                 const getSuppliers = axios.get(baseUrl + "/suppliers");
 
                 await axios.all([getCategories, getGoldTypes, getSuppliers])

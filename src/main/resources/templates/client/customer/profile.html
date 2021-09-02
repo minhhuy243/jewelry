@@ -5,7 +5,7 @@
       layout:decorate="~{/client/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Thông Tin Tài Khoản</title>
 </head>
 <body>
 
@@ -101,7 +101,20 @@
         <script th:src="@{/client/js/customer/update.js}"></script>
         <script th:src="@{/client/js/customer/change-password.js}"></script>
 
-
     </section>
+
+    <th:block layout:fragment="script">
+
+        <script>
+            $(document).ready(() => {
+                const accessToken = localStorage.getItem('access_token');
+                if(!accessToken) {
+                    window.location = '/login';
+                }
+            });
+        </script>
+
+    </th:block>
+
 </body>
 </html>

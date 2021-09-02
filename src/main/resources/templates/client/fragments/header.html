@@ -35,7 +35,7 @@
                       <nav>
                           <ul class="main-navigation">
                               <li class="logo">
-                                  <a href="index.html">
+                                  <a href="/">
                                       <img th:src="@{/client/img/logo.png}" class="img-fluid" alt="logo">
                                   </a>
                               </li>
@@ -46,63 +46,28 @@
               <div class="col-lg-2 col-6">
                   <div class="header-controls">
                       <ul>
-                          <li class="dropdown-btn">
-                              <a href="#">
-                                  <i class="far fa-user"></i>
+                          <li id="authDropdown" class="dropdown-btn">
+                              <a href="javascript:void(0)">
+                                  <i style="padding-right: 5px;" class="far fa-user"></i>
                               </a>
                               <div id="userIcon" class="dropdown-menu cart-dropdown-menu" style="width: 200px;">
                                   <ul class="cart-items-box">
-                                      <li class="cart-item">
-                                          <div class="content" style="width: auto">
-                                              <a th:href="@{/login}" style="color: #222">Đăng nhập</a>
-                                          </div>
-                                      </li>
-                                      <li class="cart-item">
-                                          <div class="content" style="width: auto">
-                                              <a th:href="@{/register}" style="color: #222">Đăng ký</a>
-                                          </div>
-                                      </li>
+
                                   </ul>
                               </div>
                           </li>
+
                           <li class="dropdown-btn">
                               <a href="#">
                                   <i class="far fa-shopping-cart"></i>
                               </a>
-                              <div class="dropdown-menu cart-dropdown-menu">
-                                  <ul class="cart-items-box">
-                                      <li class="cart-item">
-                                          <div class="img">
-                                              <img th:src="@{/client/img/cart/cart5.jpg}" alt="img">
-                                          </div>
-                                          <div class="content">
-                                              <h5><a href="#">Diamond Criss Cross Ring</a></h5>
-                                              <p>2x 150$</p>
-                                          </div>
-                                      </li>
-                                      <li class="cart-item">
-                                          <div class="img">
-                                              <img th:src="@{/client/img/cart/cart6.jpg}" alt="img">
-                                          </div>
-                                          <div class="content">
-                                              <h5><a href="#"> Scacco Diamond Ring</a></h5>
-                                              <p>2x 150$</p>
-                                          </div>
-                                      </li>
-                                      <li class="cart-item">
-                                          <div class="img">
-                                              <img th:src="@{/client/img/cart/cart7.jpg}" alt="img">
-                                          </div>
-                                          <div class="content">
-                                              <h5><a href="#">Square Scacco Diamond Ring</a></h5>
-                                              <p>2x 150$</p>
-                                          </div>
-                                      </li>
+                              <div id="cartDropdown" class="dropdown-menu cart-dropdown-menu">
+                                  <ul id="items" class="cart-items-box">
                                   </ul>
                                   <div class="cart-items-box">
-                                      <div class="cart-item">
+                                      <div id="total" class="cart-item">
                                           <span>Tạm tính</span>
-                                          <span>3,200$</span>
+                                          <span style="font-family: Roboto"></span>
                                       </div>
                                       <div class="cart-item actions">
                                           <a th:href="@{/cart}" class="btn-custom btn-sm">Giỏ Hàng</a>
@@ -111,6 +76,7 @@
                                   </div>
                               </div>
                           </li>
+
                           <li class="aside-toggler aside-trigger">
                               <span></span>
                               <span></span>
@@ -128,25 +94,7 @@
       <div class="container">
           <div class="bottom-navigation">
               <nav>
-                  <ul class="main-navigation">
-                      <li class="menu-item">
-                          <a href="shop-list-v1.html">Rings</a>
-                      </li>
-                      <li class="menu-item">
-                          <a href="shop-list-v1.html">Necklaces </a>
-                      </li>
-                      <li class="menu-item">
-                          <a href="shop-list-v1.html">Earrings</a>
-                      </li>
-                      <li class="menu-item">
-                          <a href="shop-list-v2.html">Bracelets</a>
-                      </li>
-                      <li class="menu-item">
-                          <a href="shop-list-v2.html">Charms</a>
-                      </li>
-                      <li class="menu-item">
-                          <a href="shop-list-v2.html">Wedding Bands</a>
-                      </li>
+                  <ul id="category" class="main-navigation">
                   </ul>
               </nav>
           </div>

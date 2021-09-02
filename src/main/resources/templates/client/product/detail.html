@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/client/layout.html}">
 <head>
-  <title>Chi tiết</title>
+  <title></title>
 <body>
 
     <section layout:fragment="content">
@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="row">
                     <!-- Images -->
-                    <div class="col-lg-5 col-md-4 mr-5">
+                    <div class="col-lg-6 col-md-5">
 
                         <div class="detail-page-slider-for"></div>
 
@@ -22,7 +22,7 @@
                     </div>
                     <!-- End Images -->
 
-                    <div class="col-lg-6 col-md-7">
+                    <div class="col-lg-5 col-md-7 ml-5">
                         <div class="shop-detail-wrapper">
 
                             <div class="shop-social-icons">
@@ -68,12 +68,12 @@
                                     <div class="qty-box">
                                         <span class="qty-subtract"><i class="fa fa-minus"></i></span>
 
-                                        <input type="text" name="qty" value="1">
+                                        <input type="text" id="quantity" name="qty" value="1">
 
                                         <span class="qty-add"><i class="fa fa-plus"></i></span>
                                     </div>
 
-                                    <a href="#" class="btn-custom primary">Thêm Vào Giỏ Hàng</a>
+<!--                                    <a href="javascript:void(0)" class="btn-custom primary">Thêm Vào Giỏ Hàng</a>-->
                                 </div>
                             </div>
 
@@ -86,7 +86,7 @@
                                 <li>
                                     <span>Loại: </span>
                                     <div id="category" class="product-info-item">
-                                        <a href="#">Square Scacco Diamond Ring </a>
+                                        <a href="#"></a>
                                     </div>
                                 </li>
                                 <li>
@@ -374,17 +374,66 @@
         <script th:src="@{/client/js/product/details.js}"></script>
 
         <script>
-
             $(async function () {
                 await axios.get(baseUrl + "/products/" + pathArray.slice(-1))
                     .then((res) => {
                         renderProductDetails(res.data.content);
                     })
                     .catch((error) => {
-
+                        if(error.response.status === 400 || error.response.status === 500) {
+                            window.location = '/trang-suc';
+                        }
                     });
             });
+        </script>
 
+        <script>
+            $('body').on('click', '.product-variation-form .btn-custom.primary', async () => {
+                if(localStorage.getItem('access_token')) {
+                    const item = {productSku: $('#sku').text(), quantity: $('#quantity').val()};
+                    await axios.put(baseUrl + '/carts/mine/items', item, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('access_token')}`
+                        }
+                    }).then((res) => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast'
+                            },
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true
+                        });
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Thêm vào giỏ hàng thành công'
+                        });
+
+                        renderCartDropdown(res.data.content);
+                    }).catch((error) => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast'
+                            },
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true
+                        });
+                        Toast.fire({
+                            icon: 'error',
+                            title: error.response.data.errors[0].defaultMessage
+                        });
+                    });
+                } else {
+                    window.location = '/login';
+                }
+            });
         </script>
 
     </th:block>

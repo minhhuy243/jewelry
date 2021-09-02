@@ -280,7 +280,29 @@
   <footer th:replace="client/fragments/footer::footer">
   </footer>
 
+  <style>
+    .colored-toast.swal2-icon-success {
+      background-color: #a5dc86 !important;
+    }
 
+    .colored-toast.swal2-icon-error {
+      background-color: #f27474 !important;
+    }
+
+    .colored-toast .swal2-title {
+      color: white;
+    }
+
+    .colored-toast .swal2-close {
+      color: white;
+    }
+
+    .colored-toast .swal2-content {
+      color: white;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Vendor Scripts -->
   <script th:src="@{/client/js/plugins/jquery-3.4.1.min.js}"></script>
   <script th:src="@{/client/js/plugins/popper.min.js}"></script>
@@ -296,8 +318,6 @@
   <!-- Mini Scripts -->
   <script th:src="@{/client/js/main.js}"></script>
 
-  <th:block layout:fragment="script"></th:block>
-
   <script>
 
     const baseUrl = "http://localhost:8089/api";
@@ -305,5 +325,107 @@
     const urlParams = new URLSearchParams(window.location.search);
 
   </script>
+
+  <script>
+
+    function renderCartDropdown(cart) {
+      let items = cart.items.map((item) => {
+        return `<li class="cart-item">
+          <div class="img">
+            <a href="/${item.product.categorySlug + '/' + item.product.slug}">
+                <img src="https://drive.google.com/uc?export=view&id=${item.product.avatar}"
+                alt="${item.product.name + ' ' + item.product.sku}">
+            </a>
+          </div>
+          <div class="content">
+              <h5>
+                <a href="/${item.product.categorySlug + '/' + item.product.slug}">
+                    ${item.product.name + ' ' + item.product.sku}
+                </a>
+              </h5>
+              <p style="font-family: Roboto">${item.quantity} x
+                ${(item.product.price * 1000).toLocaleString("it-IT")}đ
+              </p>
+          </div>
+        </li>`;
+      }).join(' ');
+
+      $('#cartDropdown #items').html(items);
+      $('#cartDropdown #total span').last().text(`${(cart.total * 1000).toLocaleString("it-IT")}đ`);
+    }
+
+    function renderAuthDropdown() {
+      let menuDropdown = null;
+      const accessToken = localStorage.getItem('access_token');
+      if(accessToken) {
+        const payload = accessToken.split('.')[1];
+        const fullName = JSON.parse(decodeURIComponent(escape(window.atob(payload)))).fullName;
+        $('#authDropdown a').first().append(fullName);
+        menuDropdown = [
+          {href: '/customer/me', text: 'Thông Tin Tài Khoản'},
+          {href: '/customer/me', text: 'Đơn Hàng'},
+          {href: '/customer/me', text: 'Đăng Xuất'}
+        ];
+      } else {
+        $('#authDropdown a').first().append('');
+        menuDropdown = [
+          {href: '/login', text: 'Đăng Nhập'},
+          {href: '/register', text: 'Đăng Ký'}
+        ];
+      }
+
+      const html = menuDropdown.map((i) => {
+        return `<li class="cart-item">
+                    <div class="content" style="width: auto">
+                        <a href="${i.href}" style="color: #222">${i.text}</a>
+                    </div>
+                  </li>`;
+      }).join(' ');
+
+      $('#authDropdown .cart-items-box').html(html);
+    }
+
+    function renderCategory(categories) {
+      let categoryHtml = `<li class="menu-item"><a href="/trang-suc">Toàn Bộ</a></li>`;
+      categoryHtml += categories.map((category) => {
+        return `<li class="menu-item">
+                    <a href="/${category.slug}">${category.name}</a>
+                </li>`;
+      }).join(' ');
+
+      $('#category').html(categoryHtml);
+    }
+
+    async function getCartDetailsApi() {
+      const accessToken = localStorage.getItem('access_token');
+      if(accessToken) {
+        await axios.get(baseUrl + '/carts/mine', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        }).then((res) => {
+          localStorage.setItem('cart', res.data.content);
+          renderCartDropdown(res.data.content);
+        }).catch((error) => {
+          //localStorage.clear();
+        })
+      }
+    }
+
+    async function getCategoriesApi() {
+      await axios.get(baseUrl + '/categories').then((res) => {
+        renderCategory(res.data.content);
+      });
+    }
+
+    $(document).ready(async () => {
+      await getCartDetailsApi();
+      await getCategoriesApi();
+      renderAuthDropdown();
+    });
+
+  </script>
+
+  <th:block layout:fragment="script"></th:block>
 
 </body>
