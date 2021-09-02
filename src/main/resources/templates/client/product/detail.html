@@ -411,7 +411,7 @@
                             icon: 'success',
                             title: 'Thêm vào giỏ hàng thành công'
                         });
-
+                        localStorage.setItem('cart', JSON.stringify(res.data.content));
                         renderCartDropdown(res.data.content);
                     }).catch((error) => {
                         const Toast = Swal.mixin({

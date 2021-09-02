@@ -404,7 +404,7 @@
             Authorization: `Bearer ${accessToken}`
           }
         }).then((res) => {
-          localStorage.setItem('cart', res.data.content);
+          localStorage.setItem('cart', JSON.stringify(res.data.content));
           renderCartDropdown(res.data.content);
         }).catch((error) => {
           //localStorage.clear();
