@@ -35,7 +35,8 @@ function adminLogin(e) {
      * Call API after validation form success
      * */
     if (errorLoginAdminEmail.innerHTML === "" && errorLoginAdminPassword.innerHTML === "") {
-        axios.post("http://localhost:8089/api/auth/login", {
+        const url = "http://localhost:8089/api/auth/login";
+        axios.post(url, {
             deviceInfoDto: {
                 deviceId: "string",
                 deviceType: "string"
@@ -49,9 +50,9 @@ function adminLogin(e) {
                 window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
 
                 const token = window.localStorage.getItem('access_token');
-                const api = "http://localhost:8089/api/customer/me";
+                const url = "http://localhost:8089/api/customer/me";
 
-                axios.get(api, {headers: {"Authorization": `Bearer ${token}`}})
+                axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
                     .then((res) => {
                         var iterator = res.data.content.roles;
 

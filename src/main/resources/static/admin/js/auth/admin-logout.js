@@ -1,5 +1,3 @@
-// document.getElementById("adminLogout").addEventListener('click', adminLogout);
-
 function adminLogout() {
     if (confirm('Bạn có muốn đăng xuất ?')) {
         var accessToken = window.localStorage.getItem('access_token');

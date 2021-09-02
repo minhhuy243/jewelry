@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/admin/layout.html}">
+<head>
+    <title>Danh Sách Khách Hàng</title>
+</head>
+<body>
+<div layout:fragment="content" class="content container-fluid">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script th:src="@{/admin/js/auth/check-role.js}"></script>
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-sm mb-2 mb-sm-0">
+                <h1 class="page-header-title">Danh sách khách hàng <span class="badge badge-soft-dark ml-2"></span></h1>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+            <div class="row justify-content-between align-items-center flex-grow-1">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <form>
+                        <!-- Search -->
+                        <div class="input-group input-group-merge input-group-flush">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tio-search"></i>
+                                </div>
+                            </div>
+                            <input id="inputSearch" type="search" class="form-control"
+                                   onkeyup="search()"
+                                   placeholder="Tìm kiếm"
+                                   aria-label="Tìm kiếm">
+                        </div>
+                        <!-- End Search -->
+                    </form>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Header -->
+
+        <!-- Table -->
+        <div class="table-responsive datatable-custom">
+            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table"
+                   data-hs-datatables-options='{
+                     "columnDefs": [{
+                        "targets": [0, 1, 8],
+                        "orderable": false
+                      }],
+                     "order": [],
+                     "info": {
+                       "totalQty": "#totalQty"
+                     },
+                     "search": "#search",
+                     "entries": "#entries",
+                     "isResponsive": false,
+                     "isShowPaging": false,
+                     "pagination": "pagination"
+                   }'>
+                <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Giới tính</th>
+                    <th>Sinh nhật</th>
+                    <th>Địa chỉ</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày tạo</th>
+                    <th>Cập nhật lần cuối</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- End Table -->
+
+        <!-- Footer -->
+        <div class="card-footer">
+            <!-- Pagination -->
+            <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+                <div class="col-sm mb-2 mb-sm-0">
+                </div>
+
+                <div class="col-sm-auto">
+                    <div class="d-flex justify-content-center justify-content-sm-end">
+                        <!-- Pagination -->
+                        <nav id="pagination" aria-label="Activity pagination"></nav>
+                    </div>
+                </div>
+            </div>
+            <!-- End Pagination -->
+        </div>
+        <!-- End Footer -->
+    </div>
+
+</div>
+<th:block layout:fragment="script">
+
+    <script>
+        $(document).ready(function () {
+            const token = localStorage.getItem("access_token");
+            const url = baseUrl + "/customer";
+            var settings = {
+                "url": url,
+                "method": "GET",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Bearer " + token
+                },
+            };
+
+            $.ajax(settings).done(function (response) {
+                $.getJSON(settings, function (data) {
+                    var obj = data['content'];
+
+                    for (var i = 0; i < obj.length; i++) {
+                        var gender;
+                        if(obj[i]["gender"] === "MALE") {
+                            gender = "Nam";
+                        } else if (obj[i]["gender"] === "FEMALE") {
+                            gender = "Nữ";
+                        } else {
+                            gender = "Không xác định";
+                        }
+
+                        var activeBtn;
+                        if (obj[i]["active"] === true) {
+                            activeBtn = "<label class='switch'>" +
+                                "<input type='checkbox' checked>" +
+                                "<span class='slider round'></span>" +
+                                "</label>";
+                        } else {
+                            activeBtn = "<label class='switch'>" +
+                                "<input type='checkbox'>" +
+                                "<span class='slider round'></span>" +
+                                "</label>";
+                        }
+
+                        var tr = "<tr>" +
+                            "<td class='customer-id'>" + obj[i]["id"] + "</td>" +
+                            "<td>" + obj[i]["fullName"] + "</td>" +
+                            "<td>" + obj[i]["email"] + "</td>" +
+                            "<td>" + obj[i]["phoneNumber"] + "</td>" +
+                            "<td>" + gender + "</td>" +
+                            "<td>" + obj[i]["birthday"] + "</td>" +
+                            "<td>" + obj[i]["address"] + "</td>" +
+                            "<td>" + activeBtn+ "</td>" +
+                            "<td>" + obj[i]["createdAt"] + "</td>" +
+                            "<td>" + obj[i]["updatedAt"] + "</td></tr>";
+                        $("#datatable").append(tr);
+
+                    }
+
+                   <!-- Sorting all column -->
+                    $('th').click(function(){
+                        var table = $(this).parents('table').eq(0)
+                        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+                        this.asc = !this.asc
+                        if (!this.asc){rows = rows.reverse()}
+                        for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+                    })
+                    function comparer(index) {
+                        return function(a, b) {
+                            var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                            return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+                        }
+                    }
+                    function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+
+                    <!-- Active / Deactive account -->
+                    $(".switch").change(function() {
+                        var $row = $(this).closest("tr");
+                        var $text = $row.find(".customer-id").text();
+
+                        if($("input", $row).is(":checked")){
+                            Swal.fire({
+                                title: 'Bạn có muốn lưu thay đổi?',
+                                showDenyButton: true,
+                                confirmButtonText: `Lưu`,
+                                denyButtonText: `Không`,
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    activate();
+                                } else if (result.isDenied) {
+                                   reload();
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Bạn có muốn lưu thay đổi?',
+                                showDenyButton: true,
+                                confirmButtonText: `Lưu`,
+                                denyButtonText: `Không`,
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    deactivate();
+                                } else if (result.isDenied) {
+                                   reload();
+                                }
+                            });
+
+                        }
+
+                        function activate () {
+                            const url = baseUrl + "/customer/activate/" + $text;
+                            const settings = {
+                                "url": url,
+                                "method": "PUT",
+                                "headers": {
+                                    "Authorization": "Bearer " + token
+                                }
+                            };
+                            $.ajax(settings).done(function (response) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Lưu thành công',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(reload, 2000);
+                            });
+                        }
+
+                        function deactivate () {
+                            const url = baseUrl + "/customer/deactivate/" + $text;
+                            const settings = {
+                                "url": url,
+                                "method": "PUT",
+                                "headers": {
+                                    "Authorization": "Bearer " + token
+                                }
+                            };
+                            $.ajax(settings).done(function (response) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Lưu thành công',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(reload, 2000);
+                            });
+                        }
+
+                        function reload () {
+                            window.location = "/admin/customers";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function search() {
+            var input = document.getElementById("inputSearch");
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById("datatable");
+            var trs = table.tBodies[0].getElementsByTagName("tr");
+
+            for (var i = 0; i < trs.length; i++) {
+                var tds = trs[i].getElementsByTagName("td");
+                trs[i].style.display = "none";
+                for (var i2 = 0; i2 < tds.length; i2++) {
+                    if (tds[i2].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        trs[i].style.display = "";
+
+                        continue;
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</th:block>
+
+</body>
+</html>

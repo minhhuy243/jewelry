@@ -320,6 +320,8 @@
         <script>
 
             $(async function () {
+                const token = localStorage.getItem("access_token");
+                const headers = {headers: {"Authorization": `Bearer ${token}`}};
 
                 const getCategories = axios.get(baseUrl + "/categories");
                 const getGoldTypes = axios.get(baseUrl + "/gold-types");

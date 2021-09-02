@@ -140,6 +140,7 @@
         <script>
 
             $(async function() {
+                const token = localStorage.getItem("access_token");
 
                 var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
                     language: {
@@ -152,6 +153,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
+                        headers: {"Authorization": "Bearer " + token},
                         type: 'GET',
                         url: baseUrl + '/products',
                         contentType: 'application/json',

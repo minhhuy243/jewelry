@@ -46,12 +46,9 @@ function login(e) {
             .then(function (response) {
                 window.localStorage.setItem('access_token', response.data.content.accessToken);
                 window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
-
-                console.log(response);
                 window.location = "/customer/me";
             })
             .catch(function (error) {
-                console.log(error.response);
                 if (error.response.status === 404) {
                     loginEmail.style.border = "solid 1px red";
                     errorLoginEmail.innerHTML = "Email không tồn tại !";
@@ -59,6 +56,10 @@ function login(e) {
                 if (error.response.status === 400) {
                     loginPassword.style.border = "solid 1px red";
                     errorLoginPassword.innerHTML = "Mật khẩu không chính xác !";
+                }
+                if (error.response.status === 401) {
+                    alert("Tài khoản đã bị khóa!")
+                    window.location = "/login"
                 }
             });
     } else {
