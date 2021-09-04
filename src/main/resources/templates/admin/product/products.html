@@ -161,7 +161,6 @@
                         async: false,
                         cache: true,
                         data: function(data) {
-                            console.log(data);
                             const params = {};
                             params.page = data.start / 10 + 1;
                             if(data.search.value !== '') {
@@ -183,7 +182,11 @@
                         }
                     },
                     columns: [
-                        { data: 'id' },
+                        {
+                            render: function (data, type, full, meta) {
+                                return meta.row + 1;
+                            }
+                        },
                         {
                             data: 'name',
                             render: (data, type, row, meta) => {
@@ -237,7 +240,7 @@
 
                 $('.page-header-title > span').text($('#totalQty').text());
 
-                $('#datatableSearch').on('keyup', function (e) {
+                $('#search').on('keyup', function (e) {
                     const input = $(this).val();
                     if(input.length <= 1) {
                         datatable.ajax.url(baseUrl + '/products');

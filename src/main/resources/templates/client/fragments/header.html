@@ -13,9 +13,9 @@
           <div class="row align-items-center" style="height: 100%;">
               <div class="col-lg-2 col-6">
                   <div class="searchbar">
-                      <form action="#" method="POST">
+                      <form action="/search" method="GET">
                           <div class="input-group" style="width: 300px;">
-                              <input type="text" name="#" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                              <input type="text" name="q" id="searchInput" class="form-control" placeholder="Tìm kiếm sản phẩm">
                               <div class="input-group-append">
                                   <button type="submit">
                                       <i class="far fa-search"></i>
@@ -94,7 +94,7 @@
       <div class="container">
           <div class="bottom-navigation">
               <nav>
-                  <ul id="category" class="main-navigation">
+                  <ul id="categoryNav" class="main-navigation">
                   </ul>
               </nav>
           </div>
