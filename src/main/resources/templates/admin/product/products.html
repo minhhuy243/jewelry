@@ -74,6 +74,7 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
+                        <th>ID</th>
                         <th>Sản phẩm</th>
                         <th>SKU</th>
                         <th>Loại</th>
@@ -136,7 +137,7 @@
     </div>
 
     <th:block layout:fragment="script">
-
+        <script th:src="@{/admin/js/product/edit.js}"></script>
         <script>
 
             $(async function() {
@@ -182,6 +183,7 @@
                         }
                     },
                     columns: [
+                        { data: 'id' },
                         {
                             data: 'name',
                             render: (data, type, row, meta) => {
@@ -221,10 +223,10 @@
                             data: 'sku',
                             render: (data) => {
                                 return `<div class="btn-group" role="group">
-                                            <a class="btn btn-sm btn-primary" href="ecommerce-product-details.html">
+                                            <a class="btn btn-sm btn-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-danger" href="ecommerce-product-details.html">
+                                            <a class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </div>`;
@@ -247,6 +249,9 @@
                     }
 
                 });
+
+                edit();
+                deleteProduct();
 
             });
 

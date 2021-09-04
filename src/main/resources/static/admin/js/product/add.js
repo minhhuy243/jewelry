@@ -52,9 +52,6 @@ function validation(dto, avatar) {
 
     const errors = [];
 
-    if(isBlank(dto.sku))
-        errors.push({field: 'sku', defaultMessage: 'SKU không được bỏ trống'});
-
     if(isBlank(dto.name))
         errors.push({field: 'name', defaultMessage: 'Tên sản phẩm không được bỏ trống'});
 
