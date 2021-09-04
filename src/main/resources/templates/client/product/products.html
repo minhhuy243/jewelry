@@ -204,6 +204,8 @@
                 let url;
                 if(categorySlug.toString() === 'trang-suc') {
                     url = '/products';
+                } else if(categorySlug.toString() === 'tim-kiem') {
+                    url = '/search';
                 } else {
                     url = `/products/categories/${categorySlug}`;
                 }

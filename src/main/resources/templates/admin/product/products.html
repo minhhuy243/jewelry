@@ -103,12 +103,12 @@
 
                             <!-- Select -->
                             <select id="entries" class="js-select2-custom" data-hs-select2-options='{
-                            "minimumResultsForSearch": "Infinity",
-                            "customClass": "custom-select custom-select-sm custom-select-borderless",
-                            "dropdownAutoWidth": true,
-                            "width": true
-                          }'>
-                                <option value="10" selected="">10</option>
+                                "minimumResultsForSearch": "Infinity",
+                                "customClass": "custom-select custom-select-sm custom-select-borderless",
+                                "dropdownAutoWidth": true,
+                                "width": true
+                              }'>
+                                <option value="10" selected>10</option>
                                 <option value="15">15</option>
                                 <option value="20">20</option>
                             </select>
@@ -149,7 +149,7 @@
                             '<p class="mb-0">Không có dữ liệu</p>' +
                             `</div>`
                     },
-                    pageLength: 8,
+                    pageLength: 10,
                     processing: true,
                     serverSide: true,
                     ajax: {
@@ -158,10 +158,11 @@
                         url: baseUrl + '/products',
                         contentType: 'application/json',
                         async: false,
-                        cache: false,
+                        cache: true,
                         data: function(data) {
+                            console.log(data);
                             const params = {};
-                            params.page = data.start;
+                            params.page = data.start / 10 + 1;
                             if(data.search.value !== '') {
                                 params.searchCriteria = {
                                     keys: ['name', 'sku'],
@@ -174,8 +175,8 @@
                         dataFilter: function(data) {
                             const object = JSON.parse(data);
                             return JSON.stringify({
-                                recordsTotal: object.content.totalElements,
-                                recordsFiltered: object.content.totalElements,
+                                recordsTotal: parseInt(object.content.totalElements),
+                                recordsFiltered: parseInt(object.content.totalElements),
                                 data: object.content.elements
                             });
                         }
