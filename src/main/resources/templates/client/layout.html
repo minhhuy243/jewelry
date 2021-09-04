@@ -326,6 +326,8 @@
 
   </script>
 
+  <th:block layout:fragment="script"></th:block>
+
   <script>
 
     function renderCartDropdown(cart) {
@@ -396,10 +398,16 @@
       $('#category').html(categoryHtml);
     }
 
-    async function getCartDetailsApi() {
+    async function getCategoriesApi() {
+      await axios.get(baseUrl + '/categories').then((res) => {
+        renderCategory(res.data.content);
+      });
+    }
+
+    async function checkAndUpdateItemInStock() {
       const accessToken = localStorage.getItem('access_token');
       if(accessToken) {
-        await axios.get(baseUrl + '/carts/mine', {
+        await axios.put(baseUrl + `/carts/mine`, null, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -407,25 +415,25 @@
           localStorage.setItem('cart', JSON.stringify(res.data.content));
           renderCartDropdown(res.data.content);
         }).catch((error) => {
-          //localStorage.clear();
+          if(error.response.status === 401) {
+            localStorage.clear();
+          }
+          const path = pathArray.slice(-1).toString();
+          if(path === 'cart' || path === 'checkout' || path === 'complete') {
+            window.location = '/login';
+          }
         })
       }
     }
 
-    async function getCategoriesApi() {
-      await axios.get(baseUrl + '/categories').then((res) => {
-        renderCategory(res.data.content);
-      });
-    }
-
     $(document).ready(async () => {
-      await getCartDetailsApi();
+      await checkAndUpdateItemInStock();
       await getCategoriesApi();
       renderAuthDropdown();
     });
 
   </script>
 
-  <th:block layout:fragment="script"></th:block>
+
 
 </body>

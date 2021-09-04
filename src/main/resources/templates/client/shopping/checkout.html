@@ -4,178 +4,185 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/client/layout.html}">
 <head>
-  <title>Thanh toán</title>
+    <title>Thanh toán</title>
 <body>
 
-  <section layout:fragment="content">
+    <section layout:fragment="content">
     <!-- Subheader Start -->
     <div class="subheader bg-cover bg-center dark-overlay" style="padding: 290px 0 30px;"
          th:style="'background-image: url(/client/img/subheader.jpg);'"
          th:styleappend="'padding: 290px 0 30px'">
-      <div class="container">
-        <div class="subheader-inner">
-          <h1 class="text-white">Thanh toán</h1>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#"> <i class="fas fa-home"></i> </a></li>
-              <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
-            </ol>
-          </nav>
-        </div>d
-      </div>
+        <div class="container">
+            <div class="subheader-inner">
+                <h1 class="text-white">Thanh toán</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"> <i class="fas fa-home"></i> </a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
     <!-- Subheader End -->
 
     <!-- Checkout Start -->
-    <div class="section checkout-sec">
-      <div class="container">
-        <form method="post">
-          <div class="row">
-            <div class="col-xl-7">
-              <div class="checkout-form">
-                <h4>Thông tin người mua</h4>
-                <div class="row">
-                  <div class="col-xl-12 form-group">
-                    <label>Họ tên
-                    </label>
-                    <input type="text" class="form-control" name="fname" value="">
-                  </div>
-                  <div class="col-xl-12 form-group">
-                    <label>Địa chỉ nhận hàng</label>
-                    <input type="text" class="form-control" name="cname" value="">
-                  </div>
-                  <div class="col-xl-6 form-group">
-                    <label>Số điện thoại
-                      <span class="text-danger">*</span>
-                    </label>
-<!--                    <input type="number" class="form-control" placeholder="Phone Number" name="phone" value="" required="">-->
-                    <span class="form-control">0847474747</span>
-                  </div>
-                  <div class="col-xl-6 form-group">
-                    <label>Email
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input type="email" class="form-control" name="email" value="" required="">
-                  </div>
-                  <div class="col-xl-12 mb-0 form-group">
-                    <label>Ghi chú</label>
-                    <textarea class="form-control" name="comment" rows="7"></textarea>
-                  </div>
-                </div>
+    <div class="section checkout-sec cart-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7">
+                    <div class="checkout-form">
+                        <h4>Thông Tin</h4>
+                        <div class="row">
+                            <div class="col-xl-12 form-group">
+                                <label>Họ tên<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="full-name" value="" required>
+                            </div>
+                            <div class="col-xl-12 form-group">
+                                <label>Địa chỉ nhận hàng<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="address" value="" required>
+                            </div>
+                            <div class="col-xl-6 form-group">
+                                <label>Số điện thoại<span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="phone-number" required>
+                            </div>
+                            <div class="col-xl-6 form-group">
+                                <label>Email<span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" value="" required>
+                            </div>
+                            <div class="col-xl-12 mb-0 form-group">
+                                <label>Ghi chú</label>
+                                <textarea class="form-control" id="content" rows="7"></textarea>
+                            </div>
+                        </div>
 
-                <h4 style="padding-top: 30px">Phương thức thanh toán</h4>
-                <div class="row">
-                  <div class="col-xl-12 form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cod">
-                      <label class="custom-control-label" for="cod">Thanh toán tiền mặt khi nhận hàng (COD)</label>
-                    </div>
-                  </div>
+                        <h4 style="padding-top: 30px">Phương thức thanh toán</h4>
+                        <div class="row">
+                            <div class="col-xl-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cod">
+                                    <label class="custom-control-label" for="cod">Thanh toán tiền mặt khi nhận hàng
+                                        (COD)</label>
+                                </div>
+                            </div>
 
-                  <div class="col-xl-12 form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="banking">
-                      <label class="custom-control-label" for="banking">Chuyển khoản ngân hàng</label>
+                            <div class="col-xl-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="banking">
+                                    <label class="custom-control-label" for="banking">Chuyển khoản ngân hàng</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                <div class="col-xl-5 space-top">
+                    <div class="checkout-table">
+                        <h4>Đơn Hàng</h4>
+                        <table id="order">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn Giá</th>
+                                    <th>Tạm Tính</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <button id="btnSubmit" class="btn-custom primary btn-block">Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-xl-5 space-top">
-              <div class="checkout-table">
-                <h4>Thông tin sản phẩm</h4>
-                <table>
-                  <thead>
-                  <tr>
-                    <th>Sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Tổng</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td data-title="product">
-                      <div class="product-name">
-                        <h6>
-                          <a href="#">Scacco Diamond Ring</a>
-                        </h6>
-                        <p>1 Piece</p>
-                      </div>
-                    </td>
-                    <td data-title="Quantity">x1</td>
-                    <td data-title="Total">
-                      <strong>32.00$</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-title="product">
-                      <div class="product-name">
-                        <h6>
-                          <a href="#">Scacco Diamond Ring</a>
-                        </h6>
-                        <p>1 Piece</p>
-                      </div>
-                    </td>
-                    <td data-title="Quantity">x1</td>
-                    <td data-title="Total">
-                      <strong>32.80$</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-title="product">
-                      <div class="product-name">
-                        <h6>
-                          <a href="#"> Scacco Diamond Ring</a>
-                        </h6>
-                        <p>1 Piece</p>
-                      </div>
-                    </td>
-                    <td data-title="Quantity">x1</td>
-                    <td data-title="Total">
-                      <strong>50.99$</strong>
-                    </td>
-                  </tr>
-                  <tr class="total">
-                    <td>
-                      <h6 class="mb-0">Thành tiền</h6>
-                    </td>
-                    <td></td>
-                    <td>
-                      <strong>115.79$</strong>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="row">
-                <div class="col-xl-12 form-group">
-                  <label>Full Name</label>
-                  <input type="text" class="form-control" placeholder="Full Name" name="full-name" value="">
-                </div>
-                <div class="col-xl-6 form-group">
-                  <label>Expiry Date</label>
-                  <input type="text" class="form-control" placeholder="Expiry Date (MM/YY)" name="exp-date" value="">
-                </div>
-                <div class="col-xl-6 form-group">
-                  <label>CVV*</label>
-                  <input type="number" class="form-control" placeholder="CVV" name="cvv-no" value="">
-                </div>
-                <div class="col-xl-12">
-                  <p class="small">
-                    Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our
-                    <a href="legal.html" class="btn-link">Privacy Policy</a>
-                  </p>
-                  <button type="submit" class="btn-custom primary btn-block">Thanh Toán</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
     <!-- Checkout End -->
 
-  </section>
+</section>
+
+    <th:block layout:fragment="script">
+
+        <script th:src="@{/client/js/shopping/checkout.js}"></script>
+
+        <script>
+
+            function renderOrderTable(cart) {
+                let itemsHtml = cart.items.map((item) => {
+                    return renderOrderItem(item);
+                }).join(' ');
+                itemsHtml += `
+                    <tr class="total">
+                        <td>
+                            <h6 class="mb-0">Thành tiền</h6>
+                        </td>
+                        <td></td>
+                        <td>
+                            <strong style="font-family: Roboto">${(cart.total * 1000).toLocaleString("it-IT")+'đ'}</strong>
+                        </td>
+                    </tr>`;
+                $('#order tbody').html(itemsHtml);
+            }
+
+            async function getUserInfoApi() {
+                await axios.get(baseUrl + '/customer/me', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access_token")}`
+                    }
+                })
+                .then((res) => {
+                    const user = res.data.content;
+                    $('#full-name').val(user.fullName);
+                    $('#address').val(user.address);
+                    $('#phone-number').val(user.phoneNumber);
+                    $('#email').val(user.email);
+                });
+            }
+
+            $(document).ready(async () => {
+                const accessToken = localStorage.getItem('access_token');
+                if(accessToken) {
+                    const cart = JSON.parse(localStorage.getItem('cart'));
+                    if(cart) {
+                        await getUserInfoApi();
+                        await renderOrderTable(cart);
+                    }
+                } else {
+                    window.location = '/login';
+                }
+            });
+
+
+            $('#btnSubmit').on('click', async function () {
+                const orderInfo = {
+                    fullName: $('#full-name').val(),
+                    address: $('#address').val(),
+                    phoneNumber: $('#phone-number').val(),
+                    email: $('#email').val(),
+                    content: $('#content').val()
+                };
+                await axios.post(baseUrl + `/orders/mine`, orderInfo, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access_token")}`
+                    }
+                }).then((res) => {
+                    localStorage.setItem('order', JSON.stringify(res.data.content))
+                    localStorage.removeItem('cart');
+                    window.location = '/checkout/complete';
+                })
+            });
+
+        </script>
+
+        <script>
+
+        </script>
+
+    </th:block>
 
 </body>
 </html>

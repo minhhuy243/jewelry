@@ -15,4 +15,9 @@ public class ShoppingController {
     public String checkoutPage() {
         return "client/shopping/checkout";
     }
+
+    @GetMapping("/checkout/complete")
+    public String checkoutCompletePage() {
+        return "client/shopping/checkout-complete";
+    }
 }

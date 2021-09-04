@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/client/layout.html}">
+<head>
+    <title>Đặt Hàng Thành Công</title>
+</head>
+<body>
+
+    <section layout:fragment="content">
+
+        <!-- Subheader Start -->
+        <div class="subheader bg-cover bg-center dark-overlay" style="padding: 290px 0 30px;"
+             th:style="'background-image: url(/client/img/subheader.jpg);'"
+             th:styleappend="'padding: 290px 0 30px'">
+            <div class="container">
+                <div class="subheader-inner">
+                    <h1 class="text-white">Đặt Hàng Thành Công</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Subheader End -->
+
+        <div class="section checkout-sec cart-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="order-complete-message text-center">
+                            <h3>Đơn đặt hàng của bạn đã được tiếp nhận!</h3>
+                        </div>
+
+                        <div id="orderInfo" class="row">
+
+                        </div>
+
+                        <div class="checkout-table">
+                            <h3>Chi tiết đơn hàng</h3>
+                            <table id="orderDetails">
+                                <thead>
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <th:block layout:fragment="script">
+
+        <script th:src="@{/client/js/shopping/checkout-complete.js}"></script>
+
+        <script>
+            $(document).ready(async () => {
+                const accessToken = localStorage.getItem('access_token');
+                if(accessToken) {
+                    await renderOrder();
+                } else {
+                    window.location = '/login';
+                }
+            });
+        </script>
+
+    </th:block>
+
+</body>
+</html>

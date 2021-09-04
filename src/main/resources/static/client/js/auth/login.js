@@ -46,7 +46,7 @@ function login(e) {
             .then(function (response) {
                 window.localStorage.setItem('access_token', response.data.content.accessToken);
                 window.localStorage.setItem('refresh_token', response.data.content.refreshToken);
-                window.location = "/customer/me";
+                window.location = "/";
             })
             .catch(function (error) {
                 if (error.response.status === 404) {

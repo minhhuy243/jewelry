@@ -96,14 +96,14 @@
         </div>
     </div>
 
+    </section>
+
+    <th:block layout:fragment="script">
+
         <script th:src="@{/client/js/customer/profile.js}"></script>
         <script th:src="@{/client/js/auth/logout.js}"></script>
         <script th:src="@{/client/js/customer/update.js}"></script>
         <script th:src="@{/client/js/customer/change-password.js}"></script>
-
-    </section>
-
-    <th:block layout:fragment="script">
 
         <script>
             $(document).ready(() => {
@@ -111,6 +111,7 @@
                 if(!accessToken) {
                     window.location = '/login';
                 }
+                getUserInfo();
             });
         </script>
 
