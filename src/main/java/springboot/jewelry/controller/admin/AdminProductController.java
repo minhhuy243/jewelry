@@ -19,4 +19,9 @@ public class AdminProductController {
         return "admin/product/add";
     }
 
+    @GetMapping("/edit")
+    public String editProductpage() {
+        return "admin/product/edit";
+    }
+
 }

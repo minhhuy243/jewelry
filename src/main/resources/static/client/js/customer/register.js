@@ -85,12 +85,24 @@ function register(event) {
         errorRegisterAddress.innerHTML = "";
     }
 
+    // --- Birthday ---
+    var registerBirthday = document.getElementById("registerBirthday");
+    var errorRegisterBirthday = document.getElementById("errorRegisterBirthday");
+
+    if (registerBirthday.value === null || registerBirthday.value.trim() === "") {
+        registerBirthday.style.border = "solid 1px red";
+        errorRegisterBirthday.innerHTML = "Nhập sinh nhật !";
+    } else {
+        registerBirthday.style.border = "solid 1px #E6E6E6";
+        errorRegisterBirthday.innerHTML = "";
+    }
+
     /**
      Call API after validation form success
      */
     if (errorRegisterFullName.innerHTML === "" && errorRegisterEmail.innerHTML === ""
         && errorRegisterPassword.innerHTML === "" && errorRegisterRePassword.innerHTML === ""
-        && errorRegisterPhoneNumber.innerHTML === "" && errorRegisterAddress.innerHTML === "") {
+        && errorRegisterPhoneNumber.innerHTML === "" && errorRegisterAddress.innerHTML === "" && errorRegisterBirthday.innerHTML === "") {
 
         // Reverse date YYYY-MM-DD ==> DD-MM-YYYY
         var splitBirthday = registerBirthday.value.split("-");
