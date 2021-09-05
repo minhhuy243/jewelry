@@ -147,6 +147,14 @@
                         confirmButtonText: `Đồng ý`,
                         denyButtonText: `Không`,
                     }).then(async (result) => {
+                        Swal.fire({
+                            title: 'Vui lòng đợi!',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
                         if (result.isConfirmed) {
                             const url = baseUrl +  `/products/${id}`;
                             const token = localStorage.getItem("access_token");
