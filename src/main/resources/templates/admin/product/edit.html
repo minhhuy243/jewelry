@@ -181,11 +181,20 @@
 
             <!-- Image -->
             <div class="card mb-3 mb-lg-5">
+
                 <div class="card-header">
                     <h4 class="card-header-title">Hình ảnh</h4>
                 </div>
 
                 <div class="card-body">
+
+                    <!-- Gallery -->
+                    <div id="imageGallery" class="js-fancybox row justify-content-sm-center gx-2"
+                         data-hs-fancybox-options='{"selector": "#imageGallery .js-fancybox-item"}'>
+
+                    </div>
+                    <!-- End Gallery -->
+
                     <!-- Dropzone -->
                     <div id="images" class="js-dropzone dropzone-custom custom-file-boxed">
                         <div class="dz-message custom-file-boxed-label">
@@ -211,8 +220,14 @@
                 </div>
 
                 <div class="card-body">
+
+                    <div id="avatar" class="js-fancybox row justify-content-sm-center gx-2"
+                         data-hs-fancybox-options='{"selector": "#avatar .js-fancybox-item"}'>
+
+                    </div>
+
                     <!-- Dropzone -->
-                    <div id="avatar" class="js-dropzone dropzone-custom custom-file-boxed"
+                    <div id="newAvatar" class="js-dropzone dropzone-custom custom-file-boxed"
                          data-hs-dropzone-options='{
                                 "maxFiles": 1
                              }'>
@@ -319,7 +334,15 @@
     <script>
 
         $(async function () {
-            renderProductEdit();
+            // INITIALIZATION OF FANCYBOX
+            // =======================================================
+            $('.js-fancybox').each(function() {
+                $.HSCore.components.HSFancyBox.init($(this));
+            })
+
+            localStorage.removeItem('images');
+            localStorage.removeItem('imagesRemoved');
+            localStorage.removeItem('cart');
 
             const token = localStorage.getItem("access_token");
             const headers = {headers: {"Authorization": `Bearer ${token}`}};
@@ -346,6 +369,9 @@
                     $('#supplierCode').append(supplier);
 
                 }));
+
+            await getProductInfoApi();
+
         });
 
         $(window).load(() => {
@@ -407,10 +433,11 @@
             const imagesDropzone = Dropzone.forElement('#images');
             const images = imagesDropzone.getQueuedFiles();
 
-            const avatarDropzone = Dropzone.forElement('#avatar');
+            const avatarDropzone = Dropzone.forElement('#newAvatar');
             const avatar = avatarDropzone.getQueuedFiles()[0];
 
             const dto = {
+                sku: $('#sku').val(),
                 name: $('#name').val(),
                 description: $('.ql-editor').html(),
                 goldWeight: $('#goldWeight').val(),
@@ -421,10 +448,11 @@
                 categoryCode: $('#categoryCode').val(),
                 goldType: $('#goldType').val(),
                 images: null,
-                avatar: null
+                avatar: null,
+                imagesRemoved: JSON.parse(localStorage.getItem('imagesRemoved'))
             }
 
-            const errors = validation(dto, avatar);
+            const errors = validation(dto, 1);
             if(errors === null) {
                 const formData = new FormData();
 
@@ -440,31 +468,31 @@
                     });
                 }
 
-                const id = window.localStorage.getItem('product_id');
-                await axios.put(baseUrl + '/products/' + id, formData)
-                    .then((res) => {
-                        if(res.status === 200) {
-                            sessionStorage.setItem('toastMessages', true);
-                            localStorage.removeItem('product_id');
-                            window.location = "/admin/products";
-                        }
-                    })
-                    .catch((error) => {
-                        const status = error.response.status;
+                await axios.put(baseUrl + `/products/${pathArray.slice(-1)}`, formData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then((res) => {
+                    if(res.status === 200) {
+                        sessionStorage.setItem('toastMessages', true);
+                        window.location.reload();
+                    }
+                }).catch((error) => {
+                    const status = error.response.status;
 
-                        if(status === 500 || status === 400){
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Đã có lỗi xảy ra',
-                                text: 'Vui lòng kiểm tra lại thông tin!',
-                                confirmButtonColor: '#377dff',
-                                confirmButtonText: 'Đồng ý!'
-                            });
-                            removeError();
-                            addErrorToMap(error.response.data.errors);
-                            renderError();
-                        }
-                    });
+                    if(status === 500 || status === 400){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đã có lỗi xảy ra',
+                            text: 'Vui lòng kiểm tra lại thông tin!',
+                            confirmButtonColor: '#377dff',
+                            confirmButtonText: 'Đồng ý!'
+                        });
+                        removeError();
+                        addErrorToMap(error.response.data.errors);
+                        renderError();
+                    }
+                });
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -482,6 +510,22 @@
                 renderError();
             }
 
+        });
+
+        $('body').on('click', '#imageGallery a[data-image]', function () {
+            const imageId = $(this).data('image');
+            const images = JSON.parse(localStorage.getItem('images'));
+            const imagesFiltered = images.filter((image) => image !== imageId);
+            let imageHtml = imagesFiltered.map((image) => {
+                return renderImageGallery(image);
+            }).join(' ');
+            $('#imageGallery').html(imageHtml);
+            localStorage.setItem('images', JSON.stringify(imagesFiltered));
+
+            const imagesRemoved = localStorage.getItem('imagesRemoved')
+                ? JSON.parse(localStorage.getItem('imagesRemoved')) : [];
+            imagesRemoved.push(imageId);
+            localStorage.setItem('imagesRemoved', JSON.stringify(imagesRemoved));
         });
 
     </script>

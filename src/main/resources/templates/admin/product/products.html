@@ -23,7 +23,7 @@
                     <h1 class="page-header-title">Danh sách sản phẩm <span class="badge badge-soft-dark ml-2">789</span></h1>
                 </div>
                 <div class="col-sm-auto">
-                    <a class="btn btn-primary" href="ecommerce-add-product.html">Thêm sản phẩm</a>
+                    <a class="btn btn-primary" href="/admin/products/add">Thêm sản phẩm</a>
                 </div>
             </div>
 
@@ -33,21 +33,19 @@
             <!-- Header -->
             <div class="card-header">
                 <div class="row justify-content-between align-items-center flex-grow-1">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <form>
-                            <!-- Search -->
-                            <div class="input-group input-group-merge input-group-flush">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="tio-search"></i>
-                                    </div>
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <!-- Search -->
+                        <div class="input-group input-group-merge input-group-flush">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tio-search"></i>
                                 </div>
-                                <input id="search" type="search" class="form-control"
-                                       placeholder="Tìm sản phẩm theo SKU hoặc tên"
-                                       aria-label="Tìm sản phẩm theo SKU hoặc tên">
                             </div>
-                            <!-- End Search -->
-                        </form>
+                            <input id="search" type="search" class="form-control"
+                                   placeholder="Tìm sản phẩm theo SKU hoặc tên (>2 ký tự)"
+                                   aria-label="Tìm sản phẩm theo SKU hoặc tên (>2 ký tự)">
+                        </div>
+                        <!-- End Search -->
                     </div>
                 </div>
                 <!-- End Row -->
@@ -56,7 +54,7 @@
 
             <!-- Table -->
             <div class="table-responsive datatable-custom">
-                <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table"
+                <table id="datatableProduct" class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table"
                        data-hs-datatables-options='{
                      "columnDefs": [{
                         "targets": [0, 1, 8],
@@ -74,7 +72,7 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>ID</th>
+                        <th>STT</th>
                         <th>Sản phẩm</th>
                         <th>SKU</th>
                         <th>Loại</th>
@@ -140,10 +138,52 @@
         <script th:src="@{/admin/js/product/edit.js}"></script>
         <script>
 
-            $(async function() {
+            function deleteProduct() {
+                $('body').on('click', '.btn-danger[data-id]', function () {
+                    const id = $(this).data('id');
+                    Swal.fire({
+                        title: 'Bạn có muốn xóa sản phẩm này?',
+                        showDenyButton: true,
+                        confirmButtonText: `Đồng ý`,
+                        denyButtonText: `Không`,
+                    }).then(async (result) => {
+                        if (result.isConfirmed) {
+                            const url = baseUrl +  `/products/${id}`;
+                            const token = localStorage.getItem("access_token");
+
+                            await axios.delete(url, {headers: {"Authorization": `Bearer ${token}`}})
+                                .then((res) => {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Xóa thành công',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    localStorage.removeItem('product_id');
+                                    $('#datatableProduct').dataTable().api().draw();
+                                })
+                                .catch((error) => {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'error',
+                                        title: 'Đã có lỗi xảy ra',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                });
+                        } else if (result.isDenied) {
+
+                        }
+                    });
+
+                });
+            }
+
+            function initDatatableProduct() {
                 const token = localStorage.getItem("access_token");
 
-                var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                $.HSCore.components.HSDatatables.init($('#datatableProduct'), {
                     language: {
                         zeroRecords: '<div class="text-center p-4">' +
                             '<img class="mb-3" src="./svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
@@ -190,7 +230,7 @@
                         {
                             data: 'name',
                             render: (data, type, row, meta) => {
-                                return `<a class="media align-items-center" href="ecommerce-product-details.html">
+                                return `<a class="media align-items-center" href="/admin/products/${row.id}">
                                   <img class="avatar avatar-lg mr-3"
                                       src="https://drive.google.com/uc?export=view&id=${row.avatar}"
                                       alt="${data}">
@@ -223,13 +263,13 @@
                         },
                         { data: 'quantity'},
                         {
-                            data: 'sku',
+                            data: 'id',
                             render: (data) => {
                                 return `<div class="btn-group" role="group">
-                                            <a class="btn btn-sm btn-primary">
+                                            <a href="/admin/products/${data}" class="btn btn-sm btn-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-danger">
+                                            <a data-id="${data}" class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </div>`;
@@ -239,24 +279,26 @@
                 });
 
                 $('.page-header-title > span').text($('#totalQty').text());
+            }
+
+            $(async function() {
+                initDatatableProduct();
 
                 $('#search').on('keyup', function (e) {
+                    const datatableProduct =$('#datatableProduct').dataTable().api();
                     const input = $(this).val();
-                    if(input.length <= 1) {
-                        datatable.ajax.url(baseUrl + '/products');
-                        if(input.length === 0)
-                            datatable.load();
-                    }
-                    if(input.length >= 2) {
-                        datatable.ajax.url(baseUrl + '/products/search').load();
+                    if(input.length < 2) {
+                        datatableProduct.ajax.url(baseUrl + '/products').load();
+                    } else {
+                        datatableProduct.ajax.url(baseUrl + '/products/search').load();
                     }
 
                 });
 
-                edit();
                 deleteProduct();
 
             });
+
 
         </script>
 

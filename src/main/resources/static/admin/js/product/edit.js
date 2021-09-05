@@ -1,102 +1,74 @@
+function renderImageGallery(image) {
+    return `<div class="col-12 col-sm-4 col-md-4 mb-3 mb-lg-5">
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=${image}" alt="Image Description">
 
-var productId;
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <a class="js-fancybox-item text-body" href="javascript:;" data-toggle="tooltip" data-placement="top" title="View" 
+                                                data-src="https://drive.google.com/uc?export=view&id=${image}" data-caption="Image #01">
+                                                <i class="tio-visible-outlined"></i>
+                                            </a>
+                                        </div>
 
-
-function edit(){
-    $('.fas.fa-edit').click(function () {
-        var $row = $(this).closest("tr");
-        $tds = $row.find("td:nth-child(1)");
-
-        $.each($tds, function() {
-            productId = $(this).text();
-        });
-
-        Swal.fire({
-            title: 'Bạn có muốn cập nhật?',
-            showDenyButton: true,
-            confirmButtonText: `Đồng ý`,
-            denyButtonText: `Không`,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                window.localStorage.setItem('product_id', productId);
-                window.location = "/admin/products/edit";
-            } else if (result.isDenied) {
-
-            }
-        });
-
-    });
-
+                                        <div class="col column-divider">
+                                            <a data-image="${image}" class="text-danger" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="tio-delete-outlined"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
 }
 
+function renderAvatar(avatar) {
+    return `<div class="col-12 col-sm-4 col-md-12 mb-3 mb-lg-5">
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=${avatar}" alt="Image Description">
 
-function renderProductEdit() {
-    const id = window.localStorage.getItem('product_id');
-    const url = baseUrl +  "/products/by-id/" + id;
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <a class="js-fancybox-item text-body" href="javascript:;" data-toggle="tooltip" data-placement="top" title="View" 
+                                                data-src="https://drive.google.com/uc?export=view&id=${avatar}" data-caption="Image #01">
+                                                <i class="tio-visible-outlined"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+}
+
+async function getProductInfoApi() {
+    const id = pathArray.slice(-1);
+    const url = baseUrl + `/products/${id}`;
     const token = localStorage.getItem("access_token");
 
-
-    axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
+    await axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
         .then((res) => {
-            document.getElementById("sku").innerText = res.data.content.sku;
-            document.getElementById("name").value = res.data.content.name;
-            document.getElementById("goldWeight").value = res.data.content.goldWeight;
-            document.getElementById("quantity").value = res.data.content.quantity;
-            document.getElementById("costPrice").value = res.data.content.costPrice;
-            document.getElementById("price").value = res.data.content.price;
-            document.getElementById("goldType").value = res.data.content.goldTypePercentage;
-            document.getElementById("supplierCode").value = res.data.content.supplierCode;
-            document.getElementById("categoryCode").value = res.data.content.categoryCode;
+            const product = res.data.content;
+            $('#sku').text(product.sku).val(product.sku).css('cursor', 'not-allowed');
+            $('#name').val(product.name);
+            $('#goldWeight').val(product.goldWeight);
+            $('#quantity').val(product.quantity);
+            $('#costPrice').val(product.costPrice);
+            $('#price').val(product.price);
+            $('#categoryCode').val(product.categoryCode).trigger('change.select2');
+            $('#goldType').val(product.goldTypePercentage).trigger('change.select2');
+            $('#supplierCode').val(product.supplierCode).trigger('change.select2');
+
+            $('#avatar').html(renderAvatar(product.avatar));
+
+            let imageHtml = product.images.map((image) => {
+                return renderImageGallery(image);
+            }).join(' ');
+            $('#imageGallery').html(imageHtml);
+            localStorage.setItem('images', JSON.stringify(product.images));
         })
         .catch((error) => {
 
         });
 }
-
-function deleteProduct() {
-    $('.fas.fa-trash').click(function () {
-        var $row = $(this).closest("tr");
-        $tds = $row.find("td:nth-child(1)");
-
-        $.each($tds, function() {
-            productId = $(this).text();
-        });
-
-        Swal.fire({
-            title: 'Bạn có muốn xóa sản phẩm này?',
-            showDenyButton: true,
-            confirmButtonText: `Đồng ý`,
-            denyButtonText: `Không`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const url = baseUrl +  "/products/" + productId;
-                const token = localStorage.getItem("access_token");
-
-                axios.delete(url, {headers: {"Authorization": `Bearer ${token}`}})
-                    .then((res) => {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Xóa thành công',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        localStorage.removeItem('product_id');
-                        setTimeout(reload, 2000);
-                    })
-                    .catch((error) => {
-
-                    });
-            } else if (result.isDenied) {
-
-            }
-        });
-
-    });
-}
-
-function reload() {
-    window.location.reload();
-}
-
