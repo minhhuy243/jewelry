@@ -1,7 +1,7 @@
 function adminLogout() {
     if (confirm('Bạn có muốn đăng xuất ?')) {
-        var accessToken = window.localStorage.getItem('access_token');
-        var data = JSON.stringify({
+        const accessToken = window.localStorage.getItem('access_token');
+        const data = JSON.stringify({
             "deviceInfo": {
                 "deviceId": "string",
                 "deviceType": "string"

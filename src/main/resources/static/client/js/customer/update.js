@@ -2,30 +2,33 @@ document.getElementById("formUpdateInfoCustomer").addEventListener('submit', upd
 
 function update(e) {
 
+    const borderError = "solid 1px red";
+    const borderNoError = "solid 1px #E6E6E6";
+
     // --- Full name ---
-    var profileFullName = document.getElementById("profileFullName");
-    var errorProfileFullName = document.getElementById("errorProfileFullName");
+    const profileFullName = document.getElementById("profileFullName");
+    const errorProfileFullName = document.getElementById("errorProfileFullName");
 
     if (profileFullName.value.trim() === "") {
-        profileFullName.style.border = "solid 1px red";
+        profileFullName.style.border = borderError;
         errorProfileFullName.innerHTML = "Nhập họ và tên !";
     } else if (profileFullName.value.trim().length < 3 || profileFullName.value.trim().length > 50) {
-        profileFullName.style.border = "solid 1px red";
+        profileFullName.style.border = borderError;
         errorProfileFullName.innerHTML = "Nhập họ và tên từ 3 - 50 ký tự !";
     } else {
-        profileFullName.style.border = "solid 1px #E6E6E6";
+        profileFullName.style.border = borderNoError;
         errorProfileFullName.innerHTML = "";
     }
 
     // --- Address ---
-    var profileAddress = document.getElementById("profileAddress");
-    var errorProfileAddress = document.getElementById("errorProfileAddress");
+    const profileAddress = document.getElementById("profileAddress");
+    const errorProfileAddress = document.getElementById("errorProfileAddress");
 
     if (profileAddress.value.trim().length < 20 || profileAddress.value.trim().length > 100) {
-        profileAddress.style.border = "solid 1px red";
+        profileAddress.style.border = borderError;
         errorProfileAddress.innerHTML = "Địa chỉ từ 20 - 100 ký tự !";
     } else {
-        profileAddress.style.border = "solid 1px #E6E6E6";
+        profileAddress.style.border = borderNoError;
         errorProfileAddress.innerHTML = "";
     }
 
@@ -35,23 +38,23 @@ function update(e) {
      */
     if(errorProfileFullName.innerHTML === "" && errorProfileAddress.innerHTML === "") {
         const accessToken = localStorage.getItem("access_token");
-        var birthday = document.getElementById("profileBirthday");
-        var gender = document.getElementById("profileGender").value;
+        const birthday = document.getElementById("profileBirthday");
+        const gender = document.getElementById("profileGender").value;
 
         // Reverse date YYYY-MM-DD  --->  DD-MM-YYYY
-        var splitBirthday = birthday.value.split("-");
-        var reverseArray = splitBirthday.reverse();
-        var birthdayJoinArray = reverseArray.join("-");
+        const splitBirthday = birthday.value.split("-");
+        const reverseArray = splitBirthday.reverse();
+        const birthdayJoinArray = reverseArray.join("-");
 
 
-        var data = JSON.stringify({
+        const data = JSON.stringify({
             "address": profileAddress.value,
             "birthday": birthdayJoinArray,
             "fullName": profileFullName.value,
             "gender": gender
         });
 
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
         xhr.addEventListener("readystatechange", function() {
@@ -76,11 +79,11 @@ function update(e) {
 
     } else {
         if(errorProfileFullName.innerHTML === "") {
-            profileFullName.style.border = "solid 1px #E6E6E6";
+            profileFullName.style.border = borderNoError;
             errorProfileFullName.innerHTML = "";
         }
         if(errorProfileAddress.innerHTML === "") {
-            profileAddress.style.border = "solid 1px #E6E6E6";
+            profileAddress.style.border = borderNoError;
             errorProfileAddress.innerHTML = "";
         }
     }

@@ -419,8 +419,8 @@
                         });
                     }
 
-                    const token2 = localStorage.getItem("access_token");
-                    await axios.post(baseUrl + '/products', formData, {headers: {"Authorization" : `Bearer ${token2}`}})
+                    const token = localStorage.getItem("access_token");
+                    await axios.post(baseUrl + '/products', formData, {headers: {"Authorization" : `Bearer ${token}`}})
                         .then((res) => {
                             if(res.status === 200) {
                                 sessionStorage.setItem('toastMessages', true);

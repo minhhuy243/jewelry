@@ -7,12 +7,14 @@ async function getUserInfo() {
             const reverseArray = splitBirthday.reverse();
             const birthdayJoinArray = reverseArray.join("-");
 
-            document.getElementById("profileFullName").value = res.data.content.fullName;
-            document.getElementById("profileEmail").innerHTML = res.data.content.email;
-            document.getElementById("profilePhoneNumber").innerHTML = res.data.content.phoneNumber;
-            document.getElementById("profileAddress").value = res.data.content.address;
+            const userInfo = res.data.content;
+
+            document.getElementById("profileFullName").value = userInfo.fullName;
+            document.getElementById("profileEmail").innerHTML = userInfo.email;
+            document.getElementById("profilePhoneNumber").innerHTML = userInfo.phoneNumber;
+            document.getElementById("profileAddress").value = userInfo.address;
             document.getElementById("profileBirthday").value = birthdayJoinArray;
-            document.getElementById("profileGender").value = res.data.content.gender;
+            document.getElementById("profileGender").value = userInfo.gender;
         })
         .catch((error) => {
             if(error.response.status === 401) {

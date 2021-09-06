@@ -1,27 +1,31 @@
 document.getElementById("formChangePassword").addEventListener('submit', update);
 
 function update(e) {
-    var profilePassword = document.getElementById("profilePassword");
-    var errorProfilePassword = document.getElementById("errorProfilePassword");
-    var profileRePassword = document.getElementById("profileRePassword");
-    var errorProfileRePassword = document.getElementById("errorProfileRePassword");
+
+    const borderError = "solid 1px red";
+    const borderNoError = "solid 1px #E6E6E6";
+
+    const profilePassword = document.getElementById("profilePassword");
+    const errorProfilePassword = document.getElementById("errorProfilePassword");
+    const profileRePassword = document.getElementById("profileRePassword");
+    const errorProfileRePassword = document.getElementById("errorProfileRePassword");
 
     if (profilePassword.value.trim() === "") {
-        profilePassword.style.border = "solid 1px red";
+        profilePassword.style.border = borderError;
         errorProfilePassword.innerHTML = "Nhập mật khẩu !";
     } else if (profilePassword.value.trim().length < 8 || profilePassword.value.trim().length > 30) {
-        profilePassword.style.border = "solid 1px red";
+        profilePassword.style.border = borderError;
         errorProfilePassword.innerHTML = "Mật khẩu từ 8 - 30 ký tự !";
     } else {
-        profilePassword.style.border = "solid 1px #E6E6E6";
+        profilePassword.style.border = borderNoError;
         errorProfilePassword.innerHTML = "";
     }
     // -- Re Password --
     if (profilePassword.value !== "" && profilePassword.value !== profileRePassword.value) {
-        profileRePassword.style.border = "solid 1px red";
+        profileRePassword.style.border = borderError;
         errorProfileRePassword.innerHTML = "Mật khẩu nhập lại không chính xác !";
     } else {
-        profileRePassword.style.border = "solid 1px #E6E6E6";
+        profileRePassword.style.border = borderNoError;
         errorProfileRePassword.innerHTML = "";
     }
 
@@ -30,7 +34,7 @@ function update(e) {
      */
     if(errorProfilePassword.innerHTML === "" && errorProfileRePassword.innerHTML === "") {
         const accessToken = localStorage.getItem("access_token");
-        var data = JSON.stringify({
+        const data = JSON.stringify({
             "password": profilePassword.value,
             "confirmPassword": profileRePassword.value
 
