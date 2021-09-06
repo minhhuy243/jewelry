@@ -138,24 +138,25 @@
         <script th:src="@{/admin/js/product/edit.js}"></script>
         <script>
 
-            function deleteProduct() {
+            function initEventDeleteProduct() {
                 $('body').on('click', '.btn-danger[data-id]', function () {
                     const id = $(this).data('id');
                     Swal.fire({
                         title: 'Bạn có muốn xóa sản phẩm này?',
                         showDenyButton: true,
                         confirmButtonText: `Đồng ý`,
+                        confirmButtonColor: '#377dff',
                         denyButtonText: `Không`,
                     }).then(async (result) => {
-                        Swal.fire({
-                            title: 'Vui lòng đợi!',
-                            icon: 'info',
-                            allowOutsideClick: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
                         if (result.isConfirmed) {
+                            Swal.fire({
+                                title: 'Vui lòng đợi!',
+                                icon: 'info',
+                                allowOutsideClick: false,
+                                didOpen: () => {
+                                    Swal.showLoading();
+                                }
+                            });
                             const url = baseUrl +  `/products/${id}`;
                             const token = localStorage.getItem("access_token");
 
@@ -173,12 +174,12 @@
                                 })
                                 .catch((error) => {
                                     Swal.fire({
-                                        position: 'center',
                                         icon: 'error',
                                         title: 'Đã có lỗi xảy ra',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
+                                        text: 'Vui lòng kiểm tra lại thông tin!',
+                                        confirmButtonColor: '#377dff',
+                                        confirmButtonText: 'Đồng ý!'
+                                    });
                                 });
                         } else if (result.isDenied) {
 
@@ -211,13 +212,11 @@
                         data: function(data) {
                             const params = {};
                             params.page = data.start / 10 + 1;
-                            if(data.search.value !== '') {
-                                params.searchCriteria = {
-                                    keys: ['name', 'sku'],
-                                    value: data.search.value
-                                }
+                            params.size = data.length;
+                            if(data.search.value !== '' && data.search.value.length > 1) {
+                                params.searchCriteria
+                                    = `{"keys":["name","sku"],"value":"${data.search.value}"}`;
                             }
-
                             return params;
                         },
                         dataFilter: function(data) {
@@ -287,24 +286,28 @@
                 });
 
                 $('.page-header-title > span').text($('#totalQty').text());
+
+                $('#search').on('keyup', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const datatableProduct = $('#datatableProduct').dataTable().api();
+                    const input = $(this).val();
+                    if(input.length > 1) {
+                        datatableProduct.ajax.load();
+                    }
+                    // if(input.length < 2) {
+                    //     datatableProduct.ajax.url(baseUrl + '/products').load();
+                    // } else {
+                    //     datatableProduct.ajax.url(baseUrl + '/products/search').load();
+                    // }
+
+                });
             }
 
             $(async function() {
                 initDatatableProduct();
 
-                $('#search').on('keyup', function (e) {
-                    const datatableProduct =$('#datatableProduct').dataTable().api();
-                    const input = $(this).val();
-                    if(input.length < 2) {
-                        datatableProduct.ajax.url(baseUrl + '/products').load();
-                    } else {
-                        datatableProduct.ajax.url(baseUrl + '/products/search').load();
-                    }
-
-                });
-
-                deleteProduct();
-
+                initEventDeleteProduct();
             });
 
 

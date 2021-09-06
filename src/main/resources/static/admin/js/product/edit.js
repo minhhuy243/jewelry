@@ -59,6 +59,7 @@ async function getProductInfoApi() {
             $('#categoryCode').val(product.categoryCode).trigger('change.select2');
             $('#goldType').val(product.goldTypePercentage).trigger('change.select2');
             $('#supplierCode').val(product.supplierCode).trigger('change.select2');
+            $('.ql-editor').html(product.description);
 
             $('#avatar').html(renderAvatar(product.avatar));
 

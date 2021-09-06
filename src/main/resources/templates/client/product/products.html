@@ -110,9 +110,9 @@
                 if(path.toString() === 'trang-suc') {
                     url = '/products';
                 } else if(path.toString() === 'search') {
-                    const uri = encodeURIComponent(`{"keys":["name","sku"],"value":"${urlParams.get('q')}"}`);
-                    url = `/products?searchCriteria=${uri}`;
-                    $('#searchInput').val(urlParams.get('q'));
+                    const searchCriteria = encodeURIComponent(`{"keys":["name","sku"],"value":"${urlParams.get('q')}"}`);
+                    url = `/products?searchCriteria=${searchCriteria}`;
+                    $('#searchInput').val(urlParams.get('q')); // gán text lại cho input search
                     $('#products').parent()
                         .prepend(`<p>Kết quả tìm kiếm cho từ khóa '<span style="font-weight: 600">${urlParams.get('q')}</span>'</p>`);
                 } else {
