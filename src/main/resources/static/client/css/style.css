@@ -6098,7 +6098,7 @@ table img{
   opacity: 1;
 }
 .product .product-thumbnail a:hover{
-  background-color: #bead8e;
+  /*background-color: #bead8e;*/
   color: #fff;
 }
 .product .product-thumbnail a.favorite:hover{
