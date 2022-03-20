@@ -3,7 +3,4 @@ server:
 
 spring:
   thymeleaf:
-    enabled: true
-    cache: false
-    prefix: classpath:/src/main/resources/templates
-    mode: HTML5
+    prefix: classpath:/templates/
