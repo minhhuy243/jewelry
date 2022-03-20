@@ -1,1 +1,1 @@
-web: java -jar target/jewelry
+web: java -jar target/jewelry-1.0.jar
