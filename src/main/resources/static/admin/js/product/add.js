@@ -1,91 +1,165 @@
-function renderCategory(category) {
-    return `<option value="${category.code}">${category.name}</option>`;
-}
+$(async function () {
+    // const token = localStorage.getItem("access_token");
+    // const headers = {headers: {"Authorization": `Bearer ${token}`}};
 
-function renderGoldType(goldType) {
-    return `<option value="${goldType.percentage}">${goldType.percentage}%</option>`;
-}
+    // const getCategories = axios.get(baseUrl + "/categories", headers);
+    // const getGoldTypes = axios.get(baseUrl + "/gold-types", headers);
+    // const getSuppliers = axios.get(baseUrl + "/suppliers", headers);
+    //
+    // await axios.all([getCategories, getGoldTypes, getSuppliers])
+    //     .then(axios.spread((categories, goldTypes, suppliers) => {
+    //         let category = categories.data.map((category) => {
+    //             return renderCategory(category);
+    //         }).join(' ');
+    //         $('#categoryCode').append(category);
+    //
+    //         let goldType = goldTypes.data.map((goldType) => {
+    //             return renderGoldType(goldType);
+    //         }).join(' ');
+    //         $('#goldType').append(goldType);
+    //
+    //         let supplier = suppliers.data.map((supplier) => {
+    //             return renderSupplier(supplier);
+    //         }).join(' ');
+    //         $('#supplierCode').append(supplier);
+    //
+    //     }));
 
-function renderSupplier(supplier) {
-    return `<option value="${supplier.code}">${supplier.name}</option>`;
-}
+    await instance.get("/admin/categories")
+        .then((res) => {
+            let categories = res.data.map((category) => {
+                return renderCategory(category);
+            }).join(' ');
+            $('#categoryCode').append(categories);
+        });
 
-var errorMap = new Map();
+    await instance.get("/admin/gold-types")
+        .then((res) => {
+            let goldTypes = res.data.map((goldType) => {
+                return renderGoldType(goldType);
+            }).join(' ');
+            $('#goldType').append(goldTypes);
+        });
 
-function addErrorToMap(errors) {
+    await instance.get("/admin/suppliers")
+        .then((res) => {
+            let suppliers = res.data.map((supplier) => {
+                return renderSupplier(supplier);
+            }).join(' ');
+            $('#supplierCode').append(suppliers);
+        });
+});
 
-    if(errorMap.size !== 0) {
-        errorMap.clear();
+$(window).load(() => {
+    const toastMessages = sessionStorage.getItem('toastMessages');
+    if(toastMessages) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'white',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'Thêm sản phẩm thành công'
+        })
+    }
+    sessionStorage.removeItem('toastMessages');
+})
+
+$('#submit').on('click', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    Swal.fire({
+        title: 'Vui lòng đợi!',
+        icon: 'info',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    const imagesDropzone = Dropzone.forElement('#images');
+    const images = imagesDropzone.getQueuedFiles();
+
+    const avatarDropzone = Dropzone.forElement('#avatar');
+    const avatar = avatarDropzone.getQueuedFiles()[0];
+
+    const dto = {
+        sku: $('#sku').val(),
+        name: $('#name').val(),
+        description: $('.ql-editor').html(),
+        goldWeight: $('#goldWeight').val(),
+        costPrice: $('#costPrice').val(),
+        price: $('#price').val(),
+        quantity: $('#quantity').val(),
+        supplierCode: $('#supplierCode').val(),
+        categoryCode: $('#categoryCode').val(),
+        goldType: $('#goldType').val(),
+        images: null,
+        avatar: null
     }
 
-    errors.map((error) => {
-        errorMap.set(error.field, error.defaultMessage);
-    });
-}
+    const errors = validation(dto, avatar);
+    if(errors === null) {
+        const formData = new FormData();
 
-function renderError() {
-    errorMap.forEach((message, field) => {
-        $('#error-' + field).text(message).css('display', 'block');
-        $('#' + field).css('border', '1px solid red');
-        $('span[aria-labelledby="select2-' + field + '-container"]').css('border', '1px solid red');
-    });
-}
+        formData.append('dto', new Blob([JSON.stringify(dto)], {type: "application/json"}));
 
-function removeError() {
-    errorMap.forEach((message, field) => {
-        $('#error-' + field).text('').css('display', 'none');
-        $('#' + field).css('border', '.0625rem solid #e7eaf3');
-        $('span[aria-labelledby="select2-' + field + '-container"]').css('border', '.0625rem solid #e7eaf3');
-    });
-}
+        if(avatar != null) {
+            formData.append('avatar', avatar);
+        }
 
-function isNumeric(value) {
-    const regex = /^[0-9]+$/;
-    return value.match(regex);
-}
+        if(images != null) {
+            images.map((image) => {
+                formData.append('images[]', image);
+            });
+        }
 
-function isBlank(value) {
-    return value == null || value.trim().length === 0;
-}
+        await instance.post('/admin/products', formData)
+            .then((res) => {
+                if(res.status === 200) {
+                    sessionStorage.setItem('toastMessages', true);
+                    window.location.reload();
+                }
+            })
+            .catch((error) => {
+                const status = error.response.status;
 
-function validation(dto, avatar) {
+                if(status === 500 || status === 400){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã có lỗi xảy ra',
+                        text: 'Vui lòng kiểm tra lại thông tin!',
+                        confirmButtonColor: '#377dff',
+                        confirmButtonText: 'Đồng ý!'
+                    });
+                    removeError();
+                    addErrorToMap(error.response.data.errors);
+                    renderError();
+                }
+            });
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Đã có lỗi xảy ra',
+            text: 'Vui lòng kiểm tra lại thông tin!',
+            showConfirmButton: true,
+            confirmButtonColor: '#377dff',
+            confirmButtonText: 'Đồng ý!',
+            didOpen: () => {
+                Swal.hideLoading();
+            }
+        });
+        removeError();
+        addErrorToMap(errors);
+        renderError();
+    }
 
-    const errors = [];
-
-    if(isBlank(dto.name))
-        errors.push({field: 'name', defaultMessage: 'Tên sản phẩm không được bỏ trống'});
-
-    if(isBlank(dto.goldWeight))
-        errors.push({field: 'goldWeight', defaultMessage: 'Trọng lượng không được bỏ trống'});
-    else if(!isNumeric(dto.goldWeight))
-        errors.push({field: 'goldWeight', defaultMessage: 'Trọng lượng phải là số'});
-
-    if(isBlank(dto.costPrice))
-        errors.push({field: 'costPrice', defaultMessage: 'Giá vốn không được bỏ trống'});
-    else if(!isNumeric(dto.costPrice))
-        errors.push({field: 'costPrice', defaultMessage: 'Giá vốn phải là số'});
-
-    if(isBlank(dto.price))
-        errors.push({field: 'price', defaultMessage: 'Giá bán không được bỏ trống'});
-    else if(!isNumeric(dto.price))
-        errors.push({field: 'price', defaultMessage: 'Giá bán phải là số'});
-
-    if(isBlank(dto.quantity))
-        errors.push({field: 'quantity', defaultMessage: 'Số lượng không được bỏ trống'});
-    else if(!isNumeric(dto.quantity))
-        errors.push({field: 'quantity', defaultMessage: 'Số lượng phải là số'});
-
-    if(isBlank(dto.supplierCode))
-        errors.push({field: 'supplierCode', defaultMessage: 'Nhà cung cấp không được bỏ trống'});
-
-    if(isBlank(dto.categoryCode))
-        errors.push({field: 'categoryCode', defaultMessage: 'Loại sản phẩm không được bỏ trống'});
-
-    if(isBlank(dto.goldType))
-        errors.push({field: 'goldType', defaultMessage: 'Loại vàng không được bỏ trống'});
-
-    if(avatar == null)
-        errors.push({field: 'avatar', defaultMessage: 'Ảnh đại diện không được bỏ trống'});
-
-    return errors.length === 0 ? null : errors;
-}
+});

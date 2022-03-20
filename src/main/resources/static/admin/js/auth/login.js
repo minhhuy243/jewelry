@@ -7,6 +7,7 @@ async function login(e) {
 
     const email = document.getElementById("email");
     const errorEmail = document.getElementById("errorEmail");
+    const errorRole = document.getElementById("errorRole");
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (email.value.trim() === "") {
@@ -43,17 +44,28 @@ async function login(e) {
             email: email.value,
             password: password.value
         })
-            .then((res) => {
-                window.localStorage.setItem('access_token', res.data.accessToken);
-                window.localStorage.setItem('refresh_token', res.data.refreshToken);
-                window.location = "/";
-            })
-            .catch((error) => {
-                if(error.response.status === 401) {
-                    email.style.border = borderError;
-                    errorEmail.innerHTML = "Vui lòng kiểm tra lại Email hoặc mật khẩu!";
-                }
+        .then((res) => {
+            window.localStorage.setItem('access_token', res.data.accessToken);
+            window.localStorage.setItem('refresh_token', res.data.refreshToken);
+
+            const { roles } = res.data;
+            let isAdmin = false;
+            roles.forEach((role) => {
+               if(role === "ROLE_ADMIN")
+                   isAdmin = true;
             });
+            if(isAdmin) {
+                window.location = "/admin/products";
+            } else {
+                errorRole.innerHTML = "Tài khoản của bạn không có quyền truy tập trang Admin!";
+            }
+        })
+        .catch((error) => {
+            if(error.response.status === 401) {
+                email.style.border = borderError;
+                errorEmail.innerHTML = "Vui lòng kiểm tra lại Email hoặc mật khẩu!";
+            }
+        });
     } else {
         if (errorEmail.innerHTML === "") {
             email.style.border = borderNoError;
@@ -66,8 +78,11 @@ async function login(e) {
     }
 }
 
-$(document).ready(async () => {
+$(async function () {
     if(getLocalAccessToken() !== null) {
-        window.location = "/";
+        window.location = "/admin/products";
     }
+
 });
+
+

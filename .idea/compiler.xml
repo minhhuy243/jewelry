@@ -7,15 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jewelry" />
+        <module name="jewelry.api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jewelry" target="1.8" />
+      <module name="jewelry.api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="jewelry" options="-parameters" />
+      <module name="jewelry.api" options="-parameters" />
     </option>
   </component>
 </project>

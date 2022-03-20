@@ -83,3 +83,45 @@ function renderPagination(totalPages, currentPage) {
 
     return html;
 }
+
+$(document).ready(async () => {
+    const path = pathArray.slice(-1);
+    let url;
+
+    if(path.toString() === 'trang-suc') {
+        url = '/products';
+    } else if(path.toString() === 'search') {
+        const searchCriteria = encodeURIComponent(`{"keys":["name","sku"],"value":"${urlParams.get('q')}"}`);
+        url = `/products?searchCriteria=${searchCriteria}`;
+        $('#searchInput').val(urlParams.get('q')); // gán text lại cho input search
+        $('#products').parent()
+            .prepend(`<p>Kết quả tìm kiếm cho từ khóa '<span style="font-weight: 600">${urlParams.get('q')}</span>'</p>`);
+    } else {
+        url = `/products/categories/${path}`;
+    }
+
+    // Get products
+    await axios.get(baseUrl + url, {
+        params: {
+            page: urlParams.get('page')
+        }
+    }).then((res) => {
+        let products = res.data.elements.map((product) => {
+            return renderProduct(product);
+        }).join(' ');
+        $('#products').html(products);
+
+        let pagination = renderPagination(res.data.totalPages, res.data.currentPage);
+        $('#pagination').html(pagination);
+    });
+
+
+    // Get category
+    // await axios.get(baseUrl + '/categories').then((res) => {
+    //     let categoryHtml = res.data.map((category) => {
+    //         return `<option value="${category.name}">${category.name}</option>`;
+    //     }).join(' ');
+    //
+    //     $('#categoryFilter').append(categoryHtml);
+    // });
+});

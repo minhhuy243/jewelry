@@ -29,7 +29,7 @@
                 <div class="card card-lg mb-5">
                     <div class="card-body">
                         <!-- Form -->
-                        <form id="formLoginAdmin">
+                        <form id="formLogin">
                             <div class="text-center">
                                 <div class="mb-5">
                                     <h1 class="display-4">Đăng nhập</h1>
@@ -38,18 +38,21 @@
                             <!-- Form Group -->
                             <div class="js-form-message form-group">
                                 <label class="input-label">Email</label>
-                                <input id="loginAdminEmail" type="text" class="form-control form-control-lg">
-                                <span id="errorLoginAdminEmail" style="color: #ff0000; margin-top: 5px;"></span>
+                                <input id="email" type="text" class="form-control form-control-lg">
+                                <span id="errorEmail" style="color: #ff0000; margin-top: 5px;"></span>
                             </div>
                             <div class="js-form-message form-group">
                                 <label class="input-label">Mật khẩu</label>
-                                <input id="loginAdminPassword" type="password" class="form-control form-control-lg">
-                                <span id="errorLoginAdminPassword" style="color: #ff0000; margin-top: 5px;"></span>
+                                <input id="password" type="password" class="form-control form-control-lg">
+                                <span id="errorPassword" style="color: #ff0000; margin-top: 5px;"></span>
                             </div>
                             <div class="form-group">
                             </div>
                             <button type="submit" class="btn btn-lg btn-block btn-primary">Đăng nhập</button>
                         </form>
+
+                        <div id="errorRole" style="color: #ff0000; margin-top: 5px;">
+                        </div>
                         <!-- End Form -->
                     </div>
                 </div>
@@ -59,8 +62,10 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script th:src="@{/admin/js/auth/admin-login.js}"></script>
+    <script th:src="@{/admin/js/main.js}"></script>
+    <script th:src="@{/admin/js/auth/login.js}"></script>
 
 </body>
 </html>

@@ -1,3 +1,197 @@
+const baseUrl = "http://localhost:8089/api";
+const pathArray = window.location.pathname.split('/');
+const urlParams = new URLSearchParams(window.location.search);
+
+function getLocalAccessToken() {
+  return localStorage.getItem("access_token");
+}
+
+function getLocalRefreshToken() {
+  return localStorage.getItem("refresh_token");
+}
+
+function clearToken() {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
+}
+
+function refreshToken() {
+  return instance.post("/auth/refresh-token", {
+    refreshToken: getLocalRefreshToken(),
+  });
+}
+
+async function logout() {
+  await instance.post("/auth/logout", {
+    refreshToken: getLocalRefreshToken(),
+  });
+  clearToken();
+  window.location = "/";
+}
+
+const instance = axios.create({
+  baseURL: baseUrl,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
+instance.interceptors.request.use(
+    (config) => {
+      const token = getLocalAccessToken();
+      if (token) {
+        config.headers["Authorization"] = "Bearer " + token;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+);
+
+instance.interceptors.response.use(
+    (res) => {
+      return res;
+    }, async (err) => {
+      const originalConfig = err.config;
+      if(err.response.status === 401 && originalConfig.url === "/auth/refresh-token"){
+        clearToken();
+        window.location = "/login";
+        return Promise.reject(err);
+      }
+      if (err.response) {
+        // Access Token was expired
+        if (err.response.status === 401 && !originalConfig._retry) {
+          originalConfig._retry = true;
+          try {
+            const rs = await refreshToken();
+            const { accessToken } = rs.data;
+            localStorage.setItem("access_token", accessToken);
+            instance.defaults.headers.common["Authorization"] = "Bearer " + accessToken;
+            return instance(originalConfig);
+          } catch (_error) {
+            if (_error.response && _error.response.data) {
+              return Promise.reject(_error.response.data);
+            }
+            return Promise.reject(_error);
+          }
+        }
+        if (err.response.status === 403) {
+          clearToken();
+          window.location = "/login";
+          //return Promise.reject(err.response.data);
+        }
+      }
+      return Promise.reject(err);
+    }
+);
+
+
+function renderCartDropdown(cart) {
+  let items = cart.items.map((item) => {
+    return `<li class="cart-item">
+          <div class="img">
+            <a href="/${item.product.categorySlug + '/' + item.product.slug}">
+                <img src="https://drive.google.com/uc?export=view&id=${item.product.avatar}"
+                alt="${item.product.name + ' ' + item.product.sku}">
+            </a>
+          </div>
+          <div class="content">
+              <h5>
+                <a href="/${item.product.categorySlug + '/' + item.product.slug}">
+                    ${item.product.name + ' ' + item.product.sku}
+                </a>
+              </h5>
+              <p style="font-family: Roboto">${item.quantity} x
+                ${(item.product.price * 1000).toLocaleString("it-IT")}đ
+              </p>
+          </div>
+        </li>`;
+  }).join(' ');
+
+  $('#cartDropdown #items').html(items);
+  $('#cartDropdown #total span').last().text(`${(cart.total * 1000).toLocaleString("it-IT")}đ`);
+}
+
+function renderAuthDropdown() {
+  let menuDropdown = null;
+  const accessToken = localStorage.getItem('access_token');
+  if(accessToken) {
+    const payload = accessToken.split('.')[1];
+    const fullName = JSON.parse(decodeURIComponent(escape(window.atob(payload)))).fullName;
+    $('#authDropdown a').first().append(fullName);
+    menuDropdown = [
+      {href: '/user/me', text: 'Thông Tin Tài Khoản'},
+      {href: '/', text: 'Đơn Hàng'},
+      {href: '#', text: 'Đăng Xuất', onclick: 'logout()'}
+    ];
+  } else {
+    $('#authDropdown a').first().append('');
+    menuDropdown = [
+      {href: '/login', text: 'Đăng Nhập'},
+      {href: '/register', text: 'Đăng Ký'}
+    ];
+  }
+
+  const html = menuDropdown.map((i) => {
+    return `<li class="cart-item">
+                    <div class="content" style="width: auto">
+                        <a href="${i.href}" style="color: #222" onclick="${i.onclick}">${i.text}</a>
+                    </div>
+                  </li>`;
+  }).join(' ');
+
+  $('#authDropdown .cart-items-box').html(html);
+}
+
+function renderCategory(categories) {
+  let categoryHtml = `<li class="menu-item"><a href="/trang-suc">Toàn Bộ</a></li>`;
+  categoryHtml += categories.map((category) => {
+    return `<li class="menu-item">
+                    <a href="/${category.slug}">${category.name}</a>
+                </li>`;
+  }).join(' ');
+
+  $('#categoryNav').html(categoryHtml);
+}
+
+async function getCategoriesApi() {
+  await axios.get(baseUrl + '/categories').then((res) => {
+    renderCategory(res.data);
+  });
+}
+
+async function checkAndUpdateItemInStock() {
+  if(getLocalAccessToken() && getLocalRefreshToken()) {
+    await instance.get(`/carts/mine`)
+        .then((res) => {
+      localStorage.setItem('cart', JSON.stringify(res.data));
+      renderCartDropdown(res.data);
+    }).catch((error) => {
+      if(error.response.status === 401) {
+        localStorage.clear();
+      }
+      const path = pathArray.slice(-1).toString();
+      if(path === 'cart' || path === 'checkout' || path === 'complete') {
+        window.location = '/login';
+      }
+    })
+  }
+}
+
+$(document).ready(async () => {
+  await checkAndUpdateItemInStock();
+  await getCategoriesApi();
+  renderAuthDropdown();
+});
+
+
+
+
+
+
+
+
 (function($) {
   'use strict';
 

@@ -748,7 +748,7 @@
                                     <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item">
-                                        <span id="adminLogout" onclick="adminLogout()" class="text-truncate pr-2" title="Sign out">Đăng xuất</span>
+                                        <span id="adminLogout" onclick="logout()" class="text-truncate pr-2" title="Sign out">Đăng xuất</span>
                                     </a>
                                     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
                                     <script th:src="@{/admin/js/auth/admin-logout.js}"></script>
@@ -837,54 +837,6 @@
                                             <span class="text-truncate">Thêm Mới</span>
                                         </a>
                                     </li>
-
-                                </ul>
-                            </li>
-                            <!-- End Products -->
-
-                            <!-- Product Type -->
-                            <li class="navbar-vertical-aside-has-menu">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:;" title="Pages">
-                                    <i class="tio-pages-outlined nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Loại Sản Phẩm</span>
-                                </a>
-
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="#" title="Referrals">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Danh Sách</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="#" title="Referrals">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Thêm Mới</span>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <!-- End Product Type -->
-
-                            <!-- Customers -->
-                            <li class="navbar-vertical-aside-has-menu ">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:;" title="Pages">
-                                    <i class="tio-pages-outlined nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Khách hàng</span>
-                                </a>
-
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " th:href="@{/admin/customers}" title="Referrals">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Danh Sách</span>
-                                        </a>
-                                    </li>
-
 
                                 </ul>
                             </li>

@@ -63,6 +63,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- JS Implementing Plugins -->
+<script th:src="@{/admin/js/main.js}"></script>
 <script th:src="@{/admin/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js}"></script>
 <script th:src="@{/admin/js/demo.js}"></script>
 <script th:src="@{/admin/js/vendor.min.js}"></script>
@@ -77,9 +78,6 @@
 
 <!-- JS Plugins Init. -->
 <script>
-    const baseUrl = "http://localhost:8089/api/admin";
-    const pathArray = window.location.pathname.split('/');
-    const urlParams = new URLSearchParams(window.location.search);
 
     const body = document.getElementsByTagName('body')[0],
         isMini =  window.localStorage.getItem('hs-navbar-vertical-aside-mini') === null ? false : window.localStorage.getItem('hs-navbar-vertical-aside-mini');
@@ -89,6 +87,10 @@
     }
 
     $(document).on('ready', function () {
+
+        if(!getLocalAccessToken() || !getLocalRefreshToken()){
+            window.location = "/admin/login";
+        }
 
         $('a.nav-link').each(function (index) {
             const attr = $(this).attr('href');

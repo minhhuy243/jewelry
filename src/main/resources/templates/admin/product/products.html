@@ -9,8 +9,7 @@
 <body>
 
     <div layout:fragment="content" class="content container-fluid">
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script th:src="@{/admin/js/auth/check-role.js}"></script>
+
         <div class="page-header">
 
             <div class="row align-items-center">
@@ -135,7 +134,7 @@
     </div>
 
     <th:block layout:fragment="script">
-        <script th:src="@{/admin/js/product/edit.js}"></script>
+
         <script>
 
             function initEventDeleteProduct() {
@@ -157,10 +156,8 @@
                                     Swal.showLoading();
                                 }
                             });
-                            const url = baseUrl +  `/products/${id}`;
-                            const token = localStorage.getItem("access_token");
 
-                            await axios.delete(url, {headers: {"Authorization": `Bearer ${token}`}})
+                            await instance.delete(`/admin/products/${id}`)
                                 .then((res) => {
                                     Swal.fire({
                                         position: 'center',
@@ -190,7 +187,6 @@
             }
 
             function initDatatableProduct() {
-                const token = localStorage.getItem("access_token");
 
                 $.HSCore.components.HSDatatables.init($('#datatableProduct'), {
                     language: {
@@ -203,12 +199,13 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        headers: {"Authorization": "Bearer " + token},
+                        beforeSend: function(req) {
+                            req.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("access_token"));
+                        },
+                        //headers: {"Authorization": "Bearer " + localStorage.getItem("access_token")},
                         type: 'GET',
-                        url: baseUrl + '/products',
+                        url:  'http://localhost:8089/api/admin/products',
                         contentType: 'application/json',
-                        async: false,
-                        cache: true,
                         data: function(data) {
                             const params = {};
                             params.page = data.start / 10 + 1;
@@ -219,13 +216,26 @@
                             }
                             return params;
                         },
-                        dataFilter: function(data) {
-                            const object = JSON.parse(data);
+                        dataFilter: function(res) {
+                            const data = JSON.parse(res);
                             return JSON.stringify({
-                                recordsTotal: parseInt(object.content.totalElements),
-                                recordsFiltered: parseInt(object.content.totalElements),
-                                data: object.content.elements
+                                recordsTotal: parseInt(data.totalElements),
+                                recordsFiltered: parseInt(data.totalElements),
+                                data: data.elements
                             });
+                        },
+                        error: async function(xhr, status, error) {
+                            if(xhr.status === 401) {
+                                const rs = await refreshToken();
+                                const { accessToken } = rs.data;
+                                await localStorage.setItem("access_token", accessToken);
+                                const datatableProduct = $('#datatableProduct').DataTable();
+                                datatableProduct.ajax.reload();
+                            }
+                            if(xhr.status === 403) {
+                                clearToken();
+                                window.location = "/admin/login";
+                            }
                         }
                     },
                     columns: [
@@ -290,23 +300,16 @@
                 $('#search').on('keyup', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    const datatableProduct = $('#datatableProduct').dataTable().api();
+                    const datatableProduct = $('#datatableProduct').DataTable();
                     const input = $(this).val();
                     if(input.length > 1) {
-                        datatableProduct.ajax.load();
+                        datatableProduct.ajax.reload();
                     }
-                    // if(input.length < 2) {
-                    //     datatableProduct.ajax.url(baseUrl + '/products').load();
-                    // } else {
-                    //     datatableProduct.ajax.url(baseUrl + '/products/search').load();
-                    // }
-
                 });
             }
 
             $(async function() {
                 initDatatableProduct();
-
                 initEventDeleteProduct();
             });
 

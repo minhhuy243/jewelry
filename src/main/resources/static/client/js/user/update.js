@@ -1,7 +1,7 @@
 document.getElementById("formUpdateInfoCustomer").addEventListener('submit', update);
 
-function update(e) {
-
+async function update(e) {
+    e.preventDefault();
     const borderError = "solid 1px red";
     const borderNoError = "solid 1px #E6E6E6";
 
@@ -37,7 +37,6 @@ function update(e) {
      Call API after validation form success
      */
     if(errorProfileFullName.innerHTML === "" && errorProfileAddress.innerHTML === "") {
-        const accessToken = localStorage.getItem("access_token");
         const birthday = document.getElementById("profileBirthday");
         const gender = document.getElementById("profileGender").value;
 
@@ -46,36 +45,17 @@ function update(e) {
         const reverseArray = splitBirthday.reverse();
         const birthdayJoinArray = reverseArray.join("-");
 
-
-        const data = JSON.stringify({
-            "address": profileAddress.value,
-            "birthday": birthdayJoinArray,
-            "fullName": profileFullName.value,
-            "gender": gender
-        });
-
-        const xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-
-        xhr.addEventListener("readystatechange", function() {
-            if(this.readyState === 4) {
-                if(xhr.status === 200) {
-                    alert("Cập nhật thành công");
-                    window.location = "/customer/me";
-                }
-                if (xhr.status === 401) {
-                    localStorage.clear();
-                    alert("Tài khoản đã hết hạn. Vui lòng đăng nhập lại !")
-                    window.location = "/login";
-                }
+        await instance.put("/user/update", {
+            address: profileAddress.value,
+            birthday: birthdayJoinArray,
+            fullName: profileFullName.value,
+            gender: gender
+        }).then((res) => {
+            if(res.status === 200) {
+                alert("Cập nhật thành công");
+                window.location = "/user/me";
             }
-        });
-
-        xhr.open("PUT", "http://localhost:8089/api/customer/update");
-        xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        xhr.send(data);
+        })
 
     } else {
         if(errorProfileFullName.innerHTML === "") {
@@ -88,6 +68,5 @@ function update(e) {
         }
     }
 
-    e.preventDefault();
 }
 

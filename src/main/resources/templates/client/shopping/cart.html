@@ -102,16 +102,6 @@
         <script th:src="@{/client/js/shopping/cart.js}"></script>
 
         <script>
-            function renderCartTable(cart) {
-                const cartTable = $('#total tbody tr');
-                let itemsHtml = cart.items.map((item) => {
-                    return renderCartItems(item);
-                }).join(' ');
-                $('#cart tbody').html(itemsHtml);
-
-                cartTable.first().find('td').text((cart.total * 1000).toLocaleString("it-IT")+'đ');
-                cartTable.last().find('td strong').text((cart.total * 1000).toLocaleString("it-IT")+'đ');
-            }
 
             $(document).ready(async () => {
                 const accessToken = localStorage.getItem('access_token');
@@ -124,91 +114,6 @@
                     window.location = '/login';
                 }
             });
-
-        </script>
-
-        <script>
-
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'bottom-right',
-                iconColor: 'white',
-                customClass: {
-                    popup: 'colored-toast'
-                },
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true
-            });
-
-            async function getApiUpdateItemInCart(sku, quantity, inputQuantity) {
-                const formData = new FormData();
-                formData.append('quantity', quantity)
-                await axios.put(baseUrl + `/carts/mine/items/${sku}`, formData, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('access_token')}`
-                    }
-                }).then((res) => {
-                    if(res.status === 202) {
-                        inputQuantity.val(oldQuantity);
-                        Toast.fire({title: res.data.message[0], icon: 'error'});
-                    } else {
-                        renderCartTable(res.data.content);
-                        renderCartDropdown(res.data.content);
-                    }
-                }).catch((error) => {
-                    if(error.status === 500) {
-                        Toast.fire({title: error.response.data.message[0], icon: 'error'});
-                        inputQuantity.val(oldQuantity);
-                    } else if(error.status === 401) {
-                        window.location = '/login';
-                    }
-                });
-            }
-
-            async function getApiDeleteItemInCart(sku) {
-                await axios.delete(baseUrl + `/carts/mine/items/${sku}`, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('access_token')}`
-                    }
-                }).then((res) => {
-                    Toast.fire({title: 'Xóa sản phẩm thành công!', icon: 'success'});
-                    renderCartTable(res.data.content);
-                    renderCartDropdown(res.data.content);
-                }).catch((error) => {
-                    if(error.status === 500) {
-                        Toast.fire({title: error.response.data.message[0], icon: 'error'});
-                        inputQuantity.val(oldQuantity);
-                    } else if(error.status === 401) {
-                        window.location = '/login';
-                    }
-                });
-            }
-
-            var inputQuantity;
-            var oldQuantity;
-            $("body")
-                .on("mousedown", ".qty-box span", function() {
-                    inputQuantity = $(this).closest('.qty-box').find('input');
-                    oldQuantity = inputQuantity.val();
-                })
-                .on("click", ".qty-box span", async function() {
-                    const sku = inputQuantity.data('sku');
-                    const quantity = parseInt(inputQuantity.val());
-                    await getApiUpdateItemInCart(sku, quantity, inputQuantity);
-                })
-                .on("focusin", ".qty-box input", function() {
-                    oldQuantity = $(this).val();
-                })
-                .on("blur", ".qty-box input", async function() {
-                    const sku = $(this).data('sku');
-                    const quantity = parseInt($(this).val());
-                    await getApiUpdateItemInCart(sku, quantity, $(this));
-                })
-                .on("click", ".product-remove a", async function() {
-                    const sku = $(this).data('sku');
-                    await getApiDeleteItemInCart(sku);
-                })
 
         </script>
 

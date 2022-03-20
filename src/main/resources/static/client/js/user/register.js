@@ -1,6 +1,7 @@
 document.getElementById("registerForm").addEventListener('submit', register);
 
-function register(event) {
+async function register(e) {
+    e.preventDefault();
     const borderError = "solid 1px red";
     const borderNoError = "solid 1px #E6E6E6";
 
@@ -113,23 +114,23 @@ function register(event) {
 
         const gender = document.getElementById("registerGender").value;
 
-        axios.post(baseUrl + "/customer/register", {
+        await axios.post(baseUrl + "/user/register", {
 
             fullName: $('#registerFullName').val(),
             email: $('#registerEmail').val(),
             password: $('#registerPassword').val(),
-            confirmPassword: $('#registerRePassword').val(),
+            rePassword: $('#registerRePassword').val(),
             gender: gender,
             birthday: birthdayJoinArray,
             phoneNumber: $('#registerPhoneNumber').val(),
             address: $('#registerAddress').val()
 
         }).then(function () {
-            alert("Đăng ký thành công");
+            alert("Đăng ký thành công!");
             window.location = "/login";
         }).catch(function (error) {
             if (error.response.status === 400) {
-                var iterator = error.response.data.message.values();
+                const iterator = error.response.data;
                 for (let element of iterator) {
                     if (element.includes("Email")) {
                         registerEmail.style.border = borderError;
@@ -152,6 +153,4 @@ function register(event) {
             errorRegisterPhoneNumber.innerHTML = "";
         }
     }
-
-    event.preventDefault();
 }

@@ -17,7 +17,7 @@ function renderProductDetails(product) {
                     </a>
                 </div>`);
 
-    product.images.forEach((image) => {
+    product.images.map((image) => {
         $('.detail-page-slider-for')
             .slick('slickAdd',
                 `<div class='slide-item'>
@@ -57,3 +57,59 @@ function renderProductDetails(product) {
     }
 
 }
+
+$('body').on('click', '.product-variation-form .btn-custom.primary', async () => {
+    if(getLocalAccessToken() && getLocalRefreshToken()) {
+        const item = {productSku: $('#sku').text(), quantity: $('#quantity').val()};
+        await instance.post('/carts/mine/items', item)
+            .then((res) => {
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast'
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            });
+                Toast.fire({
+                icon: 'success',
+                title: 'Thêm vào giỏ hàng thành công'
+            });
+            localStorage.setItem('cart', JSON.stringify(res.data));
+            renderCartDropdown(res.data);
+        }).catch((error) => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast'
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            });
+            Toast.fire({
+                icon: 'error',
+                title: error.response.data.errors[0].defaultMessage
+            });
+        });
+    } else {
+        window.location = '/login';
+    }
+});
+
+$(async function () {
+    await axios.get(baseUrl + "/products/" + pathArray.slice(-1))
+        .then((res) => {
+            renderProductDetails(res.data);
+        })
+        .catch((error) => {
+            if(error.response.status === 400) {
+                window.location = '/trang-suc';
+            }
+        });
+});

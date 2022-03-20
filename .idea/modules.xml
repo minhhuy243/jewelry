@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jewelry.iml" filepath="$PROJECT_DIR$/jewelry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jewelry-api/jewelry.api.iml" filepath="$PROJECT_DIR$/../jewelry-api/jewelry.api.iml" />
     </modules>
   </component>
 </project>
