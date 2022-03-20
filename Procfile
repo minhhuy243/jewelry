@@ -1,1 +1,1 @@
-web: java -jar build/jewelry-1.0.jar
+web: java -jar build/libs/jewelry-0.0.1-SNAPSHOT.jar
