@@ -4,3 +4,4 @@ server:
 spring:
   thymeleaf:
     prefix: classpath:/templates/
+    template-resolver-order: 1
