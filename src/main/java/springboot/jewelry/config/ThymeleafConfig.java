@@ -10,7 +10,7 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 public class ThymeleafConfig {
 
     @Bean
-    public TemplateEngine  thymeleafLayoutDialect(){
+    public TemplateEngine thymeleafLayoutDialect(){
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
