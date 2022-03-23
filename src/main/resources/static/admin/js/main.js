@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8089/api";
+const baseUrl = "https://jewelry243-api.herokuapp.com/api";
 const pathArray = window.location.pathname.split('/');
 const urlParams = new URLSearchParams(window.location.search);
 
