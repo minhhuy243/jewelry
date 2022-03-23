@@ -39,7 +39,7 @@ async function login(e) {
      * Call API after validation form success
      * */
     if (errorEmail.innerHTML === "" && errorPassword.innerHTML === "") {
-        const url = "http://localhost:8089/api/auth/login";
+        const url = "https://jewelry243-api.herokuapp.com/api/auth/login";
         await axios.post(url, {
             email: email.value,
             password: password.value
